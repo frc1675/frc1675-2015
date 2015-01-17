@@ -50,52 +50,36 @@ public class OI {
 		double leftXControllerValue = driverController
 				.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
 
-		if (Math.abs(leftXControllerValue) <= RobotMap.DEAD_ZONE_TOLERANCE) {
-
-			return 0;
-
-		} else {
-			return driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
-		}
+		return checkForDeadzone(leftXControllerValue);
 	}
 
 	public double getLeftYAxis() {
 		double leftYControllerValue = driverController
 				.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
-		if (Math.abs(leftYControllerValue) <= RobotMap.DEAD_ZONE_TOLERANCE) {
 
-			return 0;
-
-		} else {
-			return driverController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
-		}
+		return checkForDeadzone(leftYControllerValue);
 	}
 
 	public double getRightXAxis() {
 		double rightXControllerValue = driverController
 				.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
 
-		if (Math.abs(rightXControllerValue) <= RobotMap.DEAD_ZONE_TOLERANCE) {
-
-			return 0;
-
-		} else {
-			return driverController.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
-		}
+		return checkForDeadzone(rightXControllerValue);
 	}
 
 	public double getRightYAxis() {
 		double rightYControllerValue = driverController
 				.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
-		
-		
-		if (Math.abs(rightYControllerValue) <= RobotMap.DEAD_ZONE_TOLERANCE) {
 
-			return 0;
-
-		} else {
-			return driverController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
-		}
-	
+		return checkForDeadzone(rightYControllerValue);
 	}
+
+	public double checkForDeadzone(double input) {
+		if (Math.abs(input) <= RobotMap.DEAD_ZONE_TOLERANCE) {
+			return 0;
+		} else {
+			return input;
+		}
+	}
+
 }
