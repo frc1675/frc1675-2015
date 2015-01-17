@@ -45,19 +45,19 @@ public class OI {
 	//right y 5
 	
 	public double getLeftXAxis() {
-		return driverController.getRawAxis(0);
+		return driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
 	}
 	
 	public double getLeftYAxis() {
-		return driverController.getRawAxis(1);
+		return driverController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
 	}
 	
 	public double getRightXAxis() {
-		return driverController.getRawAxis(4);
+		return driverController.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
 	}
 	
 	public double getRightYAxis() {
-		return driverController.getRawAxis(5);
+		return driverController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
 	}
 }
 
