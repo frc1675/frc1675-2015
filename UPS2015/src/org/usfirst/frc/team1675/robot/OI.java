@@ -2,6 +2,7 @@ package org.usfirst.frc.team1675.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team1675.robot.commands.ExampleCommand;
 
@@ -44,13 +45,14 @@ public class OI {
 	// left y 1
 	// right x 4
 	// right y 5
-	double deadZone = 0;
 
 	public double getLeftXAxis() {
+		double leftXControllerValue = driverController
+				.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
 
-		if (XBoxControllerMap.LEFT_X_AXIS == Math.abs(.05)) {
+		if (Math.abs(leftXControllerValue) <= RobotMap.DEAD_ZONE_TOLERANCE) {
 
-			return deadZone;
+			return 0;
 
 		} else {
 			return driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
@@ -58,9 +60,11 @@ public class OI {
 	}
 
 	public double getLeftYAxis() {
-		if (XBoxControllerMap.LEFT_Y_AXIS == Math.abs(.05)) {
+		double leftYControllerValue = driverController
+				.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
+		if (Math.abs(leftYControllerValue) <= RobotMap.DEAD_ZONE_TOLERANCE) {
 
-			return deadZone;
+			return 0;
 
 		} else {
 			return driverController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
@@ -68,10 +72,12 @@ public class OI {
 	}
 
 	public double getRightXAxis() {
+		double rightXControllerValue = driverController
+				.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
 
-		if (XBoxControllerMap.RIGHT_X_AXIS == Math.abs(.05)) {
+		if (Math.abs(rightXControllerValue) <= RobotMap.DEAD_ZONE_TOLERANCE) {
 
-			return deadZone;
+			return 0;
 
 		} else {
 			return driverController.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
@@ -79,13 +85,17 @@ public class OI {
 	}
 
 	public double getRightYAxis() {
+		double rightYControllerValue = driverController
+				.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
+		
+		
+		if (Math.abs(rightYControllerValue) <= RobotMap.DEAD_ZONE_TOLERANCE) {
 
-		if (XBoxControllerMap.RIGHT_Y_AXIS == Math.abs(.05)) {
-
-			return deadZone;
+			return 0;
 
 		} else {
 			return driverController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
 		}
+	
 	}
 }

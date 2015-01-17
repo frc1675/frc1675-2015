@@ -24,5 +24,7 @@ public class RobotMap {
 	
 	public static final int BACK_RIGHT_MOTOR_CHANNEL = 1;
 	
+	public static final double DEAD_ZONE_TOLERANCE = .1675;
+	
 	
 }
