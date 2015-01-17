@@ -1,6 +1,8 @@
 package org.usfirst.frc.team1675.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+
 import org.usfirst.frc.team1675.robot.commands.ExampleCommand;
 
 /**
@@ -34,5 +36,28 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+	
+	Joystick driverController = new Joystick(0);
+	
+	//left x 0
+	//left y 1
+	//right x 4
+	//right y 5
+	
+	public double getLeftXAxis() {
+		return driverController.getRawAxis(0);
+	}
+	
+	public double getLeftYAxis() {
+		return driverController.getRawAxis(1);
+	}
+	
+	public double getRightXAxis() {
+		return driverController.getRawAxis(4);
+	}
+	
+	public double getRightYAxis() {
+		return driverController.getRawAxis(5);
+	}
 }
 
