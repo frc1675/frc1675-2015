@@ -24,5 +24,13 @@ public class RobotMap {
 	
 	public static final int BACK_RIGHT_MOTOR_CHANNEL = 1;
 	
+	public static final int GYRO_CHANNEL = 1;
 	
+	public static final double P = 1.0;
+	
+	public static final double I = 0.0;
+	
+	public static final double D = 0.0;
+	
+	public static final double SETPOINT = 90;
 }
