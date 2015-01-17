@@ -20,9 +20,9 @@ public class TankDriveWithJoysticks extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double leftStick = 0.0;
+    	double leftStick = Robot.oi.getLeftYAxis();
     	//Add values later
-    	double rightStick = 0.1;
+    	double rightStick = Robot.oi.getRightYAxis();
     	
     	Robot.drivetrain.setBackLeftSpeed(leftStick);
     	Robot.drivetrain.setBackRightSpeed(rightStick);
