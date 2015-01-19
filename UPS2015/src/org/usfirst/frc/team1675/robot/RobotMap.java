@@ -25,6 +25,12 @@ public class RobotMap {
 	public static final int BACK_RIGHT_MOTOR_CHANNEL = 1;
 	
 	public static final double DEAD_ZONE_TOLERANCE = .1675;
+
+	
+	
+	public static final double DRIVE_MAX_SPEED = 10;  // feet per second of slowest wheel	
+	public static final double DRIVE_WHEEL_DIAMETER = 6; //inches	
+	public static final double DRIVE_ENCODER_TICKS_PER_REVOLUTION = 360;
 	
 	
 }
