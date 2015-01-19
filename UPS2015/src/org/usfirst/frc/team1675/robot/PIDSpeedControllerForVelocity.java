@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.SpeedController;
  * The idea is that each wheel would have its own set of PID constants, which are passed in here.
 */
 public class PIDSpeedControllerForVelocity implements SpeedController{
-	double maxSpeedInTicksPerSecond = RobotMap.DRIVE_MAX_SPEED *(RobotMap.DRIVE_ENCODER_TICKS_PER_REVOLUTION / (Math.PI*(RobotMap.DRIVE_WHEEL_DIAMETER/12)));
 	SpeedController motor;
 	EncoderVelocitySource encoderSource;
 	PIDController pid;
@@ -36,7 +35,7 @@ public class PIDSpeedControllerForVelocity implements SpeedController{
 	}
 
 	public void set(double proportionOfMax) {
-		pid.setSetpoint(maxSpeedInTicksPerSecond * proportionOfMax);
+		pid.setSetpoint(RobotMap.DRIVE_MAX_SPEED * proportionOfMax);
 	}
 	public void disable() {
 		motor.disable();
