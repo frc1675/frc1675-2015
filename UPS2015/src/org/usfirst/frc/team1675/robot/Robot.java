@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team1675.robot.commands.ExampleCommand;
+import org.usfirst.frc.team1675.robot.subsystems.ContainerArm;
 import org.usfirst.frc.team1675.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team1675.robot.subsystems.ExampleSubsystem;
 
@@ -21,6 +22,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final Drivetrain drivetrain = new Drivetrain();
+	public static final ContainerArm containerArm = new ContainerArm(RobotMap.CONTAINER_ARM_P, RobotMap.CONTAINER_ARM_I, RobotMap.CONTAINER_ARM_D);
 	public static OI oi;
 
     Command autonomousCommand;

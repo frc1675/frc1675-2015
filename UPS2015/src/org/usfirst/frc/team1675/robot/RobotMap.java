@@ -26,5 +26,8 @@ public class RobotMap {
 	
 	public static final double DEAD_ZONE_TOLERANCE = .1675;
 	
-	
+	//Container PID shit
+	public static final double CONTAINER_ARM_P = .05;
+	public static final double CONTAINER_ARM_I = 0;
+	public static final double CONTAINER_ARM_D = 0;
 }
