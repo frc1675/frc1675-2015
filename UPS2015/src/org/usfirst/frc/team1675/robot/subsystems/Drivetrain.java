@@ -17,7 +17,7 @@ public class Drivetrain extends Subsystem {
 	Talon frontRightMotor;
 	Talon backLeftMotor;
 	Talon backRightMotor;
-	GyroPIDSubsystem gyroSubsystem;
+	public GyroPIDSubsystem gyroSubsystem;
 	
 	public Drivetrain() {
 		frontLeftMotor = new Talon(RobotMap.FRONT_LEFT_MOTOR_CHANNEL);
@@ -60,7 +60,7 @@ public class Drivetrain extends Subsystem {
 			// TODO Auto-generated constructor stub
 			gyro.setSensitivity(.007);
 			this.setSetpoint(setpoint);
-			
+			this.setAbsoluteTolerance(10);
 			
 		}
 		
@@ -98,14 +98,13 @@ public class Drivetrain extends Subsystem {
 			// TODO Auto-generated method stub
 			
 		}
+		
+		public boolean hasReachedSetpoint(){
+			return this.onTarget();
+			
+		}
     	
     }
-    
-    
-    
-    
-    
-    
-    
+
 }
 
