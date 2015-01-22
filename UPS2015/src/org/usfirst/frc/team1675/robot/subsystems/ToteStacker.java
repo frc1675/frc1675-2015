@@ -26,13 +26,7 @@ public class ToteStacker extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    public void goUp(){
-    	thingyOne.set(0.3);
-    	thingyTwo.set(0.3);
-    }
-    public void goDown(){
-    	thingyOne.set(-0.3);
-    	thingyTwo.set(-0.3);
+    public void goToPoint(){
     }
     public void setMotors(double MotorValue){
     	thingyOne.set(MotorValue);
