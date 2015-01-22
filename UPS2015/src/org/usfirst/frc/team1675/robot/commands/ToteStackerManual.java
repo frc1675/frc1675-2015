@@ -7,12 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class cheezyDrive extends Command {
+public class ToteStackerManual extends Command {
 
-    public cheezyDrive() {
+    public ToteStackerManual() {
+    	requires(Robot.toteStacker);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drivetrain);
     }
 
     // Called just before this Command runs the first time
@@ -21,20 +21,6 @@ public class cheezyDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	double turn = Robot.oi.getDriverRightXAxis(); //fill in with get right x axis method later
-    	double forward = Robot.oi.getDriverLeftYAxis(); //fill in with get left y axis method later
-    	
-    	double left;
-    	double right;
-    	
-    	left = forward - turn;
-    	right = forward + turn;
-    	
-    	Robot.drivetrain.setFrontLeftSpeed(left);
-    	Robot.drivetrain.setBackLeftSpeed(left);
-    	Robot.drivetrain.setFrontRightSpeed(right);
-    	Robot.drivetrain.setBackRightSpeed(right);
     	
     }
 

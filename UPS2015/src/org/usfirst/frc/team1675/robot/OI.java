@@ -46,28 +46,28 @@ public class OI {
 	// right x 4
 	// right y 5
 
-	public double getLeftXAxis() {
+	public double getDriverLeftXAxis() {
 		double leftXControllerValue = driverController
 				.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
 
 		return checkForDeadzone(leftXControllerValue);
 	}
 
-	public double getLeftYAxis() {
+	public double getDriverLeftYAxis() {
 		double leftYControllerValue = driverController
 				.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
 
 		return checkForDeadzone(leftYControllerValue);
 	}
 
-	public double getRightXAxis() {
+	public double getDriverRightXAxis() {
 		double rightXControllerValue = driverController
 				.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
 
 		return checkForDeadzone(rightXControllerValue);
 	}
 
-	public double getRightYAxis() {
+	public double getDriverRightYAxis() {
 		double rightYControllerValue = driverController
 				.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
 
