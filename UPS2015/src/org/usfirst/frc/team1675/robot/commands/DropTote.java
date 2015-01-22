@@ -21,7 +21,7 @@ public class DropTote extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.toteStacker.goDown();
+    	Robot.toteStacker.goToPoint();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,7 +32,7 @@ public class DropTote extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.toteStacker.setMotors(0);
+    	//stop the thing from moving here
     }
 
     // Called when another command which requires one or more of the same

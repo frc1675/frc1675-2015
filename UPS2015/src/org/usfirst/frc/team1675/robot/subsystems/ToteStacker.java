@@ -10,14 +10,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class ToteStacker extends Subsystem {
-	SpeedController thingyOne;
-	SpeedController thingyTwo;
+	
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public ToteStacker(){
-		thingyOne = new Talon(5);
-		thingyTwo = new Talon(6);
 		
 	}
 
@@ -28,9 +25,7 @@ public class ToteStacker extends Subsystem {
     }
     public void goToPoint(){
     }
-    public void setMotors(double MotorValue){
-    	thingyOne.set(MotorValue);
-    	thingyTwo.set(MotorValue);
+    public void setManualMovement(double MotorValue){
     }
 }
 
