@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1675.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -40,6 +41,7 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 
 	Joystick driverController = new Joystick(0);
+	Solenoid solenoidStatus = new Solenoid(0);
 
 	// left x 0
 	// left y 1
@@ -73,6 +75,7 @@ public class OI {
 
 		return checkForDeadzone(rightYControllerValue);
 	}
+
 
 	public double checkForDeadzone(double input) {
 		if (Math.abs(input) <= RobotMap.DEAD_ZONE_TOLERANCE) {

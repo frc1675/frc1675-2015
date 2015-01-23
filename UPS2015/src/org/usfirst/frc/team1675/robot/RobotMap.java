@@ -30,5 +30,6 @@ public class RobotMap {
 	
 	public static final int LOWER_CYLINDER = 10;
 	
+	public static final double CLAW_CYLINDER_FIRE_TIME = .1;
 	
 }
