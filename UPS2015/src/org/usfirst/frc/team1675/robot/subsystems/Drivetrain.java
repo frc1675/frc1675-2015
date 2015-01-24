@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.commands.MecanumDriveWithJoysticks;
 import org.usfirst.frc.team1675.robot.commands.TankDriveWithJoysticks;
 
 import edu.wpi.first.wpilibj.Talon;
@@ -32,7 +33,7 @@ public class Drivetrain extends Subsystem {
 	}
 	
 	public void setBackLeftSpeed(double speed) {
-		backLeftMotor.set(-speed);
+		backLeftMotor.set(speed);
 	}
 	
 	public void setBackRightSpeed(double speed) {
@@ -41,7 +42,7 @@ public class Drivetrain extends Subsystem {
 
     public void initDefaultCommand() {
     	
-    	setDefaultCommand(new TankDriveWithJoysticks());
+    	setDefaultCommand(new MecanumDriveWithJoysticks());
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
