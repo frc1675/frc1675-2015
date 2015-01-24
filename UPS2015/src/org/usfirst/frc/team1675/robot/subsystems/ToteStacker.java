@@ -23,7 +23,19 @@ public class ToteStacker extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    public void goToPoint(){
+    
+    /**
+     * 
+     * @param point tells the exact point the tote stacker will move to
+     */
+    public void goToPoint(int point){
+    }
+    /**
+     * 
+     * @param distance tells how far the tote stacker moves from it's current point
+     */
+    public void moveRelative(int distance){
+    	
     }
     public void setManualMovement(double MotorValue){
     }
