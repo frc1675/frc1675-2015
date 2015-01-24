@@ -28,12 +28,11 @@ public class GoDownOneTote extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
-        //goes until the motors have rotated a set number of times/distance. need encoder to code it
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	//make totestacker stop moving here
+
     }
 
     // Called when another command which requires one or more of the same
