@@ -18,8 +18,8 @@ public class DriveTurnAngle extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	Robot.drivetrain.gyroSubsystem.resetGyro();
-    	Robot.drivetrain.gyroSubsystem.start();
+    	//Robot.drivetrain.gyroSubsystem.resetGyro();
+    	//Robot.drivetrain.gyroSubsystem.start();
     	
     }
 
@@ -32,8 +32,9 @@ public class DriveTurnAngle extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+		return false;
     	
-    	return Robot.drivetrain.gyroSubsystem.hasReachedSetpoint();
+    	//return Robot.drivetrain.gyroSubsystem.hasReachedSetpoint();
        
     }
 
