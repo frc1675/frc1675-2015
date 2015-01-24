@@ -18,10 +18,10 @@ public class Drivetrain extends Subsystem {
 	Talon backRightMotor;
 	
 	public Drivetrain() {
-		frontLeftMotor = new Talon(RobotMap.FRONT_LEFT_MOTOR_CHANNEL);
-		frontRightMotor = new Talon(RobotMap.FRONT_RIGHT_MOTOR_CHANNEL);
-		backLeftMotor = new Talon(RobotMap.BACK_LEFT_MOTOR_CHANNEL);
-		backRightMotor = new Talon(RobotMap.BACK_RIGHT_MOTOR_CHANNEL);
+		frontLeftMotor = new Talon(RobotMap.PWMChannels.FRONT_LEFT_DRIVE);
+		frontRightMotor = new Talon(RobotMap.PWMChannels.FRONT_RIGHT_DRIVE);
+		backLeftMotor = new Talon(RobotMap.PWMChannels.BACK_LEFT_DRIVE);
+		backRightMotor = new Talon(RobotMap.PWMChannels.BACK_RIGHT_DRIVE);
 	}
 	
 	public void setFrontLeftSpeed(double speed) {
