@@ -9,36 +9,37 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
+public class LeftContainerClawOpen extends Command {
+	
+	Timer timer;
 
-public class ContainerClawOpen extends Command {
-    
-    Timer timer;
-
-    public ContainerClawOpen() {
+    public LeftContainerClawOpen() {
+    	
     	requires(Robot.containerclaw);
     	timer = new Timer();
+    	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        timer.start();
+    	
+    	timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-         
-        Robot.containerclaw.openBoth();
-        
+    	Robot.containerclaw.openLeft();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (timer.get() > RobotMap.CLAW_CYLINDER_FIRE_TIME)
-        return true; 
-        else {
-            return false;
+    	if (timer.get() > RobotMap.CLAW_CYLINDER_FIRE_TIME)
+    		return true;
+        
+        else{
+        	return false;
         }
     }
 

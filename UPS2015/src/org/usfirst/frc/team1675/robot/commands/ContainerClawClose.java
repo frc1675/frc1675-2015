@@ -25,7 +25,7 @@ public class ContainerClawClose extends Command
     @Override
     protected void execute()
     {
-        Robot.containerclaw.close();
+        Robot.containerclaw.closeBoth();
     }
 
     @Override
@@ -39,8 +39,9 @@ public class ContainerClawClose extends Command
     }
 
     @Override
-    protected void end()
-    {
+    protected void end(){
+    	
+    	Robot.containerclaw.closeBoth();
     }
 
     @Override

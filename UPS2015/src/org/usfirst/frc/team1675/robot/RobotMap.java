@@ -26,9 +26,13 @@ public class RobotMap {
 	
 	public static final double DEAD_ZONE_TOLERANCE = .1675;
 	
-	public static final int UPPER_CYLINDER = 9;
+	public static final int RIGHT_UPPER_CYLINDER = 9;
 	
-	public static final int LOWER_CYLINDER = 10;
+	public static final int RIGHT_LOWER_CYLINDER = 10;
+	
+	public static final int LEFT_UPPER_CYLINDER = 5;
+	
+	public static final int LEFT_LOWER_CYLINDER = 6;
 	
 	public static final double CLAW_CYLINDER_FIRE_TIME = .1;
 	
