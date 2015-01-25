@@ -8,16 +8,16 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class MoveContainerArmToPosition extends Command {
-
+	double angle;
     public MoveContainerArmToPosition(double angle) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.containerArm);
+    	this.angle = angle;
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
-    	
+    protected void initialize() {   	
     	Robot.containerArm.setArmPosition(angle);
     }
 

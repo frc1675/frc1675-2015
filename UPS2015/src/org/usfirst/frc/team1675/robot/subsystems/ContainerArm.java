@@ -1,7 +1,9 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -11,7 +13,9 @@ public class ContainerArm extends PIDSubsystem {
     // Initialize your subsystem here
 	
 	Solenoid openWrist;
-	Solenoid closedWrist;
+	Solenoid closeWrist;
+	SpeedController MotorOne;
+	SpeedController MotorTwo;
 	
     public ContainerArm(double p, double i, double d) {
     	// Use these to get going:
@@ -22,7 +26,7 @@ public class ContainerArm extends PIDSubsystem {
     }
     
     public void moveWristUp(){
-    	
+
     }
     
     public void moveWristDown(){
@@ -40,7 +44,18 @@ public class ContainerArm extends PIDSubsystem {
     public void stopAndReset(){
     	
     }
-    
+    public double getP(){
+    	return this.getPIDController().getP();
+    }
+    public double getI(){
+    	return this.getPIDController().getI();   			
+    }
+    public double getD(){
+    	return this.getPIDController().getD();
+    }
+    public void setPID(double p, double i, double d){
+    	this.getPIDController().setPID(p, i, d);
+    }
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
