@@ -54,7 +54,7 @@ public class OI {
 	}
 
 	public double getLeftYAxis() {
-		double leftYControllerValue = driverController
+		double leftYControllerValue = -driverController
 				.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
 
 		return checkForDeadzone(leftYControllerValue);
@@ -68,7 +68,7 @@ public class OI {
 	}
 
 	public double getRightYAxis() {
-		double rightYControllerValue = driverController
+		double rightYControllerValue = -driverController
 				.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
 
 		return checkForDeadzone(rightYControllerValue);
