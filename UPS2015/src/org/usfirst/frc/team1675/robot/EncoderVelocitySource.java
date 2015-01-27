@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.PIDSource;
 */
 public class EncoderVelocitySource implements PIDSource{
 	Encoder encoder;
-	EncoderVelocitySource(Encoder encoder){
+	EncoderVelocitySource(Encoder encoder, int ticksPerRevolution){
 		this.encoder = encoder;	
-		this.encoder.setDistancePerPulse(((RobotMap.DRIVE_WHEEL_DIAMETER * Math.PI)/12)/ (RobotMap.DRIVE_ENCODER_TICKS_PER_REVOLUTION));
+		this.encoder.setDistancePerPulse(((RobotMap.DriveEncoders.DRIVE_WHEEL_DIAMETER * Math.PI)/12)/ (ticksPerRevolution));
 	}
 	public double pidGet() {
 		return encoder.getRate();

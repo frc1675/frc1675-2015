@@ -32,10 +32,34 @@ public class RobotMap {
 		public static final int FRONT_LEFT_ENCODER_B = 3;
 
 	}
-
-	public static final double DRIVE_MAX_SPEED = 10;  // feet per second of slowest wheel	
-	public static final double DRIVE_WHEEL_DIAMETER = 6; //inches	
-	public static final double DRIVE_ENCODER_TICKS_PER_REVOLUTION = 360;
+	public static class DriveEncoders {
+		public static final double DRIVE_MAX_SPEED = 10;  // feet per second of slowest wheel	
+		public static final double DRIVE_WHEEL_DIAMETER = 6;
+		public static class BackRightPIDDefaukts{
+			public static final double P = .1;
+			public static final double I = 0;
+			public static final double D = 0;
+			public static final double F = 0;
+		}
+		public static class BackLeftPIDDefaults{
+			public static final double P = .1;
+			public static final double I = 0;
+			public static final double D = 0;
+			public static final double F = 0;
+		}
+		public static class FrontRightPIDDefaults {
+			public static final double P = .1;
+			public static final double I = 0;
+			public static final double D = 0;
+			public static final double F = 0;
+		}
+		public static class FrontLeftPIDDefaults  {
+			public static final double P = .1;
+			public static final double I = 0;
+			public static final double D = 0;
+			public static final double F = 0;
+		}
+	}
 
 	public static class DriverConstants {
 		public static final double DEAD_ZONE_TOLERANCE = .1675;

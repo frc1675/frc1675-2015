@@ -41,16 +41,12 @@ public class OI {
 
 	Joystick driverController = new Joystick(0);
 
-	// left x 0
-	// left y 1
-	// right x 4
-	// right y 5
-
+	
 	public double getLeftXAxis() {
 		double leftXControllerValue = driverController
 				.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
-
 		return checkForDeadzone(leftXControllerValue);
+
 	}
 
 	public double getLeftYAxis() {
@@ -81,5 +77,6 @@ public class OI {
 			return input;
 		}
 	}
+	
 
 }

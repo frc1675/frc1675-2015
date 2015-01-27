@@ -14,9 +14,9 @@ public class PIDSpeedControllerForVelocity implements SpeedController{
 	SpeedController motor;
 	EncoderVelocitySource encoderSource;
 	PIDController pid;
-	PIDSpeedControllerForVelocity(SpeedController motor, Encoder encoder, double p, double i, double d, double f){
+	public PIDSpeedControllerForVelocity(SpeedController motor, Encoder encoder, int ticksPerRevolution, double p, double i, double d, double f){
 		this.motor = motor;
-		encoderSource = new EncoderVelocitySource(encoder);
+		encoderSource = new EncoderVelocitySource(encoder, ticksPerRevolution);
 		pid = new PIDController(p, i , d, f, encoderSource , motor);
 		pid.enable();
 		pid.setSetpoint(0);
@@ -35,7 +35,7 @@ public class PIDSpeedControllerForVelocity implements SpeedController{
 	}
 
 	public void set(double proportionOfMax) {
-		pid.setSetpoint(RobotMap.DRIVE_MAX_SPEED * proportionOfMax);
+		pid.setSetpoint(RobotMap.DriveEncoders.DRIVE_MAX_SPEED * proportionOfMax);
 	}
 	public void disable() {
 		motor.disable();
