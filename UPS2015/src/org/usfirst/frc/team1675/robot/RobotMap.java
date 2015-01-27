@@ -26,11 +26,11 @@ public class RobotMap {
 	
 	public static final int GYRO_CHANNEL = 1;
 	
-	public static final double P = .004;
+	public static final double P = .045;
 	
 	public static final double I = 0.0;
 	
 	public static final double D = 0.0;
 	
-	public static final double SETPOINT = 90;
+	public static final double SETPOINT = 0;
 }

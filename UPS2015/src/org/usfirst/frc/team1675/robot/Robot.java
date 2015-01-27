@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-
+import org.usfirst.frc.team1675.robot.commands.DriveStraightForTime;
 import org.usfirst.frc.team1675.robot.commands.ExampleCommand;
-import org.usfirst.frc.team1675.robot.commands.GyroPIDCommand;
+import org.usfirst.frc.team1675.robot.commands.GyroPIDTurnToAngleCommand;
 import org.usfirst.frc.team1675.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team1675.robot.subsystems.ExampleSubsystem;
 
@@ -24,6 +24,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final Drivetrain drivetrain = new Drivetrain();
 	public static OI oi;
+	
 
     Command autonomousCommand;
 
@@ -34,7 +35,8 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         // instantiate the command used for the autonomous period
-        autonomousCommand = new GyroPIDCommand(RobotMap.P, RobotMap.I, RobotMap.D, RobotMap.SETPOINT);
+        //autonomousCommand = new GyroPIDTurnToAngleCommand(RobotMap.P, RobotMap.I, RobotMap.D, RobotMap.SETPOINT);
+        autonomousCommand = new DriveStraightForTime(RobotMap.P, RobotMap.I, RobotMap.D, RobotMap.SETPOINT, .2, 15);
     }
 	
 	public void disabledPeriodic() {

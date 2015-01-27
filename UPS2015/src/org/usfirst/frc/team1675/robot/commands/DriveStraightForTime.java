@@ -4,44 +4,49 @@ import org.usfirst.frc.team1675.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class GyroPIDCommand extends PIDCommand {
+public class DriveStraightForTime extends PIDCommand {
 	
+	private double constantMotorPower;
 
-
-    public GyroPIDCommand(double p, double i, double d, double setPoint) {
+    public DriveStraightForTime(double p, double i, double d, double setPoint, double initialMotorPower, double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	super(p, i, d);
     	requires(Robot.drivetrain);
     	this.setSetpoint(setPoint);
-    	this.getPIDController().setAbsoluteTolerance(4);
+    	this.getPIDController().setAbsoluteTolerance(1);
+    	this.setTimeout(time);
+    	this.constantMotorPower = -initialMotorPower;
+    	
+    	
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     	Robot.drivetrain.resetGyro();
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
+    	
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return this.getPIDController().onTarget();
+    	return this.isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	System.out.println("Ending the Gyro Command");
-    	System.out.println("Final Gyro Value:"+Robot.drivetrain.getGyroAngle());
     }
 
     // Called when another command which requires one or more of the same
@@ -51,20 +56,28 @@ public class GyroPIDCommand extends PIDCommand {
 
 	@Override
 	protected double returnPIDInput() {
-		
 		double angle = Robot.drivetrain.getGyroAngle();
+		SmartDashboard.putNumber("Angle", angle);
 		System.out.println("Gyro Angle: "+angle);
 		return angle;
-		
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
-		System.out.println("Output: "+output);
-		Robot.drivetrain.setBackLeftSpeed(-output);
-		Robot.drivetrain.setBackRightSpeed(output);
-		Robot.drivetrain.setFrontLeftSpeed(-output);
-		Robot.drivetrain.setFrontRightSpeed(output);
-				
+		
+		double lSpeed = constantMotorPower - output; 
+		double rSpeed = constantMotorPower + output; 
+		
+		SmartDashboard.putNumber("Left Side", lSpeed);
+		SmartDashboard.putNumber("Right Side", rSpeed);
+		
+		
+		Robot.drivetrain.setBackLeftSpeed(lSpeed);
+		Robot.drivetrain.setBackRightSpeed(rSpeed);
+		Robot.drivetrain.setFrontLeftSpeed(lSpeed);
+		Robot.drivetrain.setFrontRightSpeed(rSpeed);
+		
+		
+		
 	}
 }
