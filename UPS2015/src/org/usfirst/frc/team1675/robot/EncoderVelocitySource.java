@@ -15,4 +15,7 @@ public class EncoderVelocitySource implements PIDSource{
 	public double pidGet() {
 		return encoder.getRate();
 	}
+	public void getRate(){
+		encoder.getRate();
+	}
 }

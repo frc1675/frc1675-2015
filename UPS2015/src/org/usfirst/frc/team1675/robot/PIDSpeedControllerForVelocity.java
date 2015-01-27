@@ -21,7 +21,10 @@ public class PIDSpeedControllerForVelocity implements SpeedController{
 		pid.enable();
 		pid.setSetpoint(0);
 	}
-	
+	public void disablePID(){
+		pid.disable();
+		motor.set(0);
+	}
 	public void pidWrite(double output) {
 		motor.pidWrite(output);		
 	}
@@ -55,6 +58,9 @@ public class PIDSpeedControllerForVelocity implements SpeedController{
 	}
 	public void setPIDF(double p, double i, double d, double f){ 
 		pid.setPID(p, i, d, f);
+	}
+	public void setRawPower(double power){
+		motor.set(power);
 	}
 
 }
