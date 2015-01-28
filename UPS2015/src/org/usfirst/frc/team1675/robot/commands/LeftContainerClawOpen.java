@@ -7,49 +7,38 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * This command opens the left side of the claw.
  */
 public class LeftContainerClawOpen extends Command {
-	
+
 	Timer timer;
 
-    public LeftContainerClawOpen() {
-    	
-    	requires(Robot.containerclaw);
-    	timer = new Timer();
-    	
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    }
+	public LeftContainerClawOpen() {
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	
-    	timer.start();
-    }
+		requires(Robot.containerClaw);
+		timer = new Timer();
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.containerclaw.openLeft();
-    }
+	protected void initialize() {
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-    	if (timer.get() > RobotMap.CLAW_CYLINDER_FIRE_TIME)
-    		return true;
-        
-        else{
-        	return false;
-        }
-    }
+		timer.start();
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	Robot.containerclaw.closeBoth();
-    }
+	protected void execute() {
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+		Robot.containerClaw.openLeft();
+	}
+
+	protected boolean isFinished() {
+
+		return (timer.get() > RobotMap.CLAW_CYLINDER_FIRE_TIME);
+	}
+
+	protected void end() {
+
+		Robot.containerClaw.closeBoth();
+	}
+
+	protected void interrupted() {
+	}
 }
