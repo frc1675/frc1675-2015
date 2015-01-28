@@ -6,25 +6,36 @@ package org.usfirst.frc.team1675.robot;
  * floating around.
  */
 public class RobotMap {
-    // For example to map the left and right motors, you could define the
-    // following variables to use with your drivetrain subsystem.
-    // public static int leftMotor = 1;
-    // public static int rightMotor = 2;
-    
-    // If you are using multiple modules, make sure to define both the port
-    // number and the module. For example you with a rangefinder:
-    // public static int rangefinderPort = 1;
-    // public static int rangefinderModule = 1;
 
-	public static final int FRONT_LEFT_MOTOR_CHANNEL = 2;
+	public static class PWMChannels {
+		public static final int FRONT_LEFT_DRIVE = 8;
+		public static final int FRONT_RIGHT_DRIVE = 9;
+		public static final int BACK_LEFT_DRIVE = 0;
+		public static final int BACK_RIGHT_DRIVE = 1;
+	}
 	
-	public static final int FRONT_RIGHT_MOTOR_CHANNEL = 0;
+	public static class PDChannels {
+		public static final int BACK_RIGHT_DRIVE = 1;
+		public static final int BACK_LEFT_DRIVE = 0;
+		public static final int FRONT_RIGHT_DRIVE = 14;
+		public static final int FRONT_LEFT_DRIVE = 15;
+	}
 	
-	public static final int BACK_LEFT_MOTOR_CHANNEL = 3;
+	public static class DIOChannels {
+		public static final int BACK_RIGHT_ENCODER_A = 8;
+		public static final int BACK_RIGHT_ENCODER_B = 9;
+		public static final int BACK_LEFT_ENCODER_A = 6;
+		public static final int BACK_LEFT_ENCODER_B = 7;
+		public static final int FRONT_RIGHT_ENCODER_A = 4;
+		public static final int FRONT_RIGHT_ENCODER_B = 5;
+		public static final int FRONT_LEFT_ENCODER_A = 2;
+		public static final int FRONT_LEFT_ENCODER_B = 3;
+
+	}
 	
-	public static final int BACK_RIGHT_MOTOR_CHANNEL = 1;
-	
-	public static final double DEAD_ZONE_TOLERANCE = .1675;
+	public static class DriverConstants {
+		public static final double DEAD_ZONE_TOLERANCE = .1675;
+	}
 	
 	public static final int RIGHT_UPPER_CYLINDER = 9;
 	
