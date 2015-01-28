@@ -28,8 +28,8 @@ public class cheezyDrive extends Command {
     	double left;
     	double right;
     	
-    	left = forward - turn;
-    	right = forward + turn;
+    	left = forward + turn;
+    	right = forward - turn;
     	
     	Robot.drivetrain.setFrontLeftSpeed(left);
     	Robot.drivetrain.setBackLeftSpeed(left);
