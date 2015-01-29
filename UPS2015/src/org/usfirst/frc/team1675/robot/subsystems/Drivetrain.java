@@ -16,36 +16,36 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Drivetrain extends Subsystem {
     
-	SpeedController frontLeftMotor;
-	SpeedController frontRightMotor;
-	SpeedController backLeftMotor;
-	SpeedController backRightMotor;
+	public PIDSpeedControllerForVelocity frontLeftMotor;
+	public PIDSpeedControllerForVelocity frontRightMotor;
+	public PIDSpeedControllerForVelocity backLeftMotor;
+	public PIDSpeedControllerForVelocity backRightMotor;
 	
 	public Drivetrain() {
 		frontLeftMotor = new PIDSpeedControllerForVelocity(new Victor(RobotMap.PWMChannels.FRONT_LEFT_DRIVE), 
 				new Encoder(RobotMap.DIOChannels.FRONT_LEFT_ENCODER_A, RobotMap.DIOChannels.FRONT_LEFT_ENCODER_B), 250,
-				SmartDashboard.getNumber("FrontLeftP", RobotMap.DriveEncoders.FrontLeftPIDDefaults.P),
-				SmartDashboard.getNumber("FrontLeftI", RobotMap.DriveEncoders.FrontLeftPIDDefaults.I),
-				SmartDashboard.getNumber("FrontLeftD", RobotMap.DriveEncoders.FrontLeftPIDDefaults.D),
-				SmartDashboard.getNumber("FrontLeftF", RobotMap.DriveEncoders.FrontLeftPIDDefaults.F));		
+				RobotMap.DriveEncoders.FrontLeftPIDDefaults.P,
+				RobotMap.DriveEncoders.FrontLeftPIDDefaults.I,
+				RobotMap.DriveEncoders.FrontLeftPIDDefaults.D,
+				RobotMap.DriveEncoders.FrontLeftPIDDefaults.F);		
 		frontRightMotor = new PIDSpeedControllerForVelocity(new Victor(RobotMap.PWMChannels.FRONT_RIGHT_DRIVE), 
 				new Encoder(RobotMap.DIOChannels.FRONT_RIGHT_ENCODER_A, RobotMap.DIOChannels.FRONT_RIGHT_ENCODER_B), 360,
-				SmartDashboard.getNumber("FrontRightP", RobotMap.DriveEncoders.FrontRightPIDDefaults.P),
-				SmartDashboard.getNumber("FrontRightI", RobotMap.DriveEncoders.FrontRightPIDDefaults.I),
-				SmartDashboard.getNumber("FrontRightD", RobotMap.DriveEncoders.FrontRightPIDDefaults.D),
-				SmartDashboard.getNumber("FrontRightF", RobotMap.DriveEncoders.FrontRightPIDDefaults.F));		
+				RobotMap.DriveEncoders.FrontRightPIDDefaults.P,
+				RobotMap.DriveEncoders.FrontRightPIDDefaults.I,
+				RobotMap.DriveEncoders.FrontRightPIDDefaults.D,
+				RobotMap.DriveEncoders.FrontRightPIDDefaults.F);		
 		backLeftMotor = new PIDSpeedControllerForVelocity(new Victor(RobotMap.PWMChannels.BACK_LEFT_DRIVE), 
 				new Encoder(RobotMap.DIOChannels.BACK_LEFT_ENCODER_A, RobotMap.DIOChannels.BACK_LEFT_ENCODER_B), 250,
-				SmartDashboard.getNumber("BackLeftP", RobotMap.DriveEncoders.BackLeftPIDDefaults.P),
-				SmartDashboard.getNumber("BackLeftI", RobotMap.DriveEncoders.BackLeftPIDDefaults.I),
-				SmartDashboard.getNumber("BackLeftD", RobotMap.DriveEncoders.BackLeftPIDDefaults.D),
-				SmartDashboard.getNumber("BackLeftF", RobotMap.DriveEncoders.BackLeftPIDDefaults.F));				
+				RobotMap.DriveEncoders.BackLeftPIDDefaults.P,
+				RobotMap.DriveEncoders.BackLeftPIDDefaults.I,
+				RobotMap.DriveEncoders.BackLeftPIDDefaults.D,
+				RobotMap.DriveEncoders.BackLeftPIDDefaults.F);				
 		backRightMotor = new PIDSpeedControllerForVelocity(new Victor(RobotMap.PWMChannels.BACK_RIGHT_DRIVE), 
 				new Encoder(RobotMap.DIOChannels.BACK_RIGHT_ENCODER_A, RobotMap.DIOChannels.BACK_RIGHT_ENCODER_B), 250,
-				SmartDashboard.getNumber("BackRightP", RobotMap.DriveEncoders.BackRightPIDDefaukts.P),
-				SmartDashboard.getNumber("BackRightI", RobotMap.DriveEncoders.BackRightPIDDefaukts.I),
-				SmartDashboard.getNumber("BackRightD", RobotMap.DriveEncoders.BackRightPIDDefaukts.D),
-				SmartDashboard.getNumber("BackRightF", RobotMap.DriveEncoders.BackRightPIDDefaukts.F));		
+				RobotMap.DriveEncoders.BackRightPIDDefaults.P,
+				RobotMap.DriveEncoders.BackRightPIDDefaults.I,
+				RobotMap.DriveEncoders.BackRightPIDDefaults.D,
+				RobotMap.DriveEncoders.BackRightPIDDefaults.F);		
 
 	}
 	

@@ -1,16 +1,19 @@
 package org.usfirst.frc.team1675.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsIndividually;
+import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsTogether;
 
-import org.usfirst.frc.team1675.robot.commands.ExampleCommand;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	Joystick driverController;
+	JoystickButton driverYButton;
+	JoystickButton driverAButton;
 	// // CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	// joystick.
@@ -38,9 +41,14 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-
-	Joystick driverController = new Joystick(0);
-
+	public OI(){
+		driverController = new Joystick(0);
+		driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
+		driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
+		
+		driverAButton.whenPressed(new ResetDriveEncoderPIDsIndividually());
+		driverYButton.whenPressed(new ResetDriveEncoderPIDsTogether());
+	}	
 	
 	public double getLeftXAxis() {
 		double leftXControllerValue = driverController

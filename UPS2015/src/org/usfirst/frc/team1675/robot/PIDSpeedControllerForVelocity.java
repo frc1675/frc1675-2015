@@ -21,6 +21,9 @@ public class PIDSpeedControllerForVelocity implements SpeedController{
 		pid.enable();
 		pid.setSetpoint(0);
 	}
+	public double getEncoderRate(){
+		return encoderSource.getRate();
+	}
 	public void disablePID(){
 		pid.disable();
 		motor.set(0);

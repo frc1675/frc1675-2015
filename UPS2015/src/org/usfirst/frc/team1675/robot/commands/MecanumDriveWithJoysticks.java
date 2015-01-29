@@ -3,6 +3,7 @@ package org.usfirst.frc.team1675.robot.commands;
 import org.usfirst.frc.team1675.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -29,6 +30,11 @@ public class MecanumDriveWithJoysticks extends Command {
     	Robot.drivetrain.setBackLeftSpeed(leftYAxis - rightXAxis + leftXAxis);
     	Robot.drivetrain.setFrontRightSpeed(leftYAxis + rightXAxis + leftXAxis);
     	Robot.drivetrain.setBackRightSpeed(leftYAxis + rightXAxis - leftXAxis);
+    	
+    	SmartDashboard.putNumber("Back Left Encoder Rate", Robot.drivetrain.backLeftMotor.getEncoderRate());
+    	SmartDashboard.putNumber("Back Right Encoder Rate", Robot.drivetrain.backRightMotor.getEncoderRate());
+    	SmartDashboard.putNumber("Front Left Encoder Rate", Robot.drivetrain.frontLeftMotor.getEncoderRate());
+    	SmartDashboard.putNumber("Front Right Encoder Rate", Robot.drivetrain.frontRightMotor.getEncoderRate());
     }
 
     // Make this return true when this Command no longer needs to run execute()

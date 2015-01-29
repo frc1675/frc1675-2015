@@ -22,20 +22,20 @@ public class RobotMap {
 	}
 	
 	public static class DIOChannels {
-		public static final int BACK_RIGHT_ENCODER_A = 8;
-		public static final int BACK_RIGHT_ENCODER_B = 9;
-		public static final int BACK_LEFT_ENCODER_A = 6;
-		public static final int BACK_LEFT_ENCODER_B = 7;
-		public static final int FRONT_RIGHT_ENCODER_A = 4;
-		public static final int FRONT_RIGHT_ENCODER_B = 5;
-		public static final int FRONT_LEFT_ENCODER_A = 2;
-		public static final int FRONT_LEFT_ENCODER_B = 3;
+    	public static final int BACK_RIGHT_ENCODER_A = 9;
+    	public static final int BACK_RIGHT_ENCODER_B = 8;
+    	public static final int BACK_LEFT_ENCODER_A = 5;
+    	public static final int BACK_LEFT_ENCODER_B = 4;
+    	public static final int FRONT_RIGHT_ENCODER_A = 6;
+    	public static final int FRONT_RIGHT_ENCODER_B = 7;
+    	public static final int FRONT_LEFT_ENCODER_A = 3;
+    	public static final int FRONT_LEFT_ENCODER_B = 2;
 
 	}
 	public static class DriveEncoders {
-		public static final double DRIVE_MAX_SPEED = 10;  // feet per second of slowest wheel	
+		public static final double DRIVE_MAX_SPEED = 5;  // feet per second of slowest wheel	
 		public static final double DRIVE_WHEEL_DIAMETER = 6;
-		public static class BackRightPIDDefaukts{
+		public static class BackRightPIDDefaults{
 			public static final double P = .1;
 			public static final double I = 0;
 			public static final double D = 0;
@@ -54,6 +54,12 @@ public class RobotMap {
 			public static final double F = 0;
 		}
 		public static class FrontLeftPIDDefaults  {
+			public static final double P = .1;
+			public static final double I = 0;
+			public static final double D = 0;
+			public static final double F = 0;
+		}
+		public static class AllThePIDs	{
 			public static final double P = .1;
 			public static final double I = 0;
 			public static final double D = 0;
