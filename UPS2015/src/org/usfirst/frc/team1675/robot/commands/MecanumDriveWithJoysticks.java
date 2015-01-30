@@ -33,7 +33,7 @@ public class MecanumDriveWithJoysticks extends Command {
     	
     	SmartDashboard.putNumber("Back Left Encoder Rate", Robot.drivetrain.backLeftMotor.getEncoderRate());
     	SmartDashboard.putNumber("Back Right Encoder Rate", Robot.drivetrain.backRightMotor.getEncoderRate());
-    	SmartDashboard.putNumber("Front Left Encoder Rate", Robot.drivetrain.frontLeftMotor.getEncoderRate());
+    	SmartDashboard.putNumber("Front left Encoder Rate", Robot.drivetrain.frontLeftMotor.getEncoderRate());
     	SmartDashboard.putNumber("Front Right Encoder Rate", Robot.drivetrain.frontRightMotor.getEncoderRate());
     }
 

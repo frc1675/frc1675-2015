@@ -20,6 +20,7 @@ public class PIDSpeedControllerForVelocity implements SpeedController{
 		pid = new PIDController(p, i , d, f, encoderSource , motor);
 		pid.enable();
 		pid.setSetpoint(0);
+		pid.setOutputRange(-1, 1);
 	}
 	public double getEncoderRate(){
 		return encoderSource.getRate();
@@ -41,7 +42,9 @@ public class PIDSpeedControllerForVelocity implements SpeedController{
 	}
 
 	public void set(double proportionOfMax) {
-		pid.setSetpoint(RobotMap.DriveEncoders.DRIVE_MAX_SPEED * proportionOfMax);
+		double feetPerSecondSetpoint = RobotMap.DriveEncoders.DRIVE_MAX_SPEED * proportionOfMax;
+		System.out.println(feetPerSecondSetpoint);
+		pid.setSetpoint(feetPerSecondSetpoint);
 	}
 	public void disable() {
 		motor.disable();
