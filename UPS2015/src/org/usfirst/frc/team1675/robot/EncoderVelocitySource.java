@@ -10,6 +10,7 @@ public class EncoderVelocitySource implements PIDSource{
 	Encoder encoder;
 	EncoderVelocitySource(Encoder encoder, int ticksPerRevolution){
 		this.encoder = encoder;	
+		this.encoder.setSamplesToAverage(4);
 		this.encoder.setDistancePerPulse(((RobotMap.DriveEncoders.DRIVE_WHEEL_DIAMETER * Math.PI)/12)/ (ticksPerRevolution));
 	}
 	public double pidGet() {
