@@ -4,6 +4,7 @@ import org.usfirst.frc.team1675.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -30,6 +31,7 @@ public class GyroPIDTurnToAngleCommand extends PIDCommand {
     }
 
     // Called repeatedly when this Command is scheduled to run
+    //ney
     protected void execute() {
     }
 
@@ -42,6 +44,8 @@ public class GyroPIDTurnToAngleCommand extends PIDCommand {
     protected void end() {
     	System.out.println("Ending the Gyro Command");
     	System.out.println("Final Gyro Value:"+Robot.drivetrain.getGyroAngle());
+    	
+    	SmartDashboard.putNumber("Final Gyro Angle", Robot.drivetrain.getGyroAngle());
     }
 
     // Called when another command which requires one or more of the same
@@ -54,6 +58,7 @@ public class GyroPIDTurnToAngleCommand extends PIDCommand {
 		
 		double angle = Robot.drivetrain.getGyroAngle();
 		System.out.println("Gyro Angle: "+angle);
+		SmartDashboard.putNumber("Gyro Angle:", Robot.drivetrain.getGyroAngle());
 		return angle;
 		
 	}
@@ -62,9 +67,11 @@ public class GyroPIDTurnToAngleCommand extends PIDCommand {
 	protected void usePIDOutput(double output) {
 		System.out.println("Output: "+output);
 		Robot.drivetrain.setBackLeftSpeed(-output);
-		Robot.drivetrain.setBackRightSpeed(output);
 		Robot.drivetrain.setFrontLeftSpeed(-output);
+		
+		Robot.drivetrain.setBackRightSpeed(output);
 		Robot.drivetrain.setFrontRightSpeed(output);
+		SmartDashboard.putNumber("Motor values", output);
 				
 	}
 }

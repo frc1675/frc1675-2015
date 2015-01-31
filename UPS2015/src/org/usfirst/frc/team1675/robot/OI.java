@@ -2,8 +2,12 @@ package org.usfirst.frc.team1675.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team1675.robot.commands.ExampleCommand;
+import org.usfirst.frc.team1675.robot.commands.GyroPIDTurnToAngleCommand;
+import org.usfirst.frc.team1675.robot.commands.GyroPrintout;
+import org.usfirst.frc.team1675.robot.commands.ResetGyro;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -38,11 +42,26 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	
 	Joystick driverController = new Joystick(0);
+	JoystickButton xButton = new JoystickButton(driverController, 1); //change these back before we commit
+	JoystickButton yButton = new JoystickButton(driverController, 2);
+	JoystickButton aButton = new JoystickButton(driverController, 3);
+	JoystickButton bButton = new JoystickButton(driverController, 4);
+	
 	
 	//left x 0
 	//left y 1
 	//right x 4
 	//right y 5
+	
+	public OI(){
+		
+		xButton.whenPressed(new GyroPIDTurnToAngleCommand(RobotMap.P, RobotMap.I, RobotMap.D, 90));
+		yButton.whenPressed(new GyroPIDTurnToAngleCommand(RobotMap.P, RobotMap.I, RobotMap.D, 180));
+//		aButton.whenPressed(new GyroPIDTurnToAngleCommand(RobotMap.P, RobotMap.I, RobotMap.D, 270));
+//		bButton.whenPressed(new GyroPIDTurnToAngleCommand(RobotMap.P, RobotMap.I, RobotMap.D, 360));
+		aButton.whenPressed(new ResetGyro());
+		bButton.whenPressed(new GyroPrintout());
+	}
 	
 	public double getLeftXAxis() {
 		return driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);

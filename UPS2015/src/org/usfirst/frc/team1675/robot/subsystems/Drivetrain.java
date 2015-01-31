@@ -48,7 +48,7 @@ public class Drivetrain extends Subsystem {
 	}
 	
 	public void setBackLeftSpeed(double speed) {
-		backLeftMotor.set(-speed);
+		backLeftMotor.set(speed);
 	}
 	
 	public void setBackRightSpeed(double speed) {

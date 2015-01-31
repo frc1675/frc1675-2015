@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team1675.robot.commands.DriveForTimeNotWithPID;
 import org.usfirst.frc.team1675.robot.commands.DriveStraightForTime;
 import org.usfirst.frc.team1675.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1675.robot.commands.GyroPIDTurnToAngleCommand;
@@ -35,8 +36,9 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         // instantiate the command used for the autonomous period
-        //autonomousCommand = new GyroPIDTurnToAngleCommand(RobotMap.P, RobotMap.I, RobotMap.D, RobotMap.SETPOINT);
-        autonomousCommand = new DriveStraightForTime(RobotMap.P, RobotMap.I, RobotMap.D, RobotMap.SETPOINT, .2, 15);
+        autonomousCommand = new GyroPIDTurnToAngleCommand(RobotMap.P, RobotMap.I, RobotMap.D, RobotMap.SETPOINT);
+        //autonomousCommand = new DriveStraightForTime(RobotMap.P, RobotMap.I, RobotMap.D, RobotMap.SETPOINT, .2, 8);
+		//autonomousCommand = new DriveForTimeNotWithPID();
     }
 	
 	public void disabledPeriodic() {
