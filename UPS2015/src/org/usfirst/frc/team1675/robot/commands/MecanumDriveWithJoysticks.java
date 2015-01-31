@@ -21,9 +21,9 @@ public class MecanumDriveWithJoysticks extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double leftYAxis = Robot.oi.getLeftYAxis();
-    	double leftXAxis = Robot.oi.getLeftXAxis();
-    	double rightXAxis = Robot.oi.getRightXAxis();
+    	double leftYAxis = Robot.oi.getDriverLeftYAxis();
+    	double leftXAxis = Robot.oi.getDriverLeftXAxis();
+    	double rightXAxis = Robot.oi.getDriverRightXAxis();
     	
     	Robot.drivetrain.setFrontLeftSpeed(leftYAxis - rightXAxis - leftXAxis);
     	Robot.drivetrain.setBackLeftSpeed(leftYAxis - rightXAxis + leftXAxis);

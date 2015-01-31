@@ -46,5 +46,16 @@ public class Drivetrain extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    public double adjustForMotorDeadzone (double controllerInput){
+    	double power;
+    	if ((controllerInput) ==0.0){
+    		power = 0.0;
+    	}else{
+    		power = (controllerInput/Math.abs(controllerInput))*
+    				((1- RobotMap.DriverConstants.MOTOR_DEADZONE_TOLERANCE)*
+    						Math.abs(controllerInput)+RobotMap.DriverConstants.MOTOR_DEADZONE_TOLERANCE);
+    	}
+    	return power;
+    }
 }
 

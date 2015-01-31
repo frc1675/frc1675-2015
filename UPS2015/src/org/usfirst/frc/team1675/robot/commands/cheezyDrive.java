@@ -22,8 +22,8 @@ public class cheezyDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	double turn = Robot.oi.getRightXAxis(); //fill in with get right x axis method later
-    	double forward = Robot.oi.getLeftYAxis(); //fill in with get left y axis method later
+    	double turn = Robot.oi.getDriverRightXAxis(); //fill in with get right x axis method later
+    	double forward = Robot.oi.getDriverLeftYAxis(); //fill in with get left y axis method later
     	
     	double left;
     	double right;

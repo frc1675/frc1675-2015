@@ -35,6 +35,7 @@ public class RobotMap {
 	
 	public static class DriverConstants {
 		public static final double DEAD_ZONE_TOLERANCE = .1675;
+		public static final double MOTOR_DEADZONE_TOLERANCE = .2;
 	}
 	
 	

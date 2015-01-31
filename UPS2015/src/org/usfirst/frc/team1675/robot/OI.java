@@ -3,7 +3,6 @@ package org.usfirst.frc.team1675.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc.team1675.robot.commands.ExampleCommand;
 
 /**
@@ -46,28 +45,28 @@ public class OI {
 	// right x 4
 	// right y 5
 
-	public double getLeftXAxis() {
+	public double getDriverLeftXAxis() {
 		double leftXControllerValue = driverController
 				.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
 
 		return checkForDeadzone(leftXControllerValue);
 	}
 
-	public double getLeftYAxis() {
+	public double getDriverLeftYAxis() {
 		double leftYControllerValue = driverController
 				.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
 
 		return checkForDeadzone(leftYControllerValue);
 	}
 
-	public double getRightXAxis() {
+	public double getDriverRightXAxis() {
 		double rightXControllerValue = driverController
 				.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
 
 		return checkForDeadzone(rightXControllerValue);
 	}
 
-	public double getRightYAxis() {
+	public double getDriverRightYAxis() {
 		double rightYControllerValue = driverController
 				.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
 
@@ -78,8 +77,18 @@ public class OI {
 		if (Math.abs(input) <= RobotMap.DriverConstants.DEAD_ZONE_TOLERANCE) {
 			return 0;
 		} else {
-			return input;
+			return advancedCheckForDeadzone(input, input);
 		}
+	}
+	
+	public double advancedCheckForDeadzone(double magnitude, double inputSign){
+		double scaledVector;
+		int sign = (int) (inputSign/Math.abs(inputSign));
+		SmartDashboard.putNumber("sign: ", sign);
+		scaledVector = sign*((Math.abs(magnitude)-RobotMap.DriverConstants.DEAD_ZONE_TOLERANCE)
+				/(1-RobotMap.DriverConstants.DEAD_ZONE_TOLERANCE));
+		SmartDashboard.putNumber("scaledVector: ", scaledVector);
+		return scaledVector;
 	}
 
 }
