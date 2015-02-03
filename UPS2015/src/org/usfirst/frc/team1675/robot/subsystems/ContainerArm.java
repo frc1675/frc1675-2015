@@ -14,10 +14,8 @@ public class ContainerArm extends PIDSubsystem {
 
     // Initialize your subsystem here
 	
-	Solenoid wristUp;
-	Solenoid wristDown;
-	SpeedController MotorOne;
-	SpeedController MotorTwo;
+	SpeedController motorOne;
+	SpeedController motorTwo;
 	
     public ContainerArm(double p, double i, double d) {
     	// Use these to get going:
@@ -25,23 +23,9 @@ public class ContainerArm extends PIDSubsystem {
         //                  to
         // enable() - Enables the PID controller.
     	super(p,i,d);
-    	wristUp = new Solenoid(RobotMap.SolenoidStuff.WRIST_UP);
-    	wristDown = new Solenoid(RobotMap.SolenoidStuff.WRIST_DOWN);
     }
     
-    public void moveWristUp(){
-    	wristDown.set(false);
-    	wristUp.set(true);
-    }
     
-    public void moveWristDown(){
-    	wristUp.set(false);
-    	wristDown.set(true);
-    }
-    public void solenoidsOff(){
-    	wristUp.set(false);
-    	wristDown.set(false);
-    }
     
     public void setArmPosition(double angle){
     	

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1675.robot.commands;
 
 import org.usfirst.frc.team1675.robot.Robot;
+import org.usfirst.frc.team1675.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -13,12 +14,14 @@ public class WristDown extends Command {
     public WristDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.containerWrist);
     	timer = new Timer();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.containerArm.moveWristDown();
+    	Robot.containerWrist.moveWristDown();
+    	timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -27,12 +30,12 @@ public class WristDown extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	return timer.get() >= RobotMap.SOLENOID_ACTIVE_TIME;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.containerArm.solenoidsOff();
+    	Robot.containerWrist.solenoidsOff();
     }
 
     // Called when another command which requires one or more of the same

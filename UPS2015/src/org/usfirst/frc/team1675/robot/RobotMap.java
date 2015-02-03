@@ -30,7 +30,6 @@ public class RobotMap {
 		public static final int FRONT_RIGHT_ENCODER_B = 5;
 		public static final int FRONT_LEFT_ENCODER_A = 2;
 		public static final int FRONT_LEFT_ENCODER_B = 3;
-
 	}
 	
 	public static class DriverConstants {
@@ -42,8 +41,7 @@ public class RobotMap {
 	public static final double CONTAINER_ARM_I = 0;
 	public static final double CONTAINER_ARM_D = 0;
 	
-	public static class SolenoidStuff{
-		public static final double SOLENOID_ACTIVE_TIME = .5;
+	public static class SolenoidChannels{
 		public static final int WRIST_DOWN = 0;		
 		public static final int WRIST_UP = 1;		
 		public static final int LEFT_CLAW_EXTEND = 2;		
@@ -51,6 +49,8 @@ public class RobotMap {
 		public static final int RIGHT_CLAW_EXTEND = 4;		
 		public static final int RIGHT_CLAW_RETRACT = 5;
 	}
+
+	public static final double SOLENOID_ACTIVE_TIME = .5;
 	
 	
 }
