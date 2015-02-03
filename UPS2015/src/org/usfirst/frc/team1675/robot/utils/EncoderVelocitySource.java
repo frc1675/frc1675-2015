@@ -1,4 +1,7 @@
-package org.usfirst.frc.team1675.robot;
+package org.usfirst.frc.team1675.robot.utils;
+
+import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.RobotMap.DriveEncoders;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSource;
