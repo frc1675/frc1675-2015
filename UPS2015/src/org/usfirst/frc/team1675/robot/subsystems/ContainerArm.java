@@ -1,11 +1,8 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
-import org.usfirst.frc.team1675.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 
 /**
  *
@@ -14,8 +11,8 @@ public class ContainerArm extends PIDSubsystem {
 
     // Initialize your subsystem here
 	
-	SpeedController motorOne;
-	SpeedController motorTwo;
+	SpeedController motor;
+	Potentiometer pot;
 	
     public ContainerArm(double p, double i, double d) {
     	// Use these to get going:
@@ -28,15 +25,17 @@ public class ContainerArm extends PIDSubsystem {
     
     
     public void setArmPosition(double angle){
-    	
+    	this.setSetpoint(angle);
+    	this.enable();
     }
     
-    public void setArmVoltage(double value){
-    	
+    public void rawSetArm(double value){
+    	motor.set(value);
     }
      
-    public void stopAndReset(){
-    	
+    public void stopAndDisable(){
+    	this.disable();
+    	motor.set(0);	
     }
     public double getP(){
     	return this.getPIDController().getP();
