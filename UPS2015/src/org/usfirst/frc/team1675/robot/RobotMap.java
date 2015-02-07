@@ -12,6 +12,7 @@ public class RobotMap {
 		public static final int FRONT_RIGHT_DRIVE = 9;
 		public static final int BACK_LEFT_DRIVE = 0;
 		public static final int BACK_RIGHT_DRIVE = 1;
+		public static final int ARM_MOTOR = 8;
 	}
 	
 	public static class PDChannels {
@@ -30,6 +31,9 @@ public class RobotMap {
 		public static final int FRONT_RIGHT_ENCODER_B = 5;
 		public static final int FRONT_LEFT_ENCODER_A = 2;
 		public static final int FRONT_LEFT_ENCODER_B = 3;
+	}
+	public static class AIOChannels {
+		public static final int POT_CHANNEL = 2;
 	}
 	
 	public static class DriverConstants {
