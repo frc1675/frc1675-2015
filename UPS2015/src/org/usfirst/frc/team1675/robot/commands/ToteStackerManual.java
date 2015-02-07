@@ -21,8 +21,14 @@ public class ToteStackerManual extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.toteStacker.setMotors(Robot.oi.getOperatorRightYAxis());
-    	// ^ is for when we have that method in OI and an appropriate method is available in ToteStacker
+    	double downwardMotion = Robot.oi.getDriverLeftTrigger(0.5);
+    	double upwardMotion = Robot.oi.getDriverRightTrigger(0.5);
+    	
+    	if(Math.abs(downwardMotion) > 0 && Math.abs(upwardMotion) > 0){
+    		downwardMotion = 0;
+    		upwardMotion = 0;
+    	}
+    	Robot.toteStacker.setManualMovement(upwardMotion + downwardMotion);
     }
 
     // Make this return true when this Command no longer needs to run execute()
