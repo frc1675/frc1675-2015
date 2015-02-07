@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ResetToteStacker extends Command {
 
-	//test commit
+	
     public ResetToteStacker() {
     	requires(Robot.toteStacker);
         // Use requires() here to declare subsystem dependencies
