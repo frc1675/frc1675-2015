@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -19,22 +18,17 @@ public class ContainerArm extends PIDSubsystem {
 	
 	SpeedController motor;
 	AnalogPotentiometer pot;
-	private static final double ANGLE_TOLERANCE = 10;
 	private static final double POT_SCALE = 250.0;
 	
-    public ContainerArm(double p, double i, double d, SpeedController input_speed_controller) {
+    public ContainerArm(double p, double i, double d) {
     	// Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to
         // enable() - Enables the PID controller.
     	super(p,i,d);
     	pot = new AnalogPotentiometer(RobotMap.AIOChannels.POT_CHANNEL, POT_SCALE);
-    	motor = new VictorSP(RobotMap.PWMChannels.ARM_MOTOR);
-    	
-    	
-    }
-    
-    
+    	motor = new VictorSP(RobotMap.PWMChannels.ARM_MOTOR);    	
+    }    
     
     public void setArmPosition(double angle){
     	this.setSetpoint(angle);
@@ -77,6 +71,6 @@ public class ContainerArm extends PIDSubsystem {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
     	motor.set(output);
-    	SmartDashboard.putNumber("Amgle", pot.get());
+    	//SmartDashboard.putNumber("Angle", pot.get());
     }
 }

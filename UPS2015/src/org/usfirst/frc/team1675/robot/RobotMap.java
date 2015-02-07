@@ -8,11 +8,11 @@ package org.usfirst.frc.team1675.robot;
 public class RobotMap {
 
 	public static class PWMChannels {
-		public static final int FRONT_LEFT_DRIVE = 2;
-		public static final int FRONT_RIGHT_DRIVE = 3;
+		public static final int FRONT_LEFT_DRIVE = 5;
+		public static final int FRONT_RIGHT_DRIVE = 4;
 		public static final int BACK_LEFT_DRIVE = 2;
 		public static final int BACK_RIGHT_DRIVE = 3;
-		public static final int ARM_MOTOR = 2;
+		public static final int ARM_MOTOR = 6;
 	}
 	
 	public static class PDChannels {
