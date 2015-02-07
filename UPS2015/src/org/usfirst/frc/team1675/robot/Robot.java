@@ -2,6 +2,8 @@
 package org.usfirst.frc.team1675.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -22,8 +24,9 @@ import org.usfirst.frc.team1675.robot.subsystems.ExampleSubsystem;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static final Drivetrain drivetrain = new Drivetrain();
-	public static final ContainerArm containerArm = new ContainerArm(RobotMap.CONTAINER_ARM_P, RobotMap.CONTAINER_ARM_I, RobotMap.CONTAINER_ARM_D);
+	public static final SpeedController sharedMotor = new VictorSP(RobotMap.PWMChannels.ARM_MOTOR);
+	public static final Drivetrain drivetrain = new Drivetrain(sharedMotor);	
+	public static final ContainerArm containerArm = new ContainerArm(RobotMap.CONTAINER_ARM_P, RobotMap.CONTAINER_ARM_I, RobotMap.CONTAINER_ARM_D, sharedMotor);
 	public static final ContainerWrist containerWrist = new ContainerWrist();
 	public static OI oi;
 

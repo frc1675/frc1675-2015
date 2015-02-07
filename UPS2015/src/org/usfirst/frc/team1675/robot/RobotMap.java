@@ -8,29 +8,29 @@ package org.usfirst.frc.team1675.robot;
 public class RobotMap {
 
 	public static class PWMChannels {
-		public static final int FRONT_LEFT_DRIVE = 8;
-		public static final int FRONT_RIGHT_DRIVE = 9;
-		public static final int BACK_LEFT_DRIVE = 0;
-		public static final int BACK_RIGHT_DRIVE = 1;
-		public static final int ARM_MOTOR = 8;
+		public static final int FRONT_LEFT_DRIVE = 2;
+		public static final int FRONT_RIGHT_DRIVE = 3;
+		public static final int BACK_LEFT_DRIVE = 2;
+		public static final int BACK_RIGHT_DRIVE = 3;
+		public static final int ARM_MOTOR = 2;
 	}
 	
 	public static class PDChannels {
-		public static final int BACK_RIGHT_DRIVE = 1;
-		public static final int BACK_LEFT_DRIVE = 0;
-		public static final int FRONT_RIGHT_DRIVE = 14;
-		public static final int FRONT_LEFT_DRIVE = 15;
+		public static final int BACK_RIGHT_DRIVE = 3;
+		public static final int BACK_LEFT_DRIVE = 2;
+		public static final int FRONT_RIGHT_DRIVE = 12;
+		public static final int FRONT_LEFT_DRIVE = 13;
 	}
 	
 	public static class DIOChannels {
-		public static final int BACK_RIGHT_ENCODER_A = 8;
-		public static final int BACK_RIGHT_ENCODER_B = 9;
-		public static final int BACK_LEFT_ENCODER_A = 6;
-		public static final int BACK_LEFT_ENCODER_B = 7;
-		public static final int FRONT_RIGHT_ENCODER_A = 4;
-		public static final int FRONT_RIGHT_ENCODER_B = 5;
-		public static final int FRONT_LEFT_ENCODER_A = 2;
-		public static final int FRONT_LEFT_ENCODER_B = 3;
+		public static final int BACK_RIGHT_ENCODER_A = 2;
+		public static final int BACK_RIGHT_ENCODER_B = 3;
+		public static final int BACK_LEFT_ENCODER_A = 0;
+		public static final int BACK_LEFT_ENCODER_B = 1;
+		public static final int FRONT_RIGHT_ENCODER_A = 8;
+		public static final int FRONT_RIGHT_ENCODER_B = 9;
+		public static final int FRONT_LEFT_ENCODER_A = 6;
+		public static final int FRONT_LEFT_ENCODER_B = 7;
 	}
 	public static class AIOChannels {
 		public static final int POT_CHANNEL = 2;

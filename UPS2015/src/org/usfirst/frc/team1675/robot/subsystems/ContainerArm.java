@@ -22,7 +22,7 @@ public class ContainerArm extends PIDSubsystem {
 	private static final double ANGLE_TOLERANCE = 10;
 	private static final double POT_SCALE = 250.0;
 	
-    public ContainerArm(double p, double i, double d) {
+    public ContainerArm(double p, double i, double d, SpeedController input_speed_controller) {
     	// Use these to get going:
         // setSetpoint() -  Sets where the PID controller should move the system
         //                  to

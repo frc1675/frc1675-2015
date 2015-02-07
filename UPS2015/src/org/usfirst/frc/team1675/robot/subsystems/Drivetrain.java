@@ -4,6 +4,7 @@ import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.MecanumDriveWithJoysticks;
 import org.usfirst.frc.team1675.robot.commands.TankDriveWithJoysticks;
 
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -17,8 +18,9 @@ public class Drivetrain extends Subsystem {
 	Talon backLeftMotor;
 	Talon backRightMotor;
 	
-	public Drivetrain() {
-		frontLeftMotor = new Talon(RobotMap.PWMChannels.FRONT_LEFT_DRIVE);
+	public Drivetrain(SpeedController frontLeftMotorInput) {
+		//frontLeftMotor = new Talon(RobotMap.PWMChannels.FRONT_LEFT_DRIVE);
+		frontLeftMotor = (Talon) frontLeftMotorInput;
 		frontRightMotor = new Talon(RobotMap.PWMChannels.FRONT_RIGHT_DRIVE);
 		backLeftMotor = new Talon(RobotMap.PWMChannels.BACK_LEFT_DRIVE);
 		backRightMotor = new Talon(RobotMap.PWMChannels.BACK_RIGHT_DRIVE);
