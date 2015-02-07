@@ -18,13 +18,16 @@ public class PIDSpeedControllerForVelocity implements SpeedController{
 	SpeedController motor;
 	EncoderVelocitySource encoderSource;
 	PIDController pid;
-	public PIDSpeedControllerForVelocity(SpeedController motor, Encoder encoder, int ticksPerRevolution, double p, double i, double d, double f){
+	String name;
+	public PIDSpeedControllerForVelocity(SpeedController motor, Encoder encoder, int ticksPerRevolution, 
+			double p, double i, double d, double f, String name){
 		this.motor = motor;
-		encoderSource = new EncoderVelocitySource(encoder, ticksPerRevolution);
+		encoderSource = new EncoderVelocitySource(encoder, ticksPerRevolution, name);
 		pid = new PIDController(p, i , d, f, encoderSource , motor);
 		pid.enable();
 		pid.setSetpoint(0);
 		pid.setOutputRange(-1, 1);
+		this.name = name;
 	}
 	public double getEncoderRate(){
 		return encoderSource.getRate();
@@ -46,9 +49,8 @@ public class PIDSpeedControllerForVelocity implements SpeedController{
 	}
 
 	public void set(double proportionOfMax) {
-		double feetPerSecondSetpoint = RobotMap.DriveEncoders.DRIVE_MAX_SPEED * proportionOfMax;
-//		System.out.println(feetPerSecondSetpoint);
-		SmartDashboard.putNumber("Set method of PIDSpeedController", feetPerSecondSetpoint);
+		double feetPerSecondSetpoint = RobotMap.DriveEncoders.DRIVE_MAX_SPEED * proportionOfMax;	
+		SmartDashboard.putNumber("PID Speed Controller: "+name , feetPerSecondSetpoint);
 		pid.setSetpoint(feetPerSecondSetpoint);
 	}
 	public void disable() {

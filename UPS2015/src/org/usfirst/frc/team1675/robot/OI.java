@@ -46,8 +46,8 @@ public class OI {
 		driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
 		driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
 		
-		driverAButton.whenPressed(new ResetDriveEncoderPIDsIndividually());
-		driverYButton.whenPressed(new ResetDriveEncoderPIDsTogether());
+//		driverAButton.whenPressed(new ResetDriveEncoderPIDsIndividually());
+//		driverYButton.whenPressed(new ResetDriveEncoderPIDsTogether());
 	}	
 	
 	public double getLeftXAxis() {

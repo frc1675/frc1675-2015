@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AccelerationSpeedController implements SpeedController{
 	
 	private final SpeedController speedController;
+	private String name;
     private final static double msPerLoop = 20.0;
     
     double threshold;
@@ -18,10 +19,11 @@ public class AccelerationSpeedController implements SpeedController{
 
     boolean inAccelerationSession;	
 	
-	public AccelerationSpeedController(SpeedController speedController, double threshold, double rampTime){
+	public AccelerationSpeedController(SpeedController speedController, double threshold, double rampTime, String name){
 		this.speedController = speedController;
 		this.threshold = threshold;
 		this.rampTime = rampTime;		
+		this.name= name;
 	}
 
 	@Override
@@ -43,9 +45,9 @@ public class AccelerationSpeedController implements SpeedController{
 
 	@Override
 	public void set(double speed) {
-		SmartDashboard.putNumber("AccelerationSpeedController set", speed);		
 		double acceleratedSpeed = accelerate(speed);
-//		SmartDashboard.putNumber("AcceleratedValue", acceleratedSpeed);		
+//		SmartDashboard.putNumber("AcceleratedValue: "+name, acceleratedSpeed);
+		System.out.println("Accelerated Value "+name+":" + acceleratedSpeed);
 		speedController.set(acceleratedSpeed);		
 	}
 
@@ -65,9 +67,7 @@ public class AccelerationSpeedController implements SpeedController{
             accelerationDebt = 0;
             inAccelerationSession = false;
             motorPower = speed;
-//            SmartDashboard.putBoolean("Accelerating?", inAccelerationSession);
         } else {
-//            SmartDashboard.putBoolean("Accelerating?", inAccelerationSession);
             if (!inAccelerationSession) {
                 inAccelerationSession = true;
                 initialPower = previousPower;
@@ -77,13 +77,8 @@ public class AccelerationSpeedController implements SpeedController{
             motorPower = initialPower + increment;
             initialPower = motorPower;
             accelerationDebt = accelerationDebt - increment;
-
-//            SmartDashboard.putNumber("Increment", increment);
         }
-        previousPower = speed;
-//        SmartDashboard.putNumber("AccelerationDebt", accelerationDebt);
-//        SmartDashboard.putNumber("MotorPower", motorPower);
-        
+        previousPower = speed;        
         return motorPower;        
     }   
     
