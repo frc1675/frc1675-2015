@@ -26,6 +26,7 @@ public class WristDown extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.containerWrist.moveWristDown();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -36,6 +37,7 @@ public class WristDown extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.containerWrist.solenoidsOff();
+    	timer.stop();
     	timer.reset();
     	timer.stop();
     }

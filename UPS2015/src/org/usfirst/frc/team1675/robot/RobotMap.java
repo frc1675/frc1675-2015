@@ -54,7 +54,7 @@ public class RobotMap {
 		public static final int RIGHT_CLAW_RETRACT = 5;
 	}
 
-	public static final double SOLENOID_ACTIVE_TIME = .5;
+	public static final double SOLENOID_ACTIVE_TIME = .25;
 	
 	
 }
