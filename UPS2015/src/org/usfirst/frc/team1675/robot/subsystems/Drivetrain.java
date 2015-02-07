@@ -67,28 +67,29 @@ public class Drivetrain extends Subsystem {
 		}
 	}
 	
-	public void setFrontLeftSpeed(double speed) {
-		frontLeftMotor.set(-speed);	
-		SmartDashboard.putNumber("Sent To Front Left", frontLeftMotor.get());
-		SmartDashboard.putNumber("front left value sticks say to go", speed);
-	}
-	
-	public void setFrontRightSpeed(double speed) {
-		frontRightMotor.set(speed);
-		SmartDashboard.putNumber("Sent To Front Right", frontRightMotor.get());
-		SmartDashboard.putNumber("front right value sticks say to go", speed);
-	}
-	public void setBackLeftSpeed(double speed) {
-		backLeftMotor.set(speed);
-		SmartDashboard.putNumber("Sent To Back Left", backLeftMotor.get());
-		SmartDashboard.putNumber("back left value sticks say to go", speed);
-	}
-	
-	public void setBackRightSpeed(double speed) {
-		backRightMotor.set(speed);
-		SmartDashboard.putNumber("back right value sticks say to go", speed);
-		SmartDashboard.putNumber("Sent To Back Right Motor", backRightMotor.get());
-	}
+//	public void setFrontLeftSpeed(double speed) {
+//		System.out.println("Set the front q	`1left speed!");
+//		frontLeftMotor.set(-speed);	
+//		SmartDashboard.putNumber("Sent To Front Left", frontLeftMotor.get());
+//		SmartDashboard.putNumber("front left value sticks say to go", speed);
+//	}
+//	
+//	public void setFrontRightSpeed(double speed) {
+//		frontRightMotor.set(speed);
+//		SmartDashboard.putNumber("Sent To Front Right", frontRightMotor.get());
+//		SmartDashboard.putNumber("front right value sticks say to go", speed);
+//	}
+//	public void setBackLeftSpeed(double speed) {
+//		backLeftMotor.set(speed);
+//		SmartDashboard.putNumber("Sent To Back Left", backLeftMotor.get());
+//		SmartDashboard.putNumber("back left value sticks say to go", speed);
+//	}
+//	
+//	public void setBackRightSpeed(double speed) {
+//		backRightMotor.set(speed);
+//		SmartDashboard.putNumber("back right value sticks say to go", speed);
+//		SmartDashboard.putNumber("Sent To Back Right Motor", backRightMotor.get());
+//	}
 
     public void initDefaultCommand() {
     	

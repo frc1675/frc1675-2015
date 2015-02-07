@@ -20,14 +20,14 @@ public class AccelerationSpeedController implements SpeedController{
 	
 	public AccelerationSpeedController(SpeedController speedController, double threshold, double rampTime){
 		this.speedController = speedController;
-		
-        threshold = 0.10; //got this from xbox controller
-        rampTime = 120; //rampTime affects the amount of time it takes to ramp, but does not directly correlate.		
+		this.threshold = threshold;
+		this.rampTime = rampTime;		
 	}
 
 	@Override
 	public void pidWrite(double output) {
 		// TODO Auto-generated method stub
+//		System.out.println("PIDWrite of AccelerationSpeedController: "+output);
 		this.set(output);		
 	}
 
@@ -43,8 +43,10 @@ public class AccelerationSpeedController implements SpeedController{
 
 	@Override
 	public void set(double speed) {
-		double accleratedSpeed = accelerate(speed);
-		speedController.set(accleratedSpeed);		
+		SmartDashboard.putNumber("AccelerationSpeedController set", speed);		
+		double acceleratedSpeed = accelerate(speed);
+//		SmartDashboard.putNumber("AcceleratedValue", acceleratedSpeed);		
+		speedController.set(acceleratedSpeed);		
 	}
 
 	@Override
@@ -53,7 +55,7 @@ public class AccelerationSpeedController implements SpeedController{
 		speedController.disable();
 	}
 
-    public double accelerate(double speed) {
+    public double accelerate(double speed) {    	
         double difference = speed - previousPower;
         accelerationDebt = accelerationDebt + difference; //AccelerationDebts has a maximum size?
 
@@ -63,9 +65,9 @@ public class AccelerationSpeedController implements SpeedController{
             accelerationDebt = 0;
             inAccelerationSession = false;
             motorPower = speed;
-            SmartDashboard.putBoolean("Accelerating?", inAccelerationSession);
+//            SmartDashboard.putBoolean("Accelerating?", inAccelerationSession);
         } else {
-            SmartDashboard.putBoolean("Accelerating?", inAccelerationSession);
+//            SmartDashboard.putBoolean("Accelerating?", inAccelerationSession);
             if (!inAccelerationSession) {
                 inAccelerationSession = true;
                 initialPower = previousPower;
@@ -76,13 +78,14 @@ public class AccelerationSpeedController implements SpeedController{
             initialPower = motorPower;
             accelerationDebt = accelerationDebt - increment;
 
-            SmartDashboard.putNumber("Increment", increment);
+//            SmartDashboard.putNumber("Increment", increment);
         }
         previousPower = speed;
-        SmartDashboard.putNumber("AccelerationDebt", accelerationDebt);
-        SmartDashboard.putNumber("MotorPower", motorPower);
+//        SmartDashboard.putNumber("AccelerationDebt", accelerationDebt);
+//        SmartDashboard.putNumber("MotorPower", motorPower);
         
         return motorPower;        
-    }
+    }   
+    
 	
 }

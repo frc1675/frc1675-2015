@@ -18,26 +18,26 @@ public class ResetDriveEncoderPIDsTogether extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.backLeftMotor.setPIDF(
-    			SmartDashboard.getNumber("All The Drive P", RobotMap.DriveEncoders.AllThePIDs.P),
-				SmartDashboard.getNumber("All The Drive I", RobotMap.DriveEncoders.AllThePIDs.I),
-				SmartDashboard.getNumber("All The Drive D", RobotMap.DriveEncoders.AllThePIDs.D),
-				SmartDashboard.getNumber("All The Drive F", RobotMap.DriveEncoders.AllThePIDs.F));
-    	Robot.drivetrain.backRightMotor.setPIDF(
-    			SmartDashboard.getNumber("All The Drive P", RobotMap.DriveEncoders.AllThePIDs.P),
-				SmartDashboard.getNumber("All The Drive I", RobotMap.DriveEncoders.AllThePIDs.I),
-				SmartDashboard.getNumber("All The Drive D", RobotMap.DriveEncoders.AllThePIDs.D),
-				SmartDashboard.getNumber("All The Drive F", RobotMap.DriveEncoders.AllThePIDs.F));
-		Robot.drivetrain.frontLeftMotor.setPIDF(
-				SmartDashboard.getNumber("All The Drive P", RobotMap.DriveEncoders.AllThePIDs.P),
-				SmartDashboard.getNumber("All The Drive I", RobotMap.DriveEncoders.AllThePIDs.I),
-				SmartDashboard.getNumber("All The Drive D", RobotMap.DriveEncoders.AllThePIDs.D),
-				SmartDashboard.getNumber("All The Drive F", RobotMap.DriveEncoders.AllThePIDs.F));
-		Robot.drivetrain.frontRightMotor.setPIDF(
-				SmartDashboard.getNumber("All The Drive P", RobotMap.DriveEncoders.AllThePIDs.P),
-				SmartDashboard.getNumber("All The Drive I", RobotMap.DriveEncoders.AllThePIDs.I),
-				SmartDashboard.getNumber("All The Drive D", RobotMap.DriveEncoders.AllThePIDs.D),
-				SmartDashboard.getNumber("All The Drive F", RobotMap.DriveEncoders.AllThePIDs.F));		
+//    	Robot.drivetrain.backLeftMotor.setPIDF(
+//    			SmartDashboard.getNumber("All The Drive P", RobotMap.DriveEncoders.AllThePIDs.P),
+//				SmartDashboard.getNumber("All The Drive I", RobotMap.DriveEncoders.AllThePIDs.I),
+//				SmartDashboard.getNumber("All The Drive D", RobotMap.DriveEncoders.AllThePIDs.D),
+//				SmartDashboard.getNumber("All The Drive F", RobotMap.DriveEncoders.AllThePIDs.F));
+//    	Robot.drivetrain.backRightMotor.setPIDF(
+//    			SmartDashboard.getNumber("All The Drive P", RobotMap.DriveEncoders.AllThePIDs.P),
+//				SmartDashboard.getNumber("All The Drive I", RobotMap.DriveEncoders.AllThePIDs.I),
+//				SmartDashboard.getNumber("All The Drive D", RobotMap.DriveEncoders.AllThePIDs.D),
+//				SmartDashboard.getNumber("All The Drive F", RobotMap.DriveEncoders.AllThePIDs.F));
+//		Robot.drivetrain.frontLeftMotor.setPIDF(
+//				SmartDashboard.getNumber("All The Drive P", RobotMap.DriveEncoders.AllThePIDs.P),
+//				SmartDashboard.getNumber("All The Drive I", RobotMap.DriveEncoders.AllThePIDs.I),
+//				SmartDashboard.getNumber("All The Drive D", RobotMap.DriveEncoders.AllThePIDs.D),
+//				SmartDashboard.getNumber("All The Drive F", RobotMap.DriveEncoders.AllThePIDs.F));
+//		Robot.drivetrain.frontRightMotor.setPIDF(
+//				SmartDashboard.getNumber("All The Drive P", RobotMap.DriveEncoders.AllThePIDs.P),
+//				SmartDashboard.getNumber("All The Drive I", RobotMap.DriveEncoders.AllThePIDs.I),
+//				SmartDashboard.getNumber("All The Drive D", RobotMap.DriveEncoders.AllThePIDs.D),
+//				SmartDashboard.getNumber("All The Drive F", RobotMap.DriveEncoders.AllThePIDs.F));		
     }
     
 

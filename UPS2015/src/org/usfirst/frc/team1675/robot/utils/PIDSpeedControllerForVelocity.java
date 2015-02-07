@@ -6,6 +6,7 @@ import org.usfirst.frc.team1675.robot.RobotMap.DriveEncoders;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /* 
  * This class acts like a speedcontroller, but it actually controls speed, instead of voltage.
@@ -46,7 +47,8 @@ public class PIDSpeedControllerForVelocity implements SpeedController{
 
 	public void set(double proportionOfMax) {
 		double feetPerSecondSetpoint = RobotMap.DriveEncoders.DRIVE_MAX_SPEED * proportionOfMax;
-		System.out.println(feetPerSecondSetpoint);
+//		System.out.println(feetPerSecondSetpoint);
+		SmartDashboard.putNumber("Set method of PIDSpeedController", feetPerSecondSetpoint);
 		pid.setSetpoint(feetPerSecondSetpoint);
 	}
 	public void disable() {

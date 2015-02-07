@@ -22,14 +22,14 @@ public class RobotMap {
 	}
 	
 	public static class DIOChannels {
-    	public static final int BACK_RIGHT_ENCODER_A = 9;
-    	public static final int BACK_RIGHT_ENCODER_B = 8;
-    	public static final int BACK_LEFT_ENCODER_A = 5;
-    	public static final int BACK_LEFT_ENCODER_B = 4;
-    	public static final int FRONT_RIGHT_ENCODER_A = 6;
-    	public static final int FRONT_RIGHT_ENCODER_B = 7;
-    	public static final int FRONT_LEFT_ENCODER_A = 3;
-    	public static final int FRONT_LEFT_ENCODER_B = 2;
+    	public static final int BACK_RIGHT_ENCODER_A = 8;	//double checked
+    	public static final int BACK_RIGHT_ENCODER_B = 9;
+    	public static final int BACK_LEFT_ENCODER_A = 4;	//double checked
+    	public static final int BACK_LEFT_ENCODER_B = 5;
+    	public static final int FRONT_RIGHT_ENCODER_A = 7;	//double checked
+    	public static final int FRONT_RIGHT_ENCODER_B = 6;
+    	public static final int FRONT_LEFT_ENCODER_A = 2;	//double checked
+    	public static final int FRONT_LEFT_ENCODER_B = 3;
 
 	}
 	public static class DriveEncoders {
