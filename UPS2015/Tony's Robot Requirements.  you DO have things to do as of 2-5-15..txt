@@ -1,24 +1,24 @@
 Container arm should
-	Have a command that moves to an angle (in OI, we will define what angle each position is).  This should be an angle not a voltage 
-		There will be a button for each position in final operator console
+	Have a command that moves to an angle (in OI, we will define what angle each position is).  This should be an angle not a voltage  	<<<< DONE, located in ContainerArm branch
+		There will be a button for each position in final operator console																<<< To be done when integrating all controls and mapping to buttons.
 	Have fine control on a digital joystick(2 buttons).  It should stay in the state it was fine controlled to.
 	Have manual override which doesn't rely on a sensor, and sets raw motor values. 
 Totevator should
 	Have a command that sets it to a position (this should be passed in in useful units(feet, inches): not encoder ticks)
-	Have a command that moves it up or down an amount that will be passed in (this should be passed in in useful units(feet, inches))
+	Have a command that moves it up or down an amount that will be passed in (this should be passed in useful units(feet, inches))
 	Have fine control on a digital joystick(2 buttons): It should stay in the state it was fine controlled to.
-	Have manual override which doesn't rely on a sensor, and sets raw motor values using the same joystick above.
+	Have manual override which doesn't rely on a sensor, and sets raw motor values using the same joystick above.    					<<<< Ready to test
 Wrist should(and I think can)
-	be able to move up
-	be able to move down
+	be able to move up						<<< Ready to test
+	be able to move down					<<< Ready to test
 Claw should(and I think can)
-	be able to open one side
-	be able to open other side
-	be able to open both sides at once.  
+	be able to open one side				<<< Ready to test 
+	be able to open other side				<<< Ready to test
+	be able to open both sides at once.     <<< Ready to test
 Drive should
-	Have acceleration and PID encoders integrated
+	Have acceleration and PID encoders integrated		<<< DONE
 	Have manual override which disables encoders, encoder PIDs, and drives motors on raw input from joysticks.
-	Have a drive straight for distance command(which works for strafing as well)
+	Have a drive straight for distance command(which works for strafing as well)					<<<< Drive straight for distance is in Gyro branch. Strafing straight may require encoders or accelerometer
 Auto should
-	Have a picker on smart dashboard
+	Have a picker on smart dashboard		<<< SendableChooser has been learned
 	Be written 
