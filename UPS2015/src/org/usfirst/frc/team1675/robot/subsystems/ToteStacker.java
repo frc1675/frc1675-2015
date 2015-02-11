@@ -20,7 +20,7 @@ public class ToteStacker extends PIDSubsystem {
     // here. Call these from Commands.
 	public ToteStacker(double p, double i, double d){
 		super(p, i, d);
-		toteMotor = new VictorSP(RobotMap.PWNChannels.TOTE_MOTOR);
+		toteMotor = new VictorSP(RobotMap.PWMChannels.TOTE_MOTOR);
 		
 	}
 

@@ -22,7 +22,7 @@ public class RobotMap {
 	public static final int FRONT_LEFT_MOTOR_CHANNEL = 8;
 	public static final int BACK_LEFT_MOTOR_CHANNEL = 0;
 	 
-	public static class PWNChannels{
+	public static class PWMChannels{
 		public static final int TOTE_MOTOR = 438;
 	}
 
