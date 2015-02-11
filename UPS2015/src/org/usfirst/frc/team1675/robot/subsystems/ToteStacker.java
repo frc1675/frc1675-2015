@@ -4,17 +4,23 @@ import org.usfirst.frc.team1675.robot.commands.ToteStackerManual;
 
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
-public class ToteStacker extends Subsystem {
+public class ToteStacker extends PIDSubsystem {
+	VictorSP toteMotor;
 	
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	public ToteStacker(){
+	public ToteStacker(double p, double i, double d){
+		super(p, i, d);
+		toteMotor = new VictorSP(25);
+		
 		
 	}
 
@@ -39,5 +45,17 @@ public class ToteStacker extends Subsystem {
     }
     public void setManualMovement(double MotorValue){
     }
+
+	@Override
+	protected double returnPIDInput() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	protected void usePIDOutput(double output) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
