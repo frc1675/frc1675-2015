@@ -73,7 +73,17 @@ public class OI {
 
 		return checkForDeadzone(rightYControllerValue);
 	}
+	public double getDriverLeftTrigger(double scaleValue){
+		double leftTriggerValue = driverController.getRawAxis(XBoxControllerMap.LEFT_TRIGGER_AXIS);
+		leftTriggerValue = checkForDeadzone(leftTriggerValue);
+		return (-leftTriggerValue * scaleValue);
+	}
 
+	public double getDriverRightTrigger(double scaleValue){
+		double rightTriggerValue = driverController.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS);
+		rightTriggerValue = checkForDeadzone(rightTriggerValue);
+		return (rightTriggerValue * scaleValue);
+	}
 	public double checkForDeadzone(double input) {
 		if (Math.abs(input) <= RobotMap.DriverConstants.DEAD_ZONE_TOLERANCE) {
 			return 0;

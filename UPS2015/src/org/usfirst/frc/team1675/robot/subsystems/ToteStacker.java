@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
+import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.ToteStackerManual;
 
 import edu.wpi.first.wpilibj.SpeedController;
@@ -14,14 +15,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class ToteStacker extends PIDSubsystem {
 	VictorSP toteMotor;
 	
-    
+   
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public ToteStacker(double p, double i, double d){
 		super(p, i, d);
-		toteMotor = new VictorSP(25);
-		
-		
+		toteMotor = new VictorSP(RobotMap.PWMChannels.TOTE_ELEVATOR);
 	}
 
     public void initDefaultCommand() {
@@ -44,6 +43,7 @@ public class ToteStacker extends PIDSubsystem {
     	
     }
     public void setManualMovement(double MotorValue){
+    	toteMotor.set(MotorValue);
     }
 
 	@Override

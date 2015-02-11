@@ -12,6 +12,7 @@ public class RobotMap {
 		public static final int FRONT_RIGHT_DRIVE = 9;
 		public static final int BACK_LEFT_DRIVE = 0;
 		public static final int BACK_RIGHT_DRIVE = 1;
+		public static final int TOTE_ELEVATOR = 2;
 	}
 	
 	public static class PDChannels {
