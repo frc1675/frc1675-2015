@@ -3,35 +3,100 @@ package org.usfirst.frc.team1675.robot.subsystems;
 import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.MecanumDriveWithJoysticks;
 import org.usfirst.frc.team1675.robot.commands.TankDriveWithJoysticks;
+import org.usfirst.frc.team1675.robot.utils.AccelerationSpeedController;
+import org.usfirst.frc.team1675.robot.utils.PIDSpeedControllerForVelocity;
 
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * Represents the drivetrain of the robot. 4 direct-driven wheels.
+ *
  */
 public class Drivetrain extends Subsystem {
     
-	Talon frontLeftMotor;
-	Talon frontRightMotor;
-	Talon backLeftMotor;
-	Talon backRightMotor;
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
+	private AccelerationSpeedController frontLeftMotor;
+	public PIDSpeedControllerForVelocity frontLeftPID;
 	
-	public Drivetrain() {
-		frontLeftMotor = new Talon(RobotMap.PWMChannels.FRONT_LEFT_DRIVE);
-		frontRightMotor = new Talon(RobotMap.PWMChannels.FRONT_RIGHT_DRIVE);
-		backLeftMotor = new Talon(RobotMap.PWMChannels.BACK_LEFT_DRIVE);
-		backRightMotor = new Talon(RobotMap.PWMChannels.BACK_RIGHT_DRIVE);
+	private AccelerationSpeedController frontRightMotor;
+	public PIDSpeedControllerForVelocity frontRightPID;
+	
+	private AccelerationSpeedController backLeftMotor;
+	public PIDSpeedControllerForVelocity backLeftPID;
+	
+	private AccelerationSpeedController backRightMotor;
+	public PIDSpeedControllerForVelocity backRightPID;
+		
+	public Drivetrain(){				
+		{
+			String nameFL = "Front Left";		
+			VictorSP frontLeftVSP = new VictorSP(RobotMap.PWMChannels.FRONT_LEFT_DRIVE);
+			Encoder frontLeftEnc = new Encoder(RobotMap.DIOChannels.FRONT_LEFT_ENCODER_A, RobotMap.DIOChannels.FRONT_LEFT_ENCODER_B);
+			frontLeftPID = new PIDSpeedControllerForVelocity(frontLeftVSP, frontLeftEnc, 250,
+			RobotMap.DriveEncoders.FrontLeftPIDDefaults.P,
+			RobotMap.DriveEncoders.FrontLeftPIDDefaults.I,
+			RobotMap.DriveEncoders.FrontLeftPIDDefaults.D,
+			RobotMap.DriveEncoders.FrontLeftPIDDefaults.F);
+			frontLeftMotor = new AccelerationSpeedController(frontLeftPID, 
+					RobotMap.DriverConstants.ACCELERATION_THRESHOLD,
+					RobotMap.DriverConstants.ACCELERATION_RAMP, nameFL);
+		}
+		
+		{
+			String nameFR= "Front Right";		
+			VictorSP frontRightVSP = new VictorSP(RobotMap.PWMChannels.FRONT_RIGHT_DRIVE);
+			Encoder frontRightEnc = new Encoder(RobotMap.DIOChannels.FRONT_RIGHT_ENCODER_A, RobotMap.DIOChannels.FRONT_RIGHT_ENCODER_B, true);
+			frontRightPID = new PIDSpeedControllerForVelocity(frontRightVSP, frontRightEnc, 250,
+			RobotMap.DriveEncoders.FrontRightPIDDefaults.P,
+			RobotMap.DriveEncoders.FrontRightPIDDefaults.I,
+			RobotMap.DriveEncoders.FrontRightPIDDefaults.D,
+			RobotMap.DriveEncoders.FrontRightPIDDefaults.F);
+			frontRightMotor = new AccelerationSpeedController(frontRightPID, 
+					RobotMap.DriverConstants.ACCELERATION_THRESHOLD,
+					RobotMap.DriverConstants.ACCELERATION_RAMP, nameFR);
+		}
+		
+		{
+			String nameBL = "Back Left";
+			VictorSP backLeftVSP = new VictorSP(RobotMap.PWMChannels.BACK_LEFT_DRIVE);
+			Encoder backLeftEnc = new Encoder(RobotMap.DIOChannels.BACK_LEFT_ENCODER_A, RobotMap.DIOChannels.BACK_LEFT_ENCODER_B, true);
+			backLeftPID = new PIDSpeedControllerForVelocity(backLeftVSP, backLeftEnc, 250,
+			RobotMap.DriveEncoders.BackLeftPIDDefaults.P,
+			RobotMap.DriveEncoders.BackLeftPIDDefaults.I,
+			RobotMap.DriveEncoders.BackLeftPIDDefaults.D,
+			RobotMap.DriveEncoders.BackLeftPIDDefaults.F);
+			backLeftMotor = new AccelerationSpeedController(backLeftPID, 
+					RobotMap.DriverConstants.ACCELERATION_THRESHOLD, 
+					RobotMap.DriverConstants.ACCELERATION_RAMP, nameBL);
+		}
+		
+		{
+			String nameBR = "Back Right";
+			VictorSP backRightVSP = new VictorSP(RobotMap.PWMChannels.BACK_RIGHT_DRIVE);
+			Encoder backRightEnc = new Encoder(RobotMap.DIOChannels.BACK_RIGHT_ENCODER_A, RobotMap.DIOChannels.BACK_RIGHT_ENCODER_B, true);
+			backRightPID = new PIDSpeedControllerForVelocity(backRightVSP, backRightEnc, 250,
+			RobotMap.DriveEncoders.BackRightPIDDefaults.P,
+			RobotMap.DriveEncoders.BackRightPIDDefaults.I,
+			RobotMap.DriveEncoders.BackRightPIDDefaults.D,
+			RobotMap.DriveEncoders.BackRightPIDDefaults.F);
+			backRightMotor = new AccelerationSpeedController(backRightPID,
+					RobotMap.DriverConstants.ACCELERATION_THRESHOLD, 
+					RobotMap.DriverConstants.ACCELERATION_RAMP, nameBR);
+		}
+		
 	}
 	
-	public void setFrontLeftSpeed(double speed) {
-		frontLeftMotor.set(-speed);	
+	public void setFrontLeftSpeed(double speed) {	
+		frontLeftMotor.set(-speed);
+		
 	}
 	
 	public void setFrontRightSpeed(double speed) {
 		frontRightMotor.set(speed);
 	}
-	
 	public void setBackLeftSpeed(double speed) {
 		backLeftMotor.set(speed);
 	}
@@ -40,11 +105,8 @@ public class Drivetrain extends Subsystem {
 		backRightMotor.set(speed);
 	}
 
-    public void initDefaultCommand() {
-    	
+    public void initDefaultCommand() {    	
     	setDefaultCommand(new MecanumDriveWithJoysticks());
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
     }
 }
 

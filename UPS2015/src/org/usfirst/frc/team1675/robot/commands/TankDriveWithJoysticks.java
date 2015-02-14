@@ -4,6 +4,7 @@ package org.usfirst.frc.team1675.robot.commands;
 import org.usfirst.frc.team1675.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Controls the drivetrain in a Tank-Drive style, with each joystick controlling 1 side.
@@ -28,6 +29,11 @@ public class TankDriveWithJoysticks extends Command {
     	Robot.drivetrain.setBackRightSpeed(rightStick);
     	Robot.drivetrain.setFrontLeftSpeed(leftStick);
     	Robot.drivetrain.setFrontRightSpeed(rightStick);
+    	SmartDashboard.putNumber("Back left Encoder Rate", Robot.drivetrain.backLeftPID.getEncoderRate());
+    	SmartDashboard.putNumber("Back right Encoder Rate", Robot.drivetrain.backRightPID.getEncoderRate());
+    	SmartDashboard.putNumber("Front left Encoder Rate", Robot.drivetrain.frontLeftPID.getEncoderRate());
+    	SmartDashboard.putNumber("Front right Encoder Rate", Robot.drivetrain.frontRightPID.getEncoderRate());
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
