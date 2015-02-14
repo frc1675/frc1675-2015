@@ -8,32 +8,32 @@ package org.usfirst.frc.team1675.robot;
 public class RobotMap {
 
 	public static class PWMChannels {
-		public static final int FRONT_LEFT_DRIVE = 8;
-		public static final int FRONT_RIGHT_DRIVE = 9;
-		public static final int BACK_LEFT_DRIVE = 0;
-		public static final int BACK_RIGHT_DRIVE = 1;
+		public static final int FRONT_LEFT_DRIVE = 5;
+		public static final int FRONT_RIGHT_DRIVE = 4;
+		public static final int BACK_LEFT_DRIVE = 3;
+		public static final int BACK_RIGHT_DRIVE = 2;
 	}
 	
 	public static class PDChannels {
-		public static final int BACK_RIGHT_DRIVE = 1;
-		public static final int BACK_LEFT_DRIVE = 0;
-		public static final int FRONT_RIGHT_DRIVE = 14;
-		public static final int FRONT_LEFT_DRIVE = 15;
+		public static final int BACK_RIGHT_DRIVE = 3;
+		public static final int BACK_LEFT_DRIVE = 2;
+		public static final int FRONT_RIGHT_DRIVE = 12;
+		public static final int FRONT_LEFT_DRIVE = 13;
 	}
 	
 	public static class DIOChannels {
-    	public static final int BACK_RIGHT_ENCODER_A = 9;
-    	public static final int BACK_RIGHT_ENCODER_B = 8;
-    	public static final int BACK_LEFT_ENCODER_A = 5;
-    	public static final int BACK_LEFT_ENCODER_B = 4;
-    	public static final int FRONT_RIGHT_ENCODER_A = 6;
-    	public static final int FRONT_RIGHT_ENCODER_B = 7;
-    	public static final int FRONT_LEFT_ENCODER_A = 3;
-    	public static final int FRONT_LEFT_ENCODER_B = 2;
-
+    	public static final int BACK_RIGHT_ENCODER_A = 2;	
+    	public static final int BACK_RIGHT_ENCODER_B = 3;
+    	public static final int BACK_LEFT_ENCODER_A = 0;	
+    	public static final int BACK_LEFT_ENCODER_B = 1;
+    	public static final int FRONT_RIGHT_ENCODER_A = 8;	
+    	public static final int FRONT_RIGHT_ENCODER_B = 9;
+    	public static final int FRONT_LEFT_ENCODER_A = 6;	
+    	public static final int FRONT_LEFT_ENCODER_B = 7;
 	}
+	
 	public static class DriveEncoders {
-		public static final double DRIVE_MAX_SPEED = 10;  // feet per second of slowest wheel	
+		public static final double DRIVE_MAX_SPEED = 15;  // feet per second of slowest wheel	
 		public static final double DRIVE_WHEEL_DIAMETER = 6;
 		public static class BackRightPIDDefaults{
 			public static final double P = .07;
