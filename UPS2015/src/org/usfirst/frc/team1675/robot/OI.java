@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class OI {
 	Joystick driverController;
+	Joystick operatorController;
 	Solenoid solenoidStatus;
 	JoystickButton driverYButton;
 	JoystickButton driverAButton;
@@ -48,6 +49,7 @@ public class OI {
 
 	public OI(){
 		driverController = new Joystick(0);
+		operatorController = new Joystick(1);
 		solenoidStatus = new Solenoid(0);
 		driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
 		driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
@@ -92,7 +94,12 @@ public class OI {
 		rightTriggerValue = checkForDeadzone(rightTriggerValue);
 		return (rightTriggerValue * scaleValue);
 	}
-
+	public double getOpRightYAxis(){
+		double leftYControllerValue = operatorController
+				.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
+		
+		return checkForDeadzone(leftYControllerValue);
+	}
 	public double checkForDeadzone(double input) {
 		if (Math.abs(input) <= RobotMap.DriverConstants.DEAD_ZONE_TOLERANCE) {
 			return 0;
