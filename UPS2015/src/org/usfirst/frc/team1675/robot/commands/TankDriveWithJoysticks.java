@@ -29,10 +29,10 @@ public class TankDriveWithJoysticks extends Command {
     	Robot.drivetrain.setBackRightSpeed(rightStick);
     	Robot.drivetrain.setFrontLeftSpeed(leftStick);
     	Robot.drivetrain.setFrontRightSpeed(rightStick);
-    	SmartDashboard.putNumber("Back left Encoder Rate", Robot.drivetrain.backLeftMotor.getEncoderRate());
-    	SmartDashboard.putNumber("Back right Encoder Rate", Robot.drivetrain.backRightMotor.getEncoderRate());
-    	SmartDashboard.putNumber("Front left Encoder Rate", Robot.drivetrain.frontLeftMotor.getEncoderRate());
-    	SmartDashboard.putNumber("Front right Encoder Rate", Robot.drivetrain.frontRightMotor.getEncoderRate());
+    	SmartDashboard.putNumber("Back left Encoder Rate", Robot.drivetrain.backLeftPID.getEncoderRate());
+    	SmartDashboard.putNumber("Back right Encoder Rate", Robot.drivetrain.backRightPID.getEncoderRate());
+    	SmartDashboard.putNumber("Front left Encoder Rate", Robot.drivetrain.frontLeftPID.getEncoderRate());
+    	SmartDashboard.putNumber("Front right Encoder Rate", Robot.drivetrain.frontRightPID.getEncoderRate());
 
     }
 

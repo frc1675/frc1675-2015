@@ -18,22 +18,22 @@ public class ResetDriveEncoderPIDsTogether extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.backLeftMotor.setPIDF(
+    	Robot.drivetrain.backLeftPID.setPIDF(
     			SmartDashboard.getNumber("All The Drive P", RobotMap.DriveEncoders.AllThePIDs.P),
 				SmartDashboard.getNumber("All The Drive I", RobotMap.DriveEncoders.AllThePIDs.I),
 				SmartDashboard.getNumber("All The Drive D", RobotMap.DriveEncoders.AllThePIDs.D),
 				SmartDashboard.getNumber("All The Drive F", RobotMap.DriveEncoders.AllThePIDs.F));
-    	Robot.drivetrain.backRightMotor.setPIDF(
+    	Robot.drivetrain.backRightPID.setPIDF(
     			SmartDashboard.getNumber("All The Drive P", RobotMap.DriveEncoders.AllThePIDs.P),
 				SmartDashboard.getNumber("All The Drive I", RobotMap.DriveEncoders.AllThePIDs.I),
 				SmartDashboard.getNumber("All The Drive D", RobotMap.DriveEncoders.AllThePIDs.D),
 				SmartDashboard.getNumber("All The Drive F", RobotMap.DriveEncoders.AllThePIDs.F));
-		Robot.drivetrain.frontLeftMotor.setPIDF(
+		Robot.drivetrain.frontLeftPID.setPIDF(
 				SmartDashboard.getNumber("All The Drive P", RobotMap.DriveEncoders.AllThePIDs.P),
 				SmartDashboard.getNumber("All The Drive I", RobotMap.DriveEncoders.AllThePIDs.I),
 				SmartDashboard.getNumber("All The Drive D", RobotMap.DriveEncoders.AllThePIDs.D),
 				SmartDashboard.getNumber("All The Drive F", RobotMap.DriveEncoders.AllThePIDs.F));
-		Robot.drivetrain.frontRightMotor.setPIDF(
+		Robot.drivetrain.frontRightPID.setPIDF(
 				SmartDashboard.getNumber("All The Drive P", RobotMap.DriveEncoders.AllThePIDs.P),
 				SmartDashboard.getNumber("All The Drive I", RobotMap.DriveEncoders.AllThePIDs.I),
 				SmartDashboard.getNumber("All The Drive D", RobotMap.DriveEncoders.AllThePIDs.D),
