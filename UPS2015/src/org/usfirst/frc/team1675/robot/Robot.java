@@ -7,9 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team1675.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1675.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team1675.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,8 +17,6 @@ import org.usfirst.frc.team1675.robot.subsystems.ExampleSubsystem;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final Drivetrain drivetrain = new Drivetrain();
 	public static OI oi;
 
@@ -54,8 +50,7 @@ public class Robot extends IterativeRobot {
 				SmartDashboard.putNumber("All The Drive F", RobotMap.DriveEncoders.AllThePIDs.F);	
 
 		oi = new OI();
-        // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
+        // instantiate the command used for the autonomous period        
     }
 	
 	public void disabledPeriodic() {

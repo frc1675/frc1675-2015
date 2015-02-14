@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class cheezyDrive extends Command {
+public class CheezyDrive extends Command {
 
-    public cheezyDrive() {
+    public CheezyDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
