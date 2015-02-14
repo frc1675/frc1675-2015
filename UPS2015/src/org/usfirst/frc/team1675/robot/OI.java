@@ -4,6 +4,7 @@ import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsIndividually
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsTogether;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -15,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class OI {
 	Joystick driverController;
 	Joystick operatorController;
+	Solenoid solenoidStatus;
 	JoystickButton driverYButton;
 	JoystickButton driverAButton;
 	// // CREATING BUTTONS
@@ -44,9 +46,11 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+
 	public OI(){
 		driverController = new Joystick(0);
 		operatorController = new Joystick(1);
+		solenoidStatus = new Solenoid(0);
 		driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
 		driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
 		
@@ -90,13 +94,17 @@ public class OI {
 		rightTriggerValue = checkForDeadzone(rightTriggerValue);
 		return (rightTriggerValue * scaleValue);
 	}
-	
 	public double getOperatorLeftYAxis(double scaleValue){
 		double leftYControllerValue = operatorController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
 		leftYControllerValue = checkForDeadzone(leftYControllerValue);
 		return (leftYControllerValue * scaleValue);
 	}
-	
+	public double getOpRightYAxis(){
+		double leftYControllerValue = operatorController
+				.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
+		
+		return checkForDeadzone(leftYControllerValue);
+	}
 	public double checkForDeadzone(double input) {
 		if (Math.abs(input) <= RobotMap.DriverConstants.DEAD_ZONE_TOLERANCE) {
 			return 0;

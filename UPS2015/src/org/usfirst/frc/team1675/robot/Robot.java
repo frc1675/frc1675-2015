@@ -7,6 +7,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team1675.robot.subsystems.ContainerArm;
+import org.usfirst.frc.team1675.robot.subsystems.ContainerWrist;
+import org.usfirst.frc.team1675.robot.subsystems.ContainerClaw;
 import org.usfirst.frc.team1675.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team1675.robot.subsystems.ToteStacker;
 
@@ -18,8 +21,12 @@ import org.usfirst.frc.team1675.robot.subsystems.ToteStacker;
  * directory.
  */
 public class Robot extends IterativeRobot {
+	
 	public static final Drivetrain drivetrain = new Drivetrain();
 	public static final ToteStacker toteStacker = new ToteStacker(1, 2, 3);
+	public static final ContainerArm containerArm = new ContainerArm(RobotMap.CONTAINER_ARM_P, RobotMap.CONTAINER_ARM_I, RobotMap.CONTAINER_ARM_D);
+	public static final ContainerWrist containerWrist = new ContainerWrist();
+	public static final ContainerClaw containerClaw = new ContainerClaw();
 	public static OI oi;
 
     Command autonomousCommand;
