@@ -1,9 +1,9 @@
 
 package org.usfirst.frc.team1675.robot.subsystems;
 
-import org.usfirst.frc.team1675.robot.PIDSpeedControllerForVelocity;
 import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.TankDriveWithJoysticks;
+import org.usfirst.frc.team1675.robot.utils.PIDSpeedControllerForVelocity;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
