@@ -22,21 +22,56 @@ public class RobotMap {
 	}
 	
 	public static class DIOChannels {
-		public static final int BACK_RIGHT_ENCODER_A = 8;
-		public static final int BACK_RIGHT_ENCODER_B = 9;
-		public static final int BACK_LEFT_ENCODER_A = 6;
-		public static final int BACK_LEFT_ENCODER_B = 7;
-		public static final int FRONT_RIGHT_ENCODER_A = 4;
-		public static final int FRONT_RIGHT_ENCODER_B = 5;
-		public static final int FRONT_LEFT_ENCODER_A = 2;
-		public static final int FRONT_LEFT_ENCODER_B = 3;
+    	public static final int BACK_RIGHT_ENCODER_A = 9;
+    	public static final int BACK_RIGHT_ENCODER_B = 8;
+    	public static final int BACK_LEFT_ENCODER_A = 5;
+    	public static final int BACK_LEFT_ENCODER_B = 4;
+    	public static final int FRONT_RIGHT_ENCODER_A = 6;
+    	public static final int FRONT_RIGHT_ENCODER_B = 7;
+    	public static final int FRONT_LEFT_ENCODER_A = 3;
+    	public static final int FRONT_LEFT_ENCODER_B = 2;
 
 	}
-	
+	public static class DriveEncoders {
+		public static final double DRIVE_MAX_SPEED = 10;  // feet per second of slowest wheel	
+		public static final double DRIVE_WHEEL_DIAMETER = 6;
+		public static class BackRightPIDDefaults{
+			public static final double P = .07;
+			public static final double I = .03;
+			public static final double D = .001;
+			public static final double F = 0;
+		}
+		public static class BackLeftPIDDefaults{
+			public static final double P = .07;
+			public static final double I = .03;
+			public static final double D = .001;
+			public static final double F = 0;
+		}
+		public static class FrontRightPIDDefaults {
+			public static final double P = .07;
+			public static final double I = .03;
+			public static final double D = .001;
+			public static final double F = 0;
+		}
+		public static class FrontLeftPIDDefaults  {
+			public static final double P = .07;
+			public static final double I = .03;
+			public static final double D = .001;
+			public static final double F = 0;
+		}
+		public static class AllThePIDs	{
+			public static final double P = .07;
+			public static final double I = .03;
+			public static final double D = .001;
+			public static final double F = 0;
+		}
+	}
+
 	public static class DriverConstants {
 		public static final double DEAD_ZONE_TOLERANCE = .1675;
 		public static final double MOTOR_DEADZONE_TOLERANCE = .2;
 	}
+
 	
 	
 }
