@@ -35,11 +35,12 @@ public class ContainerClawClose extends Command {
 
 	@Override
 	protected void end() {
-		Robot.containerClaw.closeBoth();
+		Robot.containerClaw.turnOff();
 	}
 
 	@Override
 	protected void interrupted() {
+		Robot.containerClaw.turnOff();
 	}
 
 }

@@ -2,6 +2,7 @@ package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPosition;
+import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArm;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -57,7 +58,7 @@ public class ContainerArm extends PIDSubsystem {
     }
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new MoveContainerArmToPosition(125.0));
+        setDefaultCommand(new RawMoveContainerArm());
     }
     
     protected double returnPIDInput() {

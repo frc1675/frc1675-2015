@@ -1,7 +1,5 @@
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.RobotMap.PCMChannels;
-
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -16,7 +14,7 @@ public class RobotMap {
 		public static final int BACK_LEFT_DRIVE = 3;
 		public static final int BACK_RIGHT_DRIVE = 2;
 		public static final int TOTE_ELEVATOR = 0;
-		public static final int ARM_MOTOR = 6;
+		public static final int ARM_MOTOR = 1;
 	}
 	
 	public static class PDChannels {
@@ -84,7 +82,7 @@ public class RobotMap {
 	}
 	
 	public static class ToteStackerConstants {
-		public static final double MANUAL_SCALE_FACTOR = 0.5;
+		public static final double MANUAL_SCALE_FACTOR = 1;
 	}
 	
 	public static class ContainerArmConstants{
@@ -104,19 +102,10 @@ public class RobotMap {
 	public static class SolenoidChannels{
 		public static final int WRIST_DOWN = 0;		
 		public static final int WRIST_UP = 1;		
-		public static final int LEFT_CLAW_EXTEND = 2;		
-		public static final int LEFT_CLAW_RETRACT = 3;
-		public static final int RIGHT_CLAW_EXTEND = 4;		
-		public static final int RIGHT_CLAW_RETRACT = 5;
-	}
-	
-	public static class PCMChannels {
-
-		public static final int RIGHT_UPPER_CYLINDER = 9;
-		public static final int RIGHT_LOWER_CYLINDER = 10;
-		public static final int LEFT_UPPER_CYLINDER = 5;
-		public static final int LEFT_LOWER_CYLINDER = 6;
-		
+		public static final int LEFT_CLAW_EXTEND = 0;		
+		public static final int LEFT_CLAW_RETRACT = 5;
+		public static final int RIGHT_CLAW_EXTEND = 6;		
+		public static final int RIGHT_CLAW_RETRACT = 7;
 	}
 	
 }

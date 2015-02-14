@@ -1,7 +1,6 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
-import org.usfirst.frc.team1675.robot.RobotMap.PCMChannels;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 
 import edu.wpi.first.wpilibj.Solenoid;
@@ -18,10 +17,10 @@ public class ContainerClaw extends Subsystem {
 	Solenoid rightretract;
 
 	public ContainerClaw() {
-		leftextend = new Solenoid(RobotMap.PCMChannels.LEFT_UPPER_CYLINDER);
-		rightretract = new Solenoid(RobotMap.PCMChannels.LEFT_LOWER_CYLINDER);
-		rightextend = new Solenoid(RobotMap.PCMChannels.RIGHT_UPPER_CYLINDER);
-		leftretract = new Solenoid(RobotMap.PCMChannels.RIGHT_LOWER_CYLINDER);
+		leftextend = new Solenoid(RobotMap.SolenoidChannels.LEFT_CLAW_EXTEND);
+		rightretract = new Solenoid(RobotMap.SolenoidChannels.RIGHT_CLAW_RETRACT);
+		rightextend = new Solenoid(RobotMap.SolenoidChannels.RIGHT_CLAW_EXTEND);
+		leftretract = new Solenoid(RobotMap.SolenoidChannels.LEFT_CLAW_RETRACT);
 	}
 
 	public void openBoth() {
@@ -51,9 +50,16 @@ public class ContainerClaw extends Subsystem {
 		rightextend.set(true);
 		rightretract.set(false);
 	}
+	
+	public void turnOff() {
+		leftextend.set(false);
+		leftretract.set(false);
+		rightextend.set(false);
+		rightretract.set(false);
+	}
 
 	public void initDefaultCommand() {
-		setDefaultCommand(new ContainerClawClose());
+		//setDefaultCommand(new ContainerClawClose());
 	}
 
 }

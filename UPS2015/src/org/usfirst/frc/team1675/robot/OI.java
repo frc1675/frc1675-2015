@@ -2,6 +2,7 @@ package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsIndividually;
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsTogether;
+import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -57,7 +58,8 @@ public class OI {
 		
 		driverAButton.whenPressed(new ResetDriveEncoderPIDsIndividually());
 		driverYButton.whenPressed(new ResetDriveEncoderPIDsTogether());
-		operatorXButton.whileHeld(new ContainerClawOpen());
+		operatorXButton.whenPressed(new ContainerClawOpen());
+		operatorXButton.whenReleased(new ContainerClawClose());
 	}	
 	
 	public double getDriverLeftXAxis() {
