@@ -13,6 +13,7 @@ public class RobotMap {
 		public static final int BACK_LEFT_DRIVE = 3;
 		public static final int BACK_RIGHT_DRIVE = 2;
 		public static final int TOTE_ELEVATOR = 2;
+		public static final int ARM_MOTOR = 6;
 	}
 	
 	public static class PDChannels {
@@ -23,14 +24,18 @@ public class RobotMap {
 	}
 	
 	public static class DIOChannels {
-    	public static final int BACK_RIGHT_ENCODER_A = 2;	
-    	public static final int BACK_RIGHT_ENCODER_B = 3;
-    	public static final int BACK_LEFT_ENCODER_A = 0;	
-    	public static final int BACK_LEFT_ENCODER_B = 1;
-    	public static final int FRONT_RIGHT_ENCODER_A = 8;	
-    	public static final int FRONT_RIGHT_ENCODER_B = 9;
-    	public static final int FRONT_LEFT_ENCODER_A = 6;	
-    	public static final int FRONT_LEFT_ENCODER_B = 7;
+		public static final int BACK_RIGHT_ENCODER_A = 2;
+		public static final int BACK_RIGHT_ENCODER_B = 3;
+		public static final int BACK_LEFT_ENCODER_A = 0;
+		public static final int BACK_LEFT_ENCODER_B = 1;
+		public static final int FRONT_RIGHT_ENCODER_A = 8;
+		public static final int FRONT_RIGHT_ENCODER_B = 9;
+		public static final int FRONT_LEFT_ENCODER_A = 6;
+		public static final int FRONT_LEFT_ENCODER_B = 7;
+	}
+	
+	public static class AIOChannels {
+		public static final int POT_CHANNEL = 2;
 	}
 	
 	public static class DriveEncoders {
@@ -75,6 +80,22 @@ public class RobotMap {
 		public static final double ACCELERATION_THRESHOLD = .07;
 	}
 
+	
+	//Container PID
+	public static final double CONTAINER_ARM_P = .05;
+	public static final double CONTAINER_ARM_I = 0;
+	public static final double CONTAINER_ARM_D = 0;
+	
+	public static class SolenoidChannels{
+		public static final int WRIST_DOWN = 0;		
+		public static final int WRIST_UP = 1;		
+		public static final int LEFT_CLAW_EXTEND = 2;		
+		public static final int LEFT_CLAW_RETRACT = 3;
+		public static final int RIGHT_CLAW_EXTEND = 4;		
+		public static final int RIGHT_CLAW_RETRACT = 5;
+	}
+
+	public static final double SOLENOID_ACTIVE_TIME = .25;
 	
 	
 }
