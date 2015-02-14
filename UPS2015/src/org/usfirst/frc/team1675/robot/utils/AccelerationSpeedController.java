@@ -17,7 +17,7 @@ public class AccelerationSpeedController implements SpeedController{
 
     double initialPower;
 
-    boolean inAccelerationSession;	
+    boolean inAccelerationSession;
 	
 	public AccelerationSpeedController(SpeedController speedController, double threshold, double rampTime){
 		this.speedController = speedController;

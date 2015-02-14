@@ -108,5 +108,51 @@ public class Drivetrain extends Subsystem {
     public void initDefaultCommand() {    	
     	setDefaultCommand(new MecanumDriveWithJoysticks());
     }
+    
+    
+    public void ezDrive(double magnitude, double direction, double rotation) {
+    	double upscaledMagnitude = magnitude * Math.sqrt(2.0);
+    	
+    	double dirInRad = direction + (Math.PI/4);
+    	
+    	double cosD = Math.cos(dirInRad);
+    	double sinD = Math.sin(dirInRad);
+    	
+    	double frontLeftSpeed = sinD * upscaledMagnitude - rotation;
+    	double frontRightSpeed = cosD * upscaledMagnitude + rotation;
+    	double backLeftSpeed = cosD * upscaledMagnitude - rotation;
+    	double backRightSpeed = sinD * upscaledMagnitude + rotation;
+    	
+    	double coefficient = getNormalizingCoefficient(magnitude, frontLeftSpeed, frontRightSpeed, backLeftSpeed, backRightSpeed);
+    	
+    	frontLeftSpeed *= coefficient;
+    	frontRightSpeed *= coefficient;
+    	backLeftSpeed *= coefficient;
+    	backRightSpeed *= coefficient;
+    	
+    	frontLeftMotor.set(frontLeftSpeed);
+    	frontRightMotor.set(frontRightSpeed);
+    	backLeftMotor.set(backLeftSpeed);
+    	backRightMotor.set(backRightSpeed);
+    }
+    
+    private boolean anyOutsideNormalMagnitude(double normalMagnitude, double frontLeftSpeed, double frontRightSpeed, double backLeftSpeed, double backRightSpeed){
+    	
+    	return Math.abs(frontLeftSpeed) > 1.0 ||
+    			Math.abs(frontRightSpeed) > 1.0 ||
+    			Math.abs(backLeftSpeed) > 1.0 ||
+    			Math.abs(backRightSpeed) > 1.0;
+    }
+    private double getNormalizingCoefficient(double stanMagnitude, double frontLeftSpeed, double frontRightSpeed, double backLeftSpeed, double backRightSpeed){
+    	double maxLeft = Math.max(Math.abs(frontLeftSpeed), Math.abs(frontRightSpeed));
+    	double maxRight = Math.max(Math.abs(backLeftSpeed), Math.abs(backRightSpeed));
+    	double max = Math.max(maxLeft, maxRight);
+    	
+    	if (max > 1.0){
+    		return 1.0 / max;
+    	} else {
+    		return 1.0;
+    	}
+    }
 }
 
