@@ -24,7 +24,7 @@ public class Robot extends IterativeRobot {
 	
 	public static final Drivetrain drivetrain = new Drivetrain();
 	public static final ToteStacker toteStacker = new ToteStacker(1, 2, 3);
-	public static final ContainerArm containerArm = new ContainerArm(RobotMap.CONTAINER_ARM_P, RobotMap.CONTAINER_ARM_I, RobotMap.CONTAINER_ARM_D);
+	public static final ContainerArm containerArm = new ContainerArm(RobotMap.ContainerArmConstants.P, RobotMap.ContainerArmConstants.I, RobotMap.ContainerArmConstants.D);
 	public static final ContainerWrist containerWrist = new ContainerWrist();
 	public static final ContainerClaw containerClaw = new ContainerClaw();
 	public static OI oi;

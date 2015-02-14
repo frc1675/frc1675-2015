@@ -27,7 +27,7 @@ public class ContainerClawOpen extends Command {
     }
 
     protected boolean isFinished() {
-        return (timer.get() > RobotMap.CLAW_CYLINDER_FIRE_TIME);
+        return (timer.get() > RobotMap.ContainerClawConstants.CLAW_CYLINDER_FIRE_TIME);
     }
 
     protected void end() {

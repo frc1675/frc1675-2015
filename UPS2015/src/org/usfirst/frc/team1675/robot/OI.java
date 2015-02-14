@@ -17,7 +17,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class OI {
 	Joystick driverController;
 	Joystick operatorController;
-	Solenoid solenoidStatus;
 	JoystickButton driverYButton;
 	JoystickButton driverAButton;
 	JoystickButton operatorXButton;
@@ -52,7 +51,6 @@ public class OI {
 	public OI(){
 		driverController = new Joystick(0);
 		operatorController = new Joystick(1);
-		solenoidStatus = new Solenoid(0);
 		driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
 		driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
 		operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
