@@ -2,6 +2,7 @@ package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsIndividually;
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsTogether;
+import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -19,6 +20,7 @@ public class OI {
 	Solenoid solenoidStatus;
 	JoystickButton driverYButton;
 	JoystickButton driverAButton;
+	JoystickButton operatorXButton;
 	// // CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	// joystick.
@@ -53,33 +55,30 @@ public class OI {
 		solenoidStatus = new Solenoid(0);
 		driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
 		driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
+		operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
 		
 		driverAButton.whenPressed(new ResetDriveEncoderPIDsIndividually());
 		driverYButton.whenPressed(new ResetDriveEncoderPIDsTogether());
+		operatorXButton.whileHeld(new ContainerClawOpen());
 	}	
 	
 	public double getDriverLeftXAxis() {
-		double leftXControllerValue = driverController
-				.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
+		double leftXControllerValue = driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
 		return checkForDeadzone(leftXControllerValue);
-
 	}
 
 	public double getDriverLeftYAxis() {
-		double leftYControllerValue = driverController
-				.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
+		double leftYControllerValue = driverController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
 		return checkForDeadzone(leftYControllerValue);
 	}
 
 	public double getDriverRightXAxis() {
-		double rightXControllerValue = driverController
-				.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
+		double rightXControllerValue = driverController.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
 		return checkForDeadzone(rightXControllerValue);
 	}
 
 	public double getDriverRightYAxis() {
-		double rightYControllerValue = driverController
-				.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
+		double rightYControllerValue = driverController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
 		return checkForDeadzone(rightYControllerValue);
 	}
 	
@@ -94,17 +93,18 @@ public class OI {
 		rightTriggerValue = checkForDeadzone(rightTriggerValue);
 		return (rightTriggerValue * scaleValue);
 	}
+	
 	public double getOperatorLeftYAxis(double scaleValue){
 		double leftYControllerValue = operatorController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
 		leftYControllerValue = checkForDeadzone(leftYControllerValue);
 		return (leftYControllerValue * scaleValue);
 	}
+	
 	public double getOpRightYAxis(){
-		double leftYControllerValue = operatorController
-				.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
-		
-		return checkForDeadzone(leftYControllerValue);
+		double rightYControllerValue = operatorController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
+		return checkForDeadzone(rightYControllerValue);
 	}
+	
 	public double checkForDeadzone(double input) {
 		if (Math.abs(input) <= RobotMap.DriverConstants.DEAD_ZONE_TOLERANCE) {
 			return 0;
