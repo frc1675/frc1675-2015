@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1675.robot.commands.totestacker;
 
 import org.usfirst.frc.team1675.robot.Robot;
+import org.usfirst.frc.team1675.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,14 +22,8 @@ public class ToteStackerManual extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double downwardMotion = Robot.oi.getDriverLeftTrigger(0.5);
-    	double upwardMotion = Robot.oi.getDriverRightTrigger(0.5);
-    	
-    	if(Math.abs(downwardMotion) > 0 && Math.abs(upwardMotion) > 0){
-    		downwardMotion = 0;
-    		upwardMotion = 0;
-    	}
-    	Robot.toteStacker.setManualMovement(upwardMotion + downwardMotion);
+    	double toteStackerMovement = Robot.oi.getDriverLeftTrigger(RobotMap.ToteStackerConstants.MANUAL_SCALE_FACTOR);
+    	Robot.toteStacker.setManualMovement(toteStackerMovement);
     }
 
     // Make this return true when this Command no longer needs to run execute()
