@@ -31,7 +31,7 @@ public class WristDown extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return timer.get() >= RobotMap.SOLENOID_ACTIVE_TIME;
+    	return timer.get() >= RobotMap.ContainerWristConstants.SOLENOID_ACTIVE_TIME;
     }
 
     // Called once after isFinished returns true

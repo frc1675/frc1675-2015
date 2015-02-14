@@ -82,15 +82,24 @@ public class RobotMap {
 		public static final double ACCELERATION_RAMP = 120;
 		public static final double ACCELERATION_THRESHOLD = .07;
 	}
+	
 	public static class ToteStackerConstants {
 		public static final double MANUAL_SCALE_FACTOR = 0.5;
 	}
-
 	
-	//Container PID
-	public static final double CONTAINER_ARM_P = .05;
-	public static final double CONTAINER_ARM_I = 0;
-	public static final double CONTAINER_ARM_D = 0;
+	public static class ContainerArmConstants{
+		public static final double P = .05;
+		public static final double I = 0;
+		public static final double D = 0;		
+	}
+	
+	public static class ContainerWristConstants{
+		public static final double SOLENOID_ACTIVE_TIME = .25;
+	}
+	
+	public static class ContainerClawConstants{
+		public static final double CLAW_CYLINDER_FIRE_TIME = .1;
+	}	
 	
 	public static class SolenoidChannels{
 		public static final int WRIST_DOWN = 0;		
@@ -100,8 +109,6 @@ public class RobotMap {
 		public static final int RIGHT_CLAW_EXTEND = 4;		
 		public static final int RIGHT_CLAW_RETRACT = 5;
 	}
-
-	public static final double SOLENOID_ACTIVE_TIME = .25;
 	
 	public static class PCMChannels {
 
@@ -111,7 +118,5 @@ public class RobotMap {
 		public static final int LEFT_LOWER_CYLINDER = 6;
 		
 	}
-	
-	public static final double CLAW_CYLINDER_FIRE_TIME = .1;
 	
 }
