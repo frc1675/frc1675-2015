@@ -40,6 +40,7 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 
 	Joystick driverController = new Joystick(0);
+	Joystick operatorController = new Joystick(1);
 
 	// left x 0
 	// left y 1
@@ -73,7 +74,12 @@ public class OI {
 
 		return checkForDeadzone(rightYControllerValue);
 	}
-
+	public double getOpRightYAxis(){
+		double leftYControllerValue = operatorController
+				.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
+		
+		return checkForDeadzone(leftYControllerValue);
+	}
 	public double checkForDeadzone(double input) {
 		if (Math.abs(input) <= RobotMap.DriverConstants.DEAD_ZONE_TOLERANCE) {
 			return 0;
