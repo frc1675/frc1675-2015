@@ -1,4 +1,7 @@
 package org.usfirst.frc.team1675.robot;
+
+import org.usfirst.frc.team1675.robot.RobotMap.PCMChannels;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -97,5 +100,15 @@ public class RobotMap {
 
 	public static final double SOLENOID_ACTIVE_TIME = .25;
 	
+	public static class PCMChannels {
+
+		public static final int RIGHT_UPPER_CYLINDER = 9;
+		public static final int RIGHT_LOWER_CYLINDER = 10;
+		public static final int LEFT_UPPER_CYLINDER = 5;
+		public static final int LEFT_LOWER_CYLINDER = 6;
+		
+	}
+	
+	public static final double CLAW_CYLINDER_FIRE_TIME = .1;
 	
 }
