@@ -23,9 +23,9 @@ public class MecanumDriveWithJoysticks extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	//they are multiplied by the sqrt of 2 in order to make diagonals on the Left stick have 1 as their value
-    	double leftYAxis = Robot.oi.getLeftYAxis() * Math.sqrt(2);
-    	double leftXAxis = Robot.oi.getLeftXAxis() * Math.sqrt(2);
-    	double rightXAxis = Robot.oi.getRightXAxis() * Math.sqrt(2);
+    	double leftYAxis = Robot.oi.getDriverLeftYAxis() * Math.sqrt(2);
+    	double leftXAxis = Robot.oi.getDriverLeftXAxis() * Math.sqrt(2);
+    	double rightXAxis = Robot.oi.getDriverRightXAxis() * Math.sqrt(2);
     	
     	
     	
