@@ -19,6 +19,11 @@ public class RobotMap {
 		public static final int BACK_LEFT_DRIVE = 2;
 		public static final int FRONT_RIGHT_DRIVE = 12;
 		public static final int FRONT_LEFT_DRIVE = 13;
+		
+		public static final double FRONT_LEFT_DRIVE_POLARITY = 1.0;
+		public static final double FRONT_RIGHT_DRIVE_POLARITY = -1.0;
+		public static final double BACK_LEFT_DRIVE_POLARITY = 1.0;
+		public static final double BACK_RIGHT_DRIVE_POLARITY = -1.0;
 	}
 	
 	public static class DIOChannels {
