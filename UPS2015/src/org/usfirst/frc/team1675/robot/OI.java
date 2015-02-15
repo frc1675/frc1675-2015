@@ -2,11 +2,14 @@ package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsIndividually;
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsTogether;
+import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
+import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
 import org.usfirst.frc.team1675.robot.commands.fineadjustment.DisablePIDLoops;
 import org.usfirst.frc.team1675.robot.commands.fineadjustment.EnablePIDLoops;
 import org.usfirst.frc.team1675.robot.commands.fineadjustment.SetFineAdjustment;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,9 +20,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class OI {
 	Joystick driverController;
+	Joystick operatorController;
 	JoystickButton driverYButton;
 	JoystickButton driverAButton;
 	JoystickButton driverLeftShoulder;
+	JoystickButton operatorXButton;
 	// // CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	// joystick.
@@ -47,11 +52,14 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+
 	public OI(){
 		driverController = new Joystick(0);
+		operatorController = new Joystick(1);
 		driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
 		driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
 		driverLeftShoulder = new JoystickButton(driverController, XBoxControllerMap.LEFT_BUMPER_BUTTON);
+		operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
 		
 		driverAButton.whenPressed(new ResetDriveEncoderPIDsIndividually());
 		driverYButton.whenPressed(new ResetDriveEncoderPIDsTogether());
@@ -61,30 +69,27 @@ public class OI {
 		driverLeftShoulder.whenReleased(new EnablePIDLoops());
 		driverLeftShoulder.whenReleased(new SetFineAdjustment());
 		
+		operatorXButton.whenPressed(new ContainerClawOpen());
+		operatorXButton.whenReleased(new ContainerClawClose());
 	}	
 	
 	public double getDriverLeftXAxis() {
-		double leftXControllerValue = driverController
-				.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
+		double leftXControllerValue = driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
 		return checkForDeadzone(leftXControllerValue);
-
 	}
 
 	public double getDriverLeftYAxis() {
-		double leftYControllerValue = driverController
-				.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
+		double leftYControllerValue = driverController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
 		return checkForDeadzone(leftYControllerValue);
 	}
 
 	public double getDriverRightXAxis() {
-		double rightXControllerValue = driverController
-				.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
+		double rightXControllerValue = driverController.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
 		return checkForDeadzone(rightXControllerValue);
 	}
 
 	public double getDriverRightYAxis() {
-		double rightYControllerValue = driverController
-				.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
+		double rightYControllerValue = driverController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
 		return checkForDeadzone(rightYControllerValue);
 	}
 	
@@ -98,6 +103,17 @@ public class OI {
 		double rightTriggerValue = driverController.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS);
 		rightTriggerValue = checkForDeadzone(rightTriggerValue);
 		return (rightTriggerValue * scaleValue);
+	}
+	
+	public double getOperatorLeftYAxis(double scaleValue){
+		double leftYControllerValue = operatorController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
+		leftYControllerValue = checkForDeadzone(leftYControllerValue);
+		return (leftYControllerValue * scaleValue);
+	}
+	
+	public double getOpRightYAxis(){
+		double rightYControllerValue = operatorController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
+		return checkForDeadzone(rightYControllerValue);
 	}
 	
 	public double checkForDeadzone(double input) {

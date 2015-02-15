@@ -7,6 +7,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team1675.robot.subsystems.ContainerArm;
+import org.usfirst.frc.team1675.robot.subsystems.ContainerWrist;
+import org.usfirst.frc.team1675.robot.subsystems.ContainerClaw;
 import org.usfirst.frc.team1675.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team1675.robot.subsystems.ToteStacker;
 
@@ -18,11 +21,32 @@ import org.usfirst.frc.team1675.robot.subsystems.ToteStacker;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	public static final Drivetrain drivetrain = new Drivetrain();
-	public static final ToteStacker toteStacker = new ToteStacker(1, 2, 3);
-
 	
+	public static Drivetrain drivetrain;// = new Drivetrain();
+	public static ToteStacker toteStacker;// = new ToteStacker(1, 2, 3);
+	public static ContainerArm containerArm;// = new ContainerArm(RobotMap.ContainerArmConstants.P, RobotMap.ContainerArmConstants.I, RobotMap.ContainerArmConstants.D);
+	public static ContainerWrist containerWrist;// = new ContainerWrist();
+	public static ContainerClaw containerClaw;// = new ContainerClaw();
 	public static OI oi;
+	
+	public Robot(){
+		super();
+		try{
+			drivetrain = new Drivetrain();
+			toteStacker = new ToteStacker(1,2,3);
+			containerArm = new ContainerArm(RobotMap.ContainerArmConstants.P, RobotMap.ContainerArmConstants.I, RobotMap.ContainerArmConstants.D);
+			containerWrist = new ContainerWrist();
+			containerClaw = new ContainerClaw();
+		}catch(Exception e){
+			e.printStackTrace();			
+		}		
+	}
+	
+	
+	static{		
+		
+	} 
+	
 
     Command autonomousCommand;
 
@@ -30,7 +54,7 @@ public class Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-    public void robotInit() {
+    public void robotInit() {    	
         if (autonomousCommand != null) autonomousCommand.cancel();
 //    			SmartDashboard.putNumber("BackLeftP", RobotMap.DriveEncoders.BackRightPIDDefaults.P);
 //				SmartDashboard.putNumber("BackLeftI", RobotMap.DriveEncoders.BackRightPIDDefaults.I);

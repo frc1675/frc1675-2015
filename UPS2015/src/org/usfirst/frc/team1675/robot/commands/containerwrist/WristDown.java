@@ -1,42 +1,50 @@
-package org.usfirst.frc.team1675.robot.commands.totestacker;
+package org.usfirst.frc.team1675.robot.commands.containerwrist;
 
 import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ToteStackerManual extends Command {
-
-    public ToteStackerManual() {
-    	requires(Robot.toteStacker);
+public class WristDown extends Command {
+	Timer timer;
+    public WristDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.containerWrist);
+    	timer = new Timer();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.containerWrist.moveWristDown();
+    	timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double toteStackerMovement = -Robot.oi.getOperatorLeftYAxis(RobotMap.ToteStackerConstants.MANUAL_SCALE_FACTOR);
-    	Robot.toteStacker.setManualMovement(toteStackerMovement);
+    	Robot.containerWrist.moveWristDown();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	return timer.get() >= RobotMap.ContainerWristConstants.SOLENOID_ACTIVE_TIME;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.containerWrist.solenoidsOff();
+    	timer.stop();
+    	timer.reset();
+    	timer.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
