@@ -45,7 +45,7 @@ public class RobotMap {
 	}
 	
 	public static class DriveEncoders {
-		public static final double DRIVE_MAX_SPEED = 15;  // feet per second of slowest wheel	
+		public static final double DRIVE_MAX_SPEED = 7;  // feet per second of slowest wheel	
 		public static final double DRIVE_WHEEL_DIAMETER = 6;
 		public static class BackRightPIDDefaults{
 			public static final double P = .07;
