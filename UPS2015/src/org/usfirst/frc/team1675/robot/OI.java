@@ -1,10 +1,10 @@
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.DisablePIDLoops;
-import org.usfirst.frc.team1675.robot.commands.EnablePIDLoops;
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsIndividually;
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsTogether;
-import org.usfirst.frc.team1675.robot.commands.SetFineAdjustment;
+import org.usfirst.frc.team1675.robot.commands.fineadjustment.DisablePIDLoops;
+import org.usfirst.frc.team1675.robot.commands.fineadjustment.EnablePIDLoops;
+import org.usfirst.frc.team1675.robot.commands.fineadjustment.SetFineAdjustment;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
