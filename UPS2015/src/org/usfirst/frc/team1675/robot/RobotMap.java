@@ -12,7 +12,7 @@ public class RobotMap {
 		public static final int FRONT_RIGHT_DRIVE = 4;
 		public static final int BACK_LEFT_DRIVE = 3;
 		public static final int BACK_RIGHT_DRIVE = 2;
-		public static final int TOTE_ELEVATOR = 2;
+		public static final int TOTE_ELEVATOR = 0;
 	}
 	
 	public static class PDChannels {
@@ -73,6 +73,7 @@ public class RobotMap {
 		public static final double MOTOR_DEADZONE_TOLERANCE = .2;
 		public static final double ACCELERATION_RAMP = 120;
 		public static final double ACCELERATION_THRESHOLD = .07;
+		public static final double FINE_ADJUSTMENT = 3;
 	}
 
 	

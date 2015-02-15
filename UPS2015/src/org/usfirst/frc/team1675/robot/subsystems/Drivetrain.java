@@ -29,6 +29,8 @@ public class Drivetrain extends Subsystem {
 	
 	private AccelerationSpeedController backRightMotor;
 	public PIDSpeedControllerForVelocity backRightPID;
+	
+	private boolean fineAdjustment;
 		
 	public Drivetrain(){				
 		{
@@ -86,27 +88,57 @@ public class Drivetrain extends Subsystem {
 					RobotMap.DriverConstants.ACCELERATION_THRESHOLD, 
 					RobotMap.DriverConstants.ACCELERATION_RAMP, nameBR);
 		}
-		
+
+		fineAdjustment=false;
 	}
 	
-	public void setFrontLeftSpeed(double speed) {	
-		frontLeftMotor.set(-speed);
-		
+	public void setFrontLeftSpeed(double speed) {
+		if(!fineAdjustment){
+			frontLeftMotor.set(-speed);
+		}else{		
+			System.out.println("Fine Adjustment:" + speed);
+			frontLeftPID.setRawPower(calculateFineAdjustment(-speed));			
+		}				
 	}
 	
 	public void setFrontRightSpeed(double speed) {
-		frontRightMotor.set(speed);
+		if(!fineAdjustment){
+			frontRightMotor.set(speed);
+		}else{			
+			frontRightPID.setRawPower(calculateFineAdjustment(speed));			
+		}
 	}
+	
 	public void setBackLeftSpeed(double speed) {
-		backLeftMotor.set(speed);
+		if(!fineAdjustment){	
+			backLeftMotor.set(speed);
+		}else{			
+			backLeftPID.setRawPower(calculateFineAdjustment(speed));			
+		}
 	}
 	
 	public void setBackRightSpeed(double speed) {
-		backRightMotor.set(speed);
+		if(!fineAdjustment){	
+			backRightMotor.set(speed);
+		}else{
+			backRightPID.setRawPower(calculateFineAdjustment(speed));				
+		}
 	}
 
+	private double calculateFineAdjustment(double speed){
+		return speed/RobotMap.DriverConstants.FINE_ADJUSTMENT;
+	}
+	
     public void initDefaultCommand() {    	
     	setDefaultCommand(new MecanumDriveWithJoysticks());
+    }
+    
+    public void setFineAdjustment(boolean fineAdjustment){
+    	this.fineAdjustment = fineAdjustment;
+    }
+    
+    public boolean getFineAdjustment(){
+    	return fineAdjustment;
     }
 }
 

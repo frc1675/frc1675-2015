@@ -28,7 +28,7 @@ public class PIDSpeedControllerForVelocity implements SpeedController{
 	public double getEncoderRate(){
 		return encoderSource.getRate();
 	}
-	public void disablePID(){
+	public void disableAndStop(){
 		pid.disable();
 		motor.set(0);
 	}
@@ -49,10 +49,19 @@ public class PIDSpeedControllerForVelocity implements SpeedController{
 		System.out.println(feetPerSecondSetpoint);
 		pid.setSetpoint(feetPerSecondSetpoint);
 	}
-	public void disable() {
-		motor.disable();
+	public void disable() {		
 		pid.disable();		
+		motor.disable();
+	}	
+	
+	public void disablePID(){
+		pid.disable();
 	}
+	
+	public void enablePID(){
+		pid.enable();
+	}
+	
 	public double getP(){
 		return pid.getP();
 	}

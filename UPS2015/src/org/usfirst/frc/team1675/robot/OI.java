@@ -1,7 +1,10 @@
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.commands.DisablePIDLoops;
+import org.usfirst.frc.team1675.robot.commands.EnablePIDLoops;
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsIndividually;
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsTogether;
+import org.usfirst.frc.team1675.robot.commands.SetFineAdjustment;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -16,6 +19,7 @@ public class OI {
 	Joystick driverController;
 	JoystickButton driverYButton;
 	JoystickButton driverAButton;
+	JoystickButton driverLeftShoulder;
 	// // CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	// joystick.
@@ -47,9 +51,16 @@ public class OI {
 		driverController = new Joystick(0);
 		driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
 		driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
+		driverLeftShoulder = new JoystickButton(driverController, XBoxControllerMap.LEFT_BUMPER_BUTTON);
 		
 		driverAButton.whenPressed(new ResetDriveEncoderPIDsIndividually());
 		driverYButton.whenPressed(new ResetDriveEncoderPIDsTogether());
+		
+		driverLeftShoulder.whenPressed(new DisablePIDLoops());
+		driverLeftShoulder.whenPressed(new SetFineAdjustment());
+		driverLeftShoulder.whenReleased(new EnablePIDLoops());
+		driverLeftShoulder.whenReleased(new SetFineAdjustment());
+		
 	}	
 	
 	public double getDriverLeftXAxis() {
