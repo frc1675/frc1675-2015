@@ -26,7 +26,7 @@ public class MecanumDriveWithJoysticks extends Command {
     	double leftYAxis = Robot.oi.getDriverLeftYAxis() * Math.sqrt(2);
     	double leftXAxis = Robot.oi.getDriverLeftXAxis() * Math.sqrt(2);
     	double rightXAxis = Robot.oi.getDriverRightXAxis() * Math.sqrt(2);
-   	
+    	    	
     	double frontLeft = leftYAxis - rightXAxis - leftXAxis;
     	double backLeft = leftYAxis - rightXAxis + leftXAxis;
     	double frontRight = leftYAxis + rightXAxis + leftXAxis;

@@ -1,4 +1,5 @@
 package org.usfirst.frc.team1675.robot;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -12,6 +13,8 @@ public class RobotMap {
 		public static final int FRONT_RIGHT_DRIVE = 4;
 		public static final int BACK_LEFT_DRIVE = 3;
 		public static final int BACK_RIGHT_DRIVE = 2;
+		public static final int TOTE_ELEVATOR = 0;
+		public static final int ARM_MOTOR = 1;
 	}
 	
 	public static class PDChannels {
@@ -27,14 +30,18 @@ public class RobotMap {
 	}
 	
 	public static class DIOChannels {
-    	public static final int BACK_RIGHT_ENCODER_A = 2;	
-    	public static final int BACK_RIGHT_ENCODER_B = 3;
-    	public static final int BACK_LEFT_ENCODER_A = 0;	
-    	public static final int BACK_LEFT_ENCODER_B = 1;
-    	public static final int FRONT_RIGHT_ENCODER_A = 8;	
-    	public static final int FRONT_RIGHT_ENCODER_B = 9;
-    	public static final int FRONT_LEFT_ENCODER_A = 6;	
-    	public static final int FRONT_LEFT_ENCODER_B = 7;
+		public static final int BACK_RIGHT_ENCODER_A = 2;
+		public static final int BACK_RIGHT_ENCODER_B = 3;
+		public static final int BACK_LEFT_ENCODER_A = 0;
+		public static final int BACK_LEFT_ENCODER_B = 1;
+		public static final int FRONT_RIGHT_ENCODER_A = 8;
+		public static final int FRONT_RIGHT_ENCODER_B = 9;
+		public static final int FRONT_LEFT_ENCODER_A = 6;
+		public static final int FRONT_LEFT_ENCODER_B = 7;
+	}
+	
+	public static class AIOChannels {
+		public static final int POT_CHANNEL = 2;
 	}
 	
 	public static class DriveEncoders {
@@ -78,7 +85,32 @@ public class RobotMap {
 		public static final double ACCELERATION_RAMP = 120;
 		public static final double ACCELERATION_THRESHOLD = .07;
 	}
-
 	
+	public static class ToteStackerConstants {
+		public static final double MANUAL_SCALE_FACTOR = 1;
+	}
+	
+	public static class ContainerArmConstants{
+		public static final double P = .05;
+		public static final double I = 0;
+		public static final double D = 0;		
+	}
+	
+	public static class ContainerWristConstants{
+		public static final double SOLENOID_ACTIVE_TIME = .25;
+	}
+	
+	public static class ContainerClawConstants{
+		public static final double CLAW_CYLINDER_FIRE_TIME = .1;
+	}	
+	
+	public static class SolenoidChannels{
+		public static final int WRIST_DOWN = 0;		
+		public static final int WRIST_UP = 1;		
+		public static final int LEFT_CLAW_EXTEND = 0;		
+		public static final int LEFT_CLAW_RETRACT = 5;
+		public static final int RIGHT_CLAW_EXTEND = 6;		
+		public static final int RIGHT_CLAW_RETRACT = 7;
+	}
 	
 }
