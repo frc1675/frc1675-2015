@@ -7,6 +7,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team1675.robot.commands.PolarMecanumForTime;
+import org.usfirst.frc.team1675.robot.commands.TestAuto;
+import org.usfirst.frc.team1675.robot.commands.totestacker.TotevateForTime;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerArm;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerWrist;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerClaw;
@@ -87,6 +90,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
+    	autonomousCommand = new TestAuto();
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
