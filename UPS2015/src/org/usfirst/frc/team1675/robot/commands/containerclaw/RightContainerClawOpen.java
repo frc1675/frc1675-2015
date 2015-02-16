@@ -14,7 +14,7 @@ public class RightContainerClawOpen extends Command {
 	Timer timer;
 
 	public RightContainerClawOpen() {
-
+		
 		requires(Robot.containerClaw);
 		timer = new Timer();
 	}
@@ -35,10 +35,10 @@ public class RightContainerClawOpen extends Command {
 	}
 
 	protected void end() {
-
-		Robot.containerClaw.closeBoth();
+		Robot.containerClaw.turnOff();
 	}
 
 	protected void interrupted() {
+		end();
 	}
 }

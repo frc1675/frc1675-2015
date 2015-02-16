@@ -33,14 +33,12 @@ public class ContainerClawClose extends Command {
 		return (timer.get() > RobotMap.ContainerClawConstants.CLAW_CYLINDER_FIRE_TIME);
 	}
 
-	@Override
 	protected void end() {
 		Robot.containerClaw.turnOff();
 	}
 
-	@Override
 	protected void interrupted() {
-		Robot.containerClaw.turnOff();
+		end();
 	}
 
 }
