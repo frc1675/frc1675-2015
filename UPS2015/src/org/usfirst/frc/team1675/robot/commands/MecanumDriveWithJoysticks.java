@@ -85,10 +85,10 @@ public class MecanumDriveWithJoysticks extends Command {
     	Robot.drivetrain.setFrontRightSpeed(leftYAxis + rightXAxis + leftXAxis);
     	Robot.drivetrain.setBackRightSpeed(leftYAxis + rightXAxis - leftXAxis);
     	
-    	SmartDashboard.putNumber("Back Left Encoder Rate", Robot.drivetrain.backLeftPID.getEncoderRate());
-    	SmartDashboard.putNumber("Back Right Encoder Rate", Robot.drivetrain.backRightPID.getEncoderRate());
-    	SmartDashboard.putNumber("Front left Encoder Rate", Robot.drivetrain.frontLeftPID.getEncoderRate());
-    	SmartDashboard.putNumber("Front Right Encoder Rate", Robot.drivetrain.frontRightPID.getEncoderRate());
+//    	SmartDashboard.putNumber("Back Left Encoder Rate", Robot.drivetrain.backLeftPID.getEncoderRate());
+//    	SmartDashboard.putNumber("Back Right Encoder Rate", Robot.drivetrain.backRightPID.getEncoderRate());
+//    	SmartDashboard.putNumber("Front left Encoder Rate", Robot.drivetrain.frontLeftPID.getEncoderRate());
+//    	SmartDashboard.putNumber("Front Right Encoder Rate", Robot.drivetrain.frontRightPID.getEncoderRate());
     }
 
     // Make this return true when this Command no longer needs to run execute()

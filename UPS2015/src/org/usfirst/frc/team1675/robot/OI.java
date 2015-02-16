@@ -107,9 +107,10 @@ public class OI {
 	
 	public double checkForDeadzone(double input) {
 		if (Math.abs(input) <= RobotMap.DriverConstants.DEAD_ZONE_TOLERANCE) {
-			return 0;
+			return 0.0;
 		} else {
-			return advancedCheckForDeadzone(input, input);
+			//return advancedCheckForDeadzone(input, input);
+			return input;
 		}
 	}
 	
