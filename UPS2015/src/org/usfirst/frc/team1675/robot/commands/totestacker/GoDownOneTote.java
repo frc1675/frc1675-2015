@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1675.robot.commands.totestacker;
 
 import org.usfirst.frc.team1675.robot.Robot;
+import org.usfirst.frc.team1675.robot.subsystems.ToteStacker;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -17,7 +18,7 @@ public class GoDownOneTote extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.toteStacker.moveRelative(0);
+    	Robot.toteStacker.moveRelative(-ToteStacker.TICKS_PER_TOTEHOOK);
     }
 
     // Called repeatedly when this Command is scheduled to run
