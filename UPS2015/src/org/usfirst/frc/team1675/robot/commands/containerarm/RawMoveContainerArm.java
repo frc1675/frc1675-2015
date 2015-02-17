@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1675.robot.commands.containerarm;
 
 import org.usfirst.frc.team1675.robot.Robot;
+import org.usfirst.frc.team1675.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -23,7 +24,7 @@ public class RawMoveContainerArm extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double value = Robot.oi.getOpRightYAxis();
+    	double value = Robot.oi.getOperatorRightYAxis(RobotMap.ContainerArmConstants.MANUAL_SCALE_FACTOR);
     	Robot.containerArm.rawSetArm(value);
     }
 

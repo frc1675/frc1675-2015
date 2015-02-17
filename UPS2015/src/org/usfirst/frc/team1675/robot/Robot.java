@@ -25,18 +25,19 @@ import org.usfirst.frc.team1675.robot.subsystems.ToteStacker;
  */
 public class Robot extends IterativeRobot {
 	
-	public static Drivetrain drivetrain;// = new Drivetrain();
-	public static ToteStacker toteStacker;// = new ToteStacker(1, 2, 3);
-	public static ContainerArm containerArm;// = new ContainerArm(RobotMap.ContainerArmConstants.P, RobotMap.ContainerArmConstants.I, RobotMap.ContainerArmConstants.D);
-	public static ContainerWrist containerWrist;// = new ContainerWrist();
-	public static ContainerClaw containerClaw;// = new ContainerClaw();
+	public static Drivetrain drivetrain;
+	public static ToteStacker toteStacker;
+	public static ContainerArm containerArm;
+	public static ContainerWrist containerWrist;
+	public static ContainerClaw containerClaw;
 	public static OI oi;
 	
 	public Robot(){
-		super();
+		// Instantiating subsystems in a explicit Robot constructor to ensure they are constructed after RobotBase
+		// which was before causing the NetworkTable to throw exceptions
 		try{
 			drivetrain = new Drivetrain();
-			toteStacker = new ToteStacker(1,2,3);
+			toteStacker = new ToteStacker(RobotMap.ToteStackerConstants.P, RobotMap.ToteStackerConstants.I,	RobotMap.ToteStackerConstants.D);
 			containerArm = new ContainerArm(RobotMap.ContainerArmConstants.P, RobotMap.ContainerArmConstants.I, RobotMap.ContainerArmConstants.D);
 			containerWrist = new ContainerWrist();
 			containerClaw = new ContainerClaw();
@@ -44,11 +45,6 @@ public class Robot extends IterativeRobot {
 			e.printStackTrace();			
 		}		
 	}
-	
-	
-	static{		
-		
-	} 
 	
 
     Command autonomousCommand;

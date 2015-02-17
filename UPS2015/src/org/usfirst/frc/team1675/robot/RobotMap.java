@@ -21,9 +21,7 @@ public class RobotMap {
 		public static final int BACK_RIGHT_DRIVE = 3;
 		public static final int BACK_LEFT_DRIVE = 2;
 		public static final int FRONT_RIGHT_DRIVE = 12;
-		public static final int FRONT_LEFT_DRIVE = 13;
-		
-		
+		public static final int FRONT_LEFT_DRIVE = 13;		
 	}
 	
 	public static class DIOChannels {
@@ -89,9 +87,13 @@ public class RobotMap {
 	
 	public static class ToteStackerConstants {
 		public static final double MANUAL_SCALE_FACTOR = 1;
+		public static final double P = .05;
+		public static final double I = 0;
+		public static final double D = 0;
 	}
 	
 	public static class ContainerArmConstants{
+		public static final double MANUAL_SCALE_FACTOR = 1;
 		public static final double P = .05;
 		public static final double I = 0;
 		public static final double D = 0;		
