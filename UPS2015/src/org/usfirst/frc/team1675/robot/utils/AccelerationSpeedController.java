@@ -62,9 +62,14 @@ public class AccelerationSpeedController implements SpeedController{
 	public void disable() {
 		// TODO Auto-generated method stub
 		speedController.disable();
+		reset();
 	}
 
-    public double accelerate(double speed) {    	
+	public SpeedController getInternalSpeedController(){
+		return speedController;
+	}
+	
+    private double accelerate(double speed) {    	
         double difference = speed - previousPower;
         accelerationDebt = accelerationDebt + difference; //AccelerationDebts has a maximum size?
 
@@ -89,5 +94,10 @@ public class AccelerationSpeedController implements SpeedController{
         return motorPower;        
     }   
     
-	
+    private void reset(){
+    	previousPower = 0;
+    	accelerationDebt = 0;
+    	initialPower = 0;
+    	inAccelerationSession = false;
+    }    	
 }
