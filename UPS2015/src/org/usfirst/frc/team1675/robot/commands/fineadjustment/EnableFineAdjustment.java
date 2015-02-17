@@ -20,7 +20,7 @@ public class EnableFineAdjustment extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.disableSpeedControllers();
+    	Robot.drivetrain.disablePID();
     	RobotMap.DriveNonConstants.FINE_ADJUSTMENT_SCALE_FACTOR=0.333;
     }
 

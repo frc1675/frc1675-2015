@@ -105,6 +105,24 @@ public class Drivetrain extends Subsystem {
 		backRightMotor.disable();
 	}
 	
+	public void disablePID(){
+		SpeedController sc = ((AccelerationSpeedController)frontLeftMotor).getInternalSpeedController();
+		PIDSpeedControllerForVelocity pid = (PIDSpeedControllerForVelocity) sc;
+		pid.disablePID();
+		
+		sc = ((AccelerationSpeedController)frontRightMotor).getInternalSpeedController();		
+		pid = (PIDSpeedControllerForVelocity) sc;
+		pid.disablePID();
+		
+		sc = ((AccelerationSpeedController)backLeftMotor).getInternalSpeedController();		
+		pid = (PIDSpeedControllerForVelocity) sc;
+		pid.disablePID();
+		
+		sc = ((AccelerationSpeedController)backRightMotor).getInternalSpeedController();		
+		pid = (PIDSpeedControllerForVelocity) sc;
+		pid.disablePID();
+	}
+	
 	public void enablePID(){
 		SpeedController sc = ((AccelerationSpeedController)frontLeftMotor).getInternalSpeedController();
 		PIDSpeedControllerForVelocity pid = (PIDSpeedControllerForVelocity) sc;
