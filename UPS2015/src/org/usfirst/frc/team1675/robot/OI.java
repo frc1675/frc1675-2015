@@ -16,11 +16,17 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	
+	// Constants specific to this class
+	static final int DRIVER_CONTROLLER_PORT = 0;
+	static final int OPERATOR_CONTROLLER_PORT = 1;
+	
 	Joystick driverController;
 	Joystick operatorController;
 	JoystickButton driverYButton;
 	JoystickButton driverAButton;
 	JoystickButton operatorXButton;
+	
 	// // CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	// joystick.
@@ -50,8 +56,8 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 
 	public OI(){
-		driverController = new Joystick(0);
-		operatorController = new Joystick(1);
+		driverController = new Joystick(DRIVER_CONTROLLER_PORT);
+		operatorController = new Joystick(OPERATOR_CONTROLLER_PORT);
 		driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
 		driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
 		operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
@@ -100,14 +106,14 @@ public class OI {
 		return (leftYControllerValue * scaleValue);
 	}
 	
-	public double getOpRightYAxis(){
+	public double getOperatorRightYAxis(double scaleValue){
 		double rightYControllerValue = operatorController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
-		return checkForDeadzone(rightYControllerValue);
+		return checkForDeadzone(rightYControllerValue * scaleValue);
 	}
 	
 	public double checkForDeadzone(double input) {
 		if (Math.abs(input) <= RobotMap.DriverConstants.DEAD_ZONE_TOLERANCE) {
-			return 0;
+			return 0.0;
 		} else {
 			return advancedCheckForDeadzone(input, input);
 		}

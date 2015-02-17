@@ -11,8 +11,8 @@ public class RobotMap {
 	public static class PWMChannels {
 		public static final int FRONT_LEFT_DRIVE = 5;
 		public static final int FRONT_RIGHT_DRIVE = 4;
-		public static final int BACK_LEFT_DRIVE = 3;
-		public static final int BACK_RIGHT_DRIVE = 2;
+		public static final int BACK_LEFT_DRIVE = 2;
+		public static final int BACK_RIGHT_DRIVE = 3;
 		public static final int TOTE_ELEVATOR = 0;
 		public static final int ARM_MOTOR = 1;
 	}
@@ -21,12 +21,7 @@ public class RobotMap {
 		public static final int BACK_RIGHT_DRIVE = 3;
 		public static final int BACK_LEFT_DRIVE = 2;
 		public static final int FRONT_RIGHT_DRIVE = 12;
-		public static final int FRONT_LEFT_DRIVE = 13;
-		
-		public static final double FRONT_LEFT_DRIVE_POLARITY = 1.0;
-		public static final double FRONT_RIGHT_DRIVE_POLARITY = -1.0;
-		public static final double BACK_LEFT_DRIVE_POLARITY = 1.0;
-		public static final double BACK_RIGHT_DRIVE_POLARITY = -1.0;
+		public static final int FRONT_LEFT_DRIVE = 13;		
 	}
 	
 	public static class DIOChannels {
@@ -88,9 +83,13 @@ public class RobotMap {
 	
 	public static class ToteStackerConstants {
 		public static final double MANUAL_SCALE_FACTOR = 1;
+		public static final double P = .05;
+		public static final double I = 0;
+		public static final double D = 0;
 	}
 	
 	public static class ContainerArmConstants{
+		public static final double MANUAL_SCALE_FACTOR = 1;
 		public static final double P = .05;
 		public static final double I = 0;
 		public static final double D = 0;		
@@ -111,6 +110,13 @@ public class RobotMap {
 		public static final int LEFT_CLAW_RETRACT = 5;
 		public static final int RIGHT_CLAW_EXTEND = 6;		
 		public static final int RIGHT_CLAW_RETRACT = 7;
+	}
+	
+	public static class DrivePolarities {
+		public static final double FRONT_LEFT_DRIVE_POLARITY = 1.0;
+		public static final double FRONT_RIGHT_DRIVE_POLARITY = -1.0;
+		public static final double BACK_LEFT_DRIVE_POLARITY = 1.0;
+		public static final double BACK_RIGHT_DRIVE_POLARITY = -1.0;
 	}
 	
 }

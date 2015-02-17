@@ -1,40 +1,45 @@
-package org.usfirst.frc.team1675.robot.commands.containerarm;
+package org.usfirst.frc.team1675.robot.commands.totestacker;
 
 import org.usfirst.frc.team1675.robot.Robot;
-import org.usfirst.frc.team1675.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class RawMoveContainerArm extends Command {
+public class TotevateForTime extends Command {
 
-    public RawMoveContainerArm() {
-    	requires(Robot.containerArm);
+	Timer timer;
+	double timeToTotevate;
+	double totevation;
+	
+    public TotevateForTime(double totevation, double timeToTotevate) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	timer = new Timer();
+    	this.totevation = totevation;
+    	this.timeToTotevate = timeToTotevate;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.containerArm.disable();
-    	Robot.containerArm.rawSetArm(0);
+    	timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double value = Robot.oi.getOperatorRightYAxis(RobotMap.ContainerArmConstants.MANUAL_SCALE_FACTOR);
-    	Robot.containerArm.rawSetArm(value);
+    	Robot.toteStacker.setManualMovement(totevation);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return timer.get() > timeToTotevate;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.toteStacker.setManualMovement(0.0);
     }
 
     // Called when another command which requires one or more of the same
