@@ -25,8 +25,9 @@ public class PolarMecanum extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.ezDrive(getMagnitude(), getRotation(), getDirection());
-    	}
+    	Robot.drivetrain.ezDrive(getMagnitude(), getDirection(), getRotation());
+    	System.out.println("Mag: \t" + getMagnitude() + " Dir: \t" + getDirection() + " Rot: " + getRotation());
+    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -47,7 +48,7 @@ public class PolarMecanum extends Command {
 		double y = Robot.oi.getDriverLeftYAxis();
 		
 		double returnMagnitude = 0.0;
-		double squareMagnitude = Math.sqrt(Math.pow(x, 2.0) + Math.pow(x, 2.0));
+		double squareMagnitude = Math.sqrt(Math.pow(x, 2.0) + Math.pow(y, 2.0));
 		
 		if (x != 0.0 && y != 0.0){
 			double borderX;
@@ -61,7 +62,7 @@ public class PolarMecanum extends Command {
 				borderY = y / Math.abs(y);
 			}
 			double borderMagnitude = Math.sqrt(Math.pow(borderX, 2.0) + Math.pow(borderY, 2.0));
-			returnMagnitude = Math.abs(squareMagnitude) / Math.abs(borderMagnitude);
+			returnMagnitude = squareMagnitude / borderMagnitude;
 		} else {
 			returnMagnitude = squareMagnitude;
 		}
@@ -69,7 +70,8 @@ public class PolarMecanum extends Command {
 			returnMagnitude = 0.0;
 		}
 		return returnMagnitude;
-}
+    }
+    
 	public double getRotation(){
 		double x = Robot.oi.getDriverRightXAxis();
 		double rotation = x;
@@ -93,6 +95,8 @@ public class PolarMecanum extends Command {
 		direction -= Math.PI / 2;
 		return direction;
 	}
+	
+	
 }
 
 

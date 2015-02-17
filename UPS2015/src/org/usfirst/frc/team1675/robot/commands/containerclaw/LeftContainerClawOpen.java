@@ -35,10 +35,10 @@ public class LeftContainerClawOpen extends Command {
 	}
 
 	protected void end() {
-
-		Robot.containerClaw.closeBoth();
+		Robot.containerClaw.turnOff();
 	}
 
 	protected void interrupted() {
+		end();
 	}
 }

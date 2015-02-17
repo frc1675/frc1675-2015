@@ -1,25 +1,27 @@
 package org.usfirst.frc.team1675.robot.commands.fineadjustment;
 
 import org.usfirst.frc.team1675.robot.Robot;
+import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.utils.AccelerationSpeedController;
+import org.usfirst.frc.team1675.robot.utils.PIDSpeedControllerForVelocity;
 
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class DisablePIDLoops extends Command {
+public class EnableFineAdjustment extends Command {
 
-    public DisablePIDLoops() {
+    public EnableFineAdjustment() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.frontLeftPID.disablePID();    	
-    	Robot.drivetrain.frontRightPID.disablePID();
-    	Robot.drivetrain.backLeftPID.disablePID();
-    	Robot.drivetrain.backRightPID.disablePID();
+    	Robot.drivetrain.disableSpeedControllers();
+    	RobotMap.DriveNonConstants.FINE_ADJUSTMENT_SCALE_FACTOR=0.333;
     }
 
     // Called repeatedly when this Command is scheduled to run

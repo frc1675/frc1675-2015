@@ -4,9 +4,8 @@ import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsIndividually
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsTogether;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
-import org.usfirst.frc.team1675.robot.commands.fineadjustment.DisablePIDLoops;
-import org.usfirst.frc.team1675.robot.commands.fineadjustment.EnablePIDLoops;
-import org.usfirst.frc.team1675.robot.commands.fineadjustment.SetFineAdjustment;
+import org.usfirst.frc.team1675.robot.commands.fineadjustment.DisableFineAdjustment;
+import org.usfirst.frc.team1675.robot.commands.fineadjustment.EnableFineAdjustment;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -64,10 +63,9 @@ public class OI {
 		driverAButton.whenPressed(new ResetDriveEncoderPIDsIndividually());
 		driverYButton.whenPressed(new ResetDriveEncoderPIDsTogether());
 		
-		driverLeftShoulder.whenPressed(new DisablePIDLoops());
-		driverLeftShoulder.whenPressed(new SetFineAdjustment());
-		driverLeftShoulder.whenReleased(new EnablePIDLoops());
-		driverLeftShoulder.whenReleased(new SetFineAdjustment());
+		driverLeftShoulder.whenPressed(new DisableFineAdjustment());
+		driverLeftShoulder.whenReleased(new EnableFineAdjustment());
+
 		
 		operatorXButton.whenPressed(new ContainerClawOpen());
 		operatorXButton.whenReleased(new ContainerClawClose());
@@ -118,9 +116,10 @@ public class OI {
 	
 	public double checkForDeadzone(double input) {
 		if (Math.abs(input) <= RobotMap.DriverConstants.DEAD_ZONE_TOLERANCE) {
-			return 0;
+			return 0.0;
 		} else {
-			return advancedCheckForDeadzone(input, input);
+			//return advancedCheckForDeadzone(input, input);
+			return input;
 		}
 	}
 	

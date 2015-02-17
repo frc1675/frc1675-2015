@@ -11,8 +11,8 @@ public class RobotMap {
 	public static class PWMChannels {
 		public static final int FRONT_LEFT_DRIVE = 5;
 		public static final int FRONT_RIGHT_DRIVE = 4;
-		public static final int BACK_LEFT_DRIVE = 3;
-		public static final int BACK_RIGHT_DRIVE = 2;
+		public static final int BACK_LEFT_DRIVE = 2;
+		public static final int BACK_RIGHT_DRIVE = 3;
 		public static final int TOTE_ELEVATOR = 0;
 		public static final int ARM_MOTOR = 1;
 	}
@@ -23,10 +23,7 @@ public class RobotMap {
 		public static final int FRONT_RIGHT_DRIVE = 12;
 		public static final int FRONT_LEFT_DRIVE = 13;
 		
-		public static final double FRONT_LEFT_DRIVE_POLARITY = 1.0;
-		public static final double FRONT_RIGHT_DRIVE_POLARITY = -1.0;
-		public static final double BACK_LEFT_DRIVE_POLARITY = 1.0;
-		public static final double BACK_RIGHT_DRIVE_POLARITY = -1.0;
+		
 	}
 	
 	public static class DIOChannels {
@@ -45,7 +42,7 @@ public class RobotMap {
 	}
 	
 	public static class DriveEncoders {
-		public static final double DRIVE_MAX_SPEED = 15;  // feet per second of slowest wheel	
+		public static final double DRIVE_MAX_SPEED = 7;  // feet per second of slowest wheel	
 		public static final double DRIVE_WHEEL_DIAMETER = 6;
 		public static class BackRightPIDDefaults{
 			public static final double P = .07;
@@ -84,7 +81,10 @@ public class RobotMap {
 		public static final double MOTOR_DEADZONE_TOLERANCE = .2;
 		public static final double ACCELERATION_RAMP = 120;
 		public static final double ACCELERATION_THRESHOLD = .07;
-		public static final double FINE_ADJUSTMENT_SCALE_FACTOR = .333;
+	}
+	
+	public static class DriveNonConstants{
+		public static double FINE_ADJUSTMENT_SCALE_FACTOR = 1;
 	}
 	
 	public static class ToteStackerConstants {
@@ -112,6 +112,13 @@ public class RobotMap {
 		public static final int LEFT_CLAW_RETRACT = 5;
 		public static final int RIGHT_CLAW_EXTEND = 6;		
 		public static final int RIGHT_CLAW_RETRACT = 7;
+	}
+	
+	public static class DrivePolarities {
+		public static final double FRONT_LEFT_DRIVE_POLARITY = 1.0;
+		public static final double FRONT_RIGHT_DRIVE_POLARITY = -1.0;
+		public static final double BACK_LEFT_DRIVE_POLARITY = 1.0;
+		public static final double BACK_RIGHT_DRIVE_POLARITY = -1.0;
 	}
 	
 }

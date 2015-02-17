@@ -7,6 +7,7 @@ import org.usfirst.frc.team1675.robot.utils.AccelerationSpeedController;
 import org.usfirst.frc.team1675.robot.utils.PIDSpeedControllerForVelocity;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -18,19 +19,10 @@ public class Drivetrain extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	private AccelerationSpeedController frontLeftMotor;
-	public PIDSpeedControllerForVelocity frontLeftPID;
-
-	private AccelerationSpeedController frontRightMotor;
-	public PIDSpeedControllerForVelocity frontRightPID;
-
-	private AccelerationSpeedController backLeftMotor;
-	public PIDSpeedControllerForVelocity backLeftPID;
-
-	private AccelerationSpeedController backRightMotor;
-	public PIDSpeedControllerForVelocity backRightPID;
-
-	private boolean fineAdjustment;
+	private SpeedController frontLeftMotor;
+	private SpeedController frontRightMotor;	
+	private SpeedController backLeftMotor;	
+	private SpeedController backRightMotor;
 
 	public Drivetrain() {
 		{
@@ -40,7 +32,7 @@ public class Drivetrain extends Subsystem {
 			Encoder frontLeftEnc = new Encoder(
 					RobotMap.DIOChannels.FRONT_LEFT_ENCODER_A,
 					RobotMap.DIOChannels.FRONT_LEFT_ENCODER_B);
-			frontLeftPID = new PIDSpeedControllerForVelocity(frontLeftVSP,
+			PIDSpeedControllerForVelocity frontLeftPID = new PIDSpeedControllerForVelocity(frontLeftVSP,
 					frontLeftEnc, 250,
 					RobotMap.DriveEncoders.FrontLeftPIDDefaults.P,
 					RobotMap.DriveEncoders.FrontLeftPIDDefaults.I,
@@ -58,7 +50,7 @@ public class Drivetrain extends Subsystem {
 			Encoder frontRightEnc = new Encoder(
 					RobotMap.DIOChannels.FRONT_RIGHT_ENCODER_A,
 					RobotMap.DIOChannels.FRONT_RIGHT_ENCODER_B, true);
-			frontRightPID = new PIDSpeedControllerForVelocity(frontRightVSP,
+			PIDSpeedControllerForVelocity frontRightPID = new PIDSpeedControllerForVelocity(frontRightVSP,
 					frontRightEnc, 250,
 					RobotMap.DriveEncoders.FrontRightPIDDefaults.P,
 					RobotMap.DriveEncoders.FrontRightPIDDefaults.I,
@@ -76,7 +68,7 @@ public class Drivetrain extends Subsystem {
 			Encoder backLeftEnc = new Encoder(
 					RobotMap.DIOChannels.BACK_LEFT_ENCODER_A,
 					RobotMap.DIOChannels.BACK_LEFT_ENCODER_B, true);
-			backLeftPID = new PIDSpeedControllerForVelocity(backLeftVSP,
+			PIDSpeedControllerForVelocity backLeftPID = new PIDSpeedControllerForVelocity(backLeftVSP,
 					backLeftEnc, 250,
 					RobotMap.DriveEncoders.BackLeftPIDDefaults.P,
 					RobotMap.DriveEncoders.BackLeftPIDDefaults.I,
@@ -94,7 +86,7 @@ public class Drivetrain extends Subsystem {
 			Encoder backRightEnc = new Encoder(
 					RobotMap.DIOChannels.BACK_RIGHT_ENCODER_A,
 					RobotMap.DIOChannels.BACK_RIGHT_ENCODER_B, true);
-			backRightPID = new PIDSpeedControllerForVelocity(backRightVSP,
+			PIDSpeedControllerForVelocity backRightPID = new PIDSpeedControllerForVelocity(backRightVSP,
 					backRightEnc, 250,
 					RobotMap.DriveEncoders.BackRightPIDDefaults.P,
 					RobotMap.DriveEncoders.BackRightPIDDefaults.I,
@@ -104,109 +96,115 @@ public class Drivetrain extends Subsystem {
 					RobotMap.DriverConstants.ACCELERATION_THRESHOLD,
 					RobotMap.DriverConstants.ACCELERATION_RAMP, nameBR);
 		}
-
-		fineAdjustment = false;
+	}
+	
+	public void disableSpeedControllers(){
+		frontLeftMotor.disable();
+		frontRightMotor.disable();
+		backLeftMotor.disable();
+		backRightMotor.disable();
+	}
+	
+	public void enablePID(){
+		SpeedController sc = ((AccelerationSpeedController)frontLeftMotor).getInternalSpeedController();
+		PIDSpeedControllerForVelocity pid = (PIDSpeedControllerForVelocity) sc;
+		pid.enablePID();
+		
+		sc = ((AccelerationSpeedController)frontRightMotor).getInternalSpeedController();		
+		pid = (PIDSpeedControllerForVelocity) sc;
+		pid.enablePID();
+		
+		sc = ((AccelerationSpeedController)backLeftMotor).getInternalSpeedController();		
+		pid = (PIDSpeedControllerForVelocity) sc;
+		pid.enablePID();
+		
+		sc = ((AccelerationSpeedController)backRightMotor).getInternalSpeedController();		
+		pid = (PIDSpeedControllerForVelocity) sc;
+		pid.enablePID();
 	}
 
-	public void setFrontLeftSpeed(double speed) {
-		if (!fineAdjustment) {
-			frontLeftMotor.set(-speed);
-		} else {
-			System.out.println("Fine Adjustment:" + speed);
-			frontLeftPID.setRawPower(calculateFineAdjustment(-speed));
-		}
+	public void setFrontLeftSpeed(double speed) {		
+		frontLeftMotor.set(RobotMap.DrivePolarities.FRONT_LEFT_DRIVE_POLARITY * speed * 
+				RobotMap.DriveNonConstants.FINE_ADJUSTMENT_SCALE_FACTOR);
 	}
 
-	public void setFrontRightSpeed(double speed) {
-		if (!fineAdjustment) {
-			frontRightMotor.set(speed);
-		} else {
-			frontRightPID.setRawPower(calculateFineAdjustment(speed));
-		}
+	public void setFrontRightSpeed(double speed) {		
+		frontRightMotor.set(RobotMap.DrivePolarities.FRONT_RIGHT_DRIVE_POLARITY * speed* 
+				RobotMap.DriveNonConstants.FINE_ADJUSTMENT_SCALE_FACTOR);		
 	}
 
-	public void setBackLeftSpeed(double speed) {
-		if (!fineAdjustment) {
-			backLeftMotor.set(speed);
-		} else {
-			backLeftPID.setRawPower(calculateFineAdjustment(speed));
-		}
+	public void setBackLeftSpeed(double speed) {		
+		backLeftMotor.set(RobotMap.DrivePolarities.BACK_LEFT_DRIVE_POLARITY * speed* 
+				RobotMap.DriveNonConstants.FINE_ADJUSTMENT_SCALE_FACTOR);
 	}
 
-	public void setBackRightSpeed(double speed) {
-		if (!fineAdjustment) {
-			backRightMotor.set(speed);
-		} else {
-			backRightPID.setRawPower(calculateFineAdjustment(speed));
-		}
+	public void setBackRightSpeed(double speed) {		
+		backRightMotor.set(RobotMap.DrivePolarities.BACK_RIGHT_DRIVE_POLARITY * speed* 
+				RobotMap.DriveNonConstants.FINE_ADJUSTMENT_SCALE_FACTOR);
 	}
-
-	private double calculateFineAdjustment(double speed) {
-		return speed * RobotMap.DriverConstants.FINE_ADJUSTMENT_SCALE_FACTOR;
+	
+	public SpeedController getFrontLeftSC(){
+		return frontLeftMotor;
 	}
-
+	
+	public SpeedController getFrontRightSC(){
+		return frontRightMotor;
+	}
+	
+	public SpeedController getBackLeftSC(){
+		return backLeftMotor;
+	}
+	
+	public SpeedController getBackRightSC(){
+		return backRightMotor;
+	}
 	public void initDefaultCommand() {
 		setDefaultCommand(new MecanumDriveWithJoysticks());
 	}
 
-	public void setFineAdjustment(boolean fineAdjustment) {
-		this.fineAdjustment = fineAdjustment;
-	}
-
-	public boolean getFineAdjustment() {
-		return fineAdjustment;
-	}
-
-	public void ezDrive(double magnitude, double direction, double rotation) {
-		double upscaledMagnitude = magnitude * Math.sqrt(2.0);
-
-		double dirInRad = direction + (Math.PI / 4);
-
-		double cosD = Math.cos(dirInRad);
-		double sinD = Math.sin(dirInRad);
-
-		double frontLeftSpeed = sinD * upscaledMagnitude - rotation;
-		double frontRightSpeed = cosD * upscaledMagnitude + rotation;
-		double backLeftSpeed = cosD * upscaledMagnitude - rotation;
-		double backRightSpeed = sinD * upscaledMagnitude + rotation;
-
-		double coefficient = getNormalizingCoefficient(magnitude,
-				frontLeftSpeed, frontRightSpeed, backLeftSpeed, backRightSpeed);
-
-		frontLeftSpeed *= coefficient;
-		frontRightSpeed *= coefficient;
-		backLeftSpeed *= coefficient;
-		backRightSpeed *= coefficient;
-
-		frontLeftMotor.set(frontLeftSpeed);
-		frontRightMotor.set(frontRightSpeed);
-		backLeftMotor.set(backLeftSpeed);
-		backRightMotor.set(backRightSpeed);
-	}
-
-	private boolean anyOutsideNormalMagnitude(double normalMagnitude,
-			double frontLeftSpeed, double frontRightSpeed,
-			double backLeftSpeed, double backRightSpeed) {
-
-		return Math.abs(frontLeftSpeed) > 1.0
-				|| Math.abs(frontRightSpeed) > 1.0
-				|| Math.abs(backLeftSpeed) > 1.0
-				|| Math.abs(backRightSpeed) > 1.0;
-	}
-
-	private double getNormalizingCoefficient(double stanMagnitude,
-			double frontLeftSpeed, double frontRightSpeed,
-			double backLeftSpeed, double backRightSpeed) {
-		double maxLeft = Math.max(Math.abs(frontLeftSpeed),
-				Math.abs(frontRightSpeed));
-		double maxRight = Math.max(Math.abs(backLeftSpeed),
-				Math.abs(backRightSpeed));
-		double max = Math.max(maxLeft, maxRight);
-
-		if (max > 1.0) {
-			return 1.0 / max;
-		} else {
-			return 1.0;
-		}
-	}
+    public void ezDrive(double magnitude, double direction, double rotation) {
+    	double upscaledMagnitude = magnitude * Math.sqrt(2.0);
+    	
+    	double dirInRad = direction + (Math.PI/4);
+    	
+    	double cosD = Math.cos(dirInRad);
+    	double sinD = Math.sin(dirInRad);
+    	
+    	double frontLeftSpeed = sinD * upscaledMagnitude - rotation;
+    	double frontRightSpeed = cosD * upscaledMagnitude + rotation;
+    	double backLeftSpeed = cosD * upscaledMagnitude - rotation;
+    	double backRightSpeed = sinD * upscaledMagnitude + rotation;
+    	
+    	double coefficient = getNormalizingCoefficient(magnitude, frontLeftSpeed, frontRightSpeed, backLeftSpeed, backRightSpeed);
+    	
+    	frontLeftSpeed *= coefficient;
+    	frontRightSpeed *= coefficient;
+    	backLeftSpeed *= coefficient;
+    	backRightSpeed *= coefficient;
+    	
+    	//Left side is flipped due to polar algorithm
+    	frontLeftMotor.set(-frontLeftSpeed);
+    	frontRightMotor.set(frontRightSpeed);
+    	backLeftMotor.set(-backLeftSpeed);
+    	backRightMotor.set(backRightSpeed);
+    }
+    
+    private boolean anyOutsideNormalMagnitude(double normalMagnitude, double frontLeftSpeed, double frontRightSpeed, double backLeftSpeed, double backRightSpeed){
+       	return Math.abs(frontLeftSpeed) > 1.0 ||
+    			Math.abs(frontRightSpeed) > 1.0 ||
+    			Math.abs(backLeftSpeed) > 1.0 ||
+    			Math.abs(backRightSpeed) > 1.0;
+    }
+    
+    private double getNormalizingCoefficient(double stanMagnitude, double frontLeftSpeed, double frontRightSpeed, double backLeftSpeed, double backRightSpeed){
+    	double maxLeft = Math.max(Math.abs(frontLeftSpeed), Math.abs(frontRightSpeed));
+    	double maxRight = Math.max(Math.abs(backLeftSpeed), Math.abs(backRightSpeed));
+    	double max = Math.max(maxLeft, maxRight);
+    	
+    	if (max > 1.0){
+    		return 1.0 / max;
+    	} else {
+    		return 1.0;
+    	}
+    }
 }
