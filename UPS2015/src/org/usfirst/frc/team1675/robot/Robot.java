@@ -32,49 +32,53 @@ public class Robot extends IterativeRobot {
 	public static ContainerClaw containerClaw;
 	public static OI oi;
 	
-	Command autonomousCommand;
-	
-	public Robot() {
-		// Instantiating subsystems in a explict Robot constructor to ensure they are constructed after RobotBase
+	public Robot(){
+		// Instantiating subsystems in a explicit Robot constructor to ensure they are constructed after RobotBase
 		// which was before causing the NetworkTable to throw exceptions
-		drivetrain = new Drivetrain();
-		toteStacker = new ToteStacker(RobotMap.ToteStackerConstants.P, RobotMap.ToteStackerConstants.I,	RobotMap.ToteStackerConstants.D);
-		containerArm = new ContainerArm(RobotMap.ContainerArmConstants.P, RobotMap.ContainerArmConstants.I,	RobotMap.ContainerArmConstants.D);
-		containerWrist = new ContainerWrist();
-		containerClaw = new ContainerClaw();
+		try{
+			drivetrain = new Drivetrain();
+			toteStacker = new ToteStacker(RobotMap.ToteStackerConstants.P, RobotMap.ToteStackerConstants.I,	RobotMap.ToteStackerConstants.D);
+			containerArm = new ContainerArm(RobotMap.ContainerArmConstants.P, RobotMap.ContainerArmConstants.I, RobotMap.ContainerArmConstants.D);
+			containerWrist = new ContainerWrist();
+			containerClaw = new ContainerClaw();
+		}catch(Exception e){
+			e.printStackTrace();			
+		}		
 	}
+	
+
+    Command autonomousCommand;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-	public void robotInit() {
-		if (autonomousCommand != null)
-			autonomousCommand.cancel();
-//		SmartDashboard.putNumber("BackLeftP",RobotMap.DriveEncoders.BackRightPIDDefaults.P);
-//		SmartDashboard.putNumber("BackLeftI",RobotMap.DriveEncoders.BackRightPIDDefaults.I);
-//		SmartDashboard.putNumber("BackLeftD",RobotMap.DriveEncoders.BackRightPIDDefaults.D);
-//		SmartDashboard.putNumber("BackLeftF",RobotMap.DriveEncoders.BackRightPIDDefaults.F);
-//		SmartDashboard.putNumber("BackRightP",RobotMap.DriveEncoders.BackRightPIDDefaults.P);
-//		SmartDashboard.putNumber("BackRightI",RobotMap.DriveEncoders.BackRightPIDDefaults.I);
-//		SmartDashboard.putNumber("BackRightD",RobotMap.DriveEncoders.BackRightPIDDefaults.D);
-//		SmartDashboard.putNumber("BackRightF",RobotMap.DriveEncoders.BackRightPIDDefaults.F);
-//		SmartDashboard.putNumber("FrontLeftP",RobotMap.DriveEncoders.FrontLeftPIDDefaults.P);
-//		SmartDashboard.putNumber("FrontLeftI",RobotMap.DriveEncoders.FrontLeftPIDDefaults.I);
-//		SmartDashboard.putNumber("FrontLeftD",RobotMap.DriveEncoders.FrontLeftPIDDefaults.D);
-//		SmartDashboard.putNumber("FrontLeftF",RobotMap.DriveEncoders.FrontLeftPIDDefaults.F);
-//		SmartDashboard.putNumber("FrontRightP",RobotMap.DriveEncoders.FrontRightPIDDefaults.P);
-//		SmartDashboard.putNumber("FrontRightI",RobotMap.DriveEncoders.FrontRightPIDDefaults.I);
-//		SmartDashboard.putNumber("FrontRightD",RobotMap.DriveEncoders.FrontRightPIDDefaults.D);
-//		SmartDashboard.putNumber("FrontRightF",RobotMap.DriveEncoders.FrontRightPIDDefaults.F);
-//		SmartDashboard.putNumber("All The Drive P",RobotMap.DriveEncoders.AllThePIDs.P);
-//		SmartDashboard.putNumber("All The Drive I",RobotMap.DriveEncoders.AllThePIDs.I);
-//		SmartDashboard.putNumber("All The Drive D",RobotMap.DriveEncoders.AllThePIDs.D);
-//		SmartDashboard.putNumber("All The Drive F",RobotMap.DriveEncoders.AllThePIDs.F);
+    public void robotInit() {    	
+        if (autonomousCommand != null) autonomousCommand.cancel();
+//    			SmartDashboard.putNumber("BackLeftP", RobotMap.DriveEncoders.BackRightPIDDefaults.P);
+//				SmartDashboard.putNumber("BackLeftI", RobotMap.DriveEncoders.BackRightPIDDefaults.I);
+//				SmartDashboard.putNumber("BackLeftD", RobotMap.DriveEncoders.BackRightPIDDefaults.D);
+//				SmartDashboard.putNumber("BackLeftF", RobotMap.DriveEncoders.BackRightPIDDefaults.F);
+//				SmartDashboard.putNumber("BackRightP", RobotMap.DriveEncoders.BackRightPIDDefaults.P);
+//				SmartDashboard.putNumber("BackRightI", RobotMap.DriveEncoders.BackRightPIDDefaults.I);
+//				SmartDashboard.putNumber("BackRightD", RobotMap.DriveEncoders.BackRightPIDDefaults.D);
+//				SmartDashboard.putNumber("BackRightF", RobotMap.DriveEncoders.BackRightPIDDefaults.F);
+//				SmartDashboard.putNumber("FrontLeftP", RobotMap.DriveEncoders.FrontLeftPIDDefaults.P);
+//				SmartDashboard.putNumber("FrontLeftI", RobotMap.DriveEncoders.FrontLeftPIDDefaults.I);
+//				SmartDashboard.putNumber("FrontLeftD", RobotMap.DriveEncoders.FrontLeftPIDDefaults.D);
+//				SmartDashboard.putNumber("FrontLeftF", RobotMap.DriveEncoders.FrontLeftPIDDefaults.F);
+//				SmartDashboard.putNumber("FrontRightP", RobotMap.DriveEncoders.FrontRightPIDDefaults.P);
+//				SmartDashboard.putNumber("FrontRightI", RobotMap.DriveEncoders.FrontRightPIDDefaults.I);
+//				SmartDashboard.putNumber("FrontRightD", RobotMap.DriveEncoders.FrontRightPIDDefaults.D);
+//				SmartDashboard.putNumber("FrontRightF", RobotMap.DriveEncoders.FrontRightPIDDefaults.F);		
+//				SmartDashboard.putNumber("All The Drive P", RobotMap.DriveEncoders.AllThePIDs.P);
+//				SmartDashboard.putNumber("All The Drive I", RobotMap.DriveEncoders.AllThePIDs.I);
+//				SmartDashboard.putNumber("All The Drive D", RobotMap.DriveEncoders.AllThePIDs.D);
+//				SmartDashboard.putNumber("All The Drive F", RobotMap.DriveEncoders.AllThePIDs.F);	
 
 		oi = new OI();
-		// instantiate the command used for the autonomous period
-	}
+        // instantiate the command used for the autonomous period        
+    }
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
