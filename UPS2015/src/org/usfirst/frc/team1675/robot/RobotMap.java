@@ -33,6 +33,8 @@ public class RobotMap {
 		public static final int FRONT_RIGHT_ENCODER_B = 9;
 		public static final int FRONT_LEFT_ENCODER_A = 6;
 		public static final int FRONT_LEFT_ENCODER_B = 7;
+		public static final int TOTEVATOR_ENCODER_A = 4;
+		public static final int TOTEVATOR_ENCODER_B = 5;
 	}
 	
 	public static class AIOChannels {
