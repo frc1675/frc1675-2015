@@ -4,6 +4,10 @@ import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsIndividually
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsTogether;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
+import org.usfirst.frc.team1675.robot.commands.totestacker.DropTote;
+import org.usfirst.frc.team1675.robot.commands.totestacker.GoDownOneTote;
+import org.usfirst.frc.team1675.robot.commands.totestacker.GoUpOneTote;
+import org.usfirst.frc.team1675.robot.commands.totestacker.ResetToteStacker;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -26,6 +30,9 @@ public class OI {
 	JoystickButton driverYButton;
 	JoystickButton driverAButton;
 	JoystickButton operatorXButton;
+	JoystickButton operatorYButton;
+	JoystickButton operatorAButton;
+	JoystickButton operatorBButton;
 	
 	// // CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
@@ -61,11 +68,18 @@ public class OI {
 		driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
 		driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
 		operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
+		operatorYButton = new JoystickButton(operatorController, XBoxControllerMap.Y_BUTTON);
+		operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
+		operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
 		
 		driverAButton.whenPressed(new ResetDriveEncoderPIDsIndividually());
 		driverYButton.whenPressed(new ResetDriveEncoderPIDsTogether());
-		operatorXButton.whenPressed(new ContainerClawOpen());
-		operatorXButton.whenReleased(new ContainerClawClose());
+	//	operatorXButton.whenPressed(new ContainerClawOpen());
+	//	operatorXButton.whenReleased(new ContainerClawClose());
+		operatorYButton.whenPressed(new GoUpOneTote());
+		operatorBButton.whenPressed(new DropTote());
+		operatorAButton.whenPressed(new GoDownOneTote());
+		operatorXButton.whenPressed(new ResetToteStacker());
 	}	
 	
 	public double getDriverLeftXAxis() {

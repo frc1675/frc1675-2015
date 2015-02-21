@@ -85,7 +85,7 @@ public class RobotMap {
 	
 	public static class ToteStackerConstants {
 		public static final double MANUAL_SCALE_FACTOR = 1;
-		public static final double P = .05;
+		public static final double P = .5;
 		public static final double I = 0;
 		public static final double D = 0;
 	}

@@ -18,12 +18,14 @@ public class ToteStacker extends PIDSubsystem {
 	SpeedController toteMotor;
 	Encoder totevatorEncoder;
 	
+	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public ToteStacker(double p, double i, double d){
 		super(p, i, d);
 		toteMotor = new VictorSP(RobotMap.PWMChannels.TOTE_ELEVATOR);
 		totevatorEncoder = new Encoder(RobotMap.DIOChannels.TOTEVATOR_ENCODER_A, RobotMap.DIOChannels.TOTEVATOR_ENCODER_B);
+		totevatorEncoder.setDistancePerPulse(1.0);
 		
 	}
 
@@ -47,6 +49,7 @@ public class ToteStacker extends PIDSubsystem {
      */
     public void moveRelative(int distance){
     	
+    	
     }
     
     public void setManualMovement(double MotorValue){
@@ -56,12 +59,13 @@ public class ToteStacker extends PIDSubsystem {
 	@Override
 	protected double returnPIDInput() {
 		// TODO Auto-generated method stub
-		return 0;
+		return totevatorEncoder.getDistance();
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
+		toteMotor.set(output);
 		
 	}
 }
