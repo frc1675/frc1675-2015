@@ -54,6 +54,10 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {    	
+    	SmartDashboard.putNumber("TotevatorP", RobotMap.ToteStackerConstants.P);
+    	SmartDashboard.putNumber("TotevatorI", RobotMap.ToteStackerConstants.I);
+    	SmartDashboard.putNumber("TotevatorD", RobotMap.ToteStackerConstants.D);
+    	
         if (autonomousCommand != null) autonomousCommand.cancel();
 //    			SmartDashboard.putNumber("BackLeftP", RobotMap.DriveEncoders.BackRightPIDDefaults.P);
 //				SmartDashboard.putNumber("BackLeftI", RobotMap.DriveEncoders.BackRightPIDDefaults.I);

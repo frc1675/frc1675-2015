@@ -8,6 +8,7 @@ import org.usfirst.frc.team1675.robot.commands.totestacker.DropTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoDownOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoUpOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ResetToteStacker;
+import org.usfirst.frc.team1675.robot.commands.totestacker.ResetTotevatorPID;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -27,12 +28,19 @@ public class OI {
 	
 	Joystick driverController;
 	Joystick operatorController;
-	JoystickButton driverYButton;
+	
+	JoystickButton driverXButton;
+	JoystickButton driverYButton;	
+	JoystickButton driverBButton;
 	JoystickButton driverAButton;
+	
 	JoystickButton operatorXButton;
 	JoystickButton operatorYButton;
-	JoystickButton operatorAButton;
 	JoystickButton operatorBButton;
+	JoystickButton operatorAButton;
+	JoystickButton operatorRightBumperButton;
+	
+	Joys
 	
 	// // CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
@@ -67,10 +75,12 @@ public class OI {
 		operatorController = new Joystick(OPERATOR_CONTROLLER_PORT);
 		driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
 		driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
+		
 		operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
 		operatorYButton = new JoystickButton(operatorController, XBoxControllerMap.Y_BUTTON);
 		operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
 		operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
+		operatorRightBumperButton = new JoystickButton(operatorController,XBoxControllerMap.RIGHT_BUMPER_BUTTON);
 		
 		driverAButton.whenPressed(new ResetDriveEncoderPIDsIndividually());
 		driverYButton.whenPressed(new ResetDriveEncoderPIDsTogether());
@@ -80,6 +90,10 @@ public class OI {
 		operatorBButton.whenPressed(new DropTote());
 		operatorAButton.whenPressed(new GoDownOneTote());
 		operatorXButton.whenPressed(new ResetToteStacker());
+		operatorRightBumperButton.whenPressed(new ResetTotevatorPID(
+				SmartDashboard.getNumber("TotevatorP", RobotMap.ToteStackerConstants.P), 
+				SmartDashboard.getNumber("TotevatorI", RobotMap.ToteStackerConstants.I), 
+				SmartDashboard.getNumber("TotevatorD", RobotMap.ToteStackerConstants.D)));
 	}	
 	
 	public double getDriverLeftXAxis() {

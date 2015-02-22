@@ -26,7 +26,6 @@ public class ToteStacker extends PIDSubsystem {
 		toteMotor = new VictorSP(RobotMap.PWMChannels.TOTE_ELEVATOR);
 		totevatorEncoder = new Encoder(RobotMap.DIOChannels.TOTEVATOR_ENCODER_A, RobotMap.DIOChannels.TOTEVATOR_ENCODER_B);
 		totevatorEncoder.setDistancePerPulse(1.0);
-		
 	}
 
     public void initDefaultCommand() {
