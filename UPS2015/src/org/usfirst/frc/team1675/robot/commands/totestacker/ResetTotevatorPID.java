@@ -1,27 +1,28 @@
 package org.usfirst.frc.team1675.robot.commands.totestacker;
 
 import org.usfirst.frc.team1675.robot.Robot;
+import org.usfirst.frc.team1675.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class ResetTotevatorPID extends Command {
-	double p;
-	double i;
-	double d;
-    public ResetTotevatorPID(double newP, double newI, double newD) {
-        p = newP;
-        i = newI;
-        d = newD;
+
+    public ResetTotevatorPID() {
+
     	// Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.toteStacker.getPIDController().setPID(p, i, d);
+    	Robot.toteStacker.getPIDController().setPID(
+    			SmartDashboard.getNumber("TotevatorP", RobotMap.ToteStackerConstants.P), 
+				SmartDashboard.getNumber("TotevatorI", RobotMap.ToteStackerConstants.I), 
+				SmartDashboard.getNumber("TotevatorD", RobotMap.ToteStackerConstants.D));
     }
 
     // Called repeatedly when this Command is scheduled to run

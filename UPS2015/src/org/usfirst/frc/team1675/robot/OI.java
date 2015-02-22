@@ -85,10 +85,7 @@ public class OI {
 		operatorBButton.whenPressed(new DropTote());
 		operatorAButton.whenPressed(new GoDownOneTote());
 		operatorXButton.whenPressed(new ResetToteStacker());
-		operatorRightBumperButton.whenPressed(new ResetTotevatorPID(
-				SmartDashboard.getNumber("TotevatorP", RobotMap.ToteStackerConstants.P), 
-				SmartDashboard.getNumber("TotevatorI", RobotMap.ToteStackerConstants.I), 
-				SmartDashboard.getNumber("TotevatorD", RobotMap.ToteStackerConstants.D)));
+		operatorRightBumperButton.whenPressed(new ResetTotevatorPID());
 	}	
 	
 	public double getDriverLeftXAxis() {
