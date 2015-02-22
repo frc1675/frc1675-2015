@@ -2,8 +2,6 @@ package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsIndividually;
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsTogether;
-import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
-import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
 import org.usfirst.frc.team1675.robot.commands.totestacker.DropTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoDownOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoUpOneTote;
@@ -11,8 +9,6 @@ import org.usfirst.frc.team1675.robot.commands.totestacker.ResetToteStacker;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ResetTotevatorPID;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -40,7 +36,6 @@ public class OI {
 	JoystickButton operatorAButton;
 	JoystickButton operatorRightBumperButton;
 	
-	Joys
 	
 	// // CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
