@@ -44,8 +44,8 @@ public class PolarMecanum extends Command {
     }
     
     public double getMagnitude(){
-		double x = Robot.oi.getDriverLeftXAxis();
-		double y = Robot.oi.getDriverLeftYAxis();
+		double x = Robot.oi.getDriverLeftXAxisWODeadzone();
+		double y = Robot.oi.getDriverLeftYAxisWODeadzone();
 		
 		double returnMagnitude = 0.0;
 		double squareMagnitude = Math.sqrt(Math.pow(x, 2.0) + Math.pow(y, 2.0));
@@ -73,7 +73,7 @@ public class PolarMecanum extends Command {
     }
     
 	public double getRotation(){
-		double x = Robot.oi.getDriverRightXAxis();
+		double x = Robot.oi.getDriverRightXAxisWODeadzone();
 		double rotation = x;
 		if (Math.abs(rotation) < RobotMap.DriverConstants.DEAD_ZONE_TOLERANCE){
 			rotation = 0;
@@ -82,8 +82,8 @@ public class PolarMecanum extends Command {
 	}
 	public double getDirection(){
 		double direction;
-		double x = Robot.oi.getDriverLeftXAxis();
-		double y = Robot.oi.getDriverLeftYAxis();
+		double x = Robot.oi.getDriverLeftXAxisWODeadzone();
+		double y = Robot.oi.getDriverLeftYAxisWODeadzone();
 		
 		double magnitude = getMagnitude();
 		
