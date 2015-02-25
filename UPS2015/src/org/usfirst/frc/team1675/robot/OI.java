@@ -7,6 +7,7 @@ import org.usfirst.frc.team1675.robot.commands.totestacker.GoDownOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoUpOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ResetToteStacker;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ResetTotevatorPID;
+import org.usfirst.frc.team1675.robot.commands.totestacker.ToggleTotevatorPID;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -35,6 +36,7 @@ public class OI {
 	JoystickButton operatorBButton;
 	JoystickButton operatorAButton;
 	JoystickButton operatorRightBumperButton;
+	JoystickButton operatorLeftBumperButton;
 	
 	
 	// // CREATING BUTTONS
@@ -76,16 +78,20 @@ public class OI {
 		operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
 		operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
 		operatorRightBumperButton = new JoystickButton(operatorController,XBoxControllerMap.RIGHT_BUMPER_BUTTON);
+		operatorLeftBumperButton = new JoystickButton(operatorController,XBoxControllerMap.LEFT_BUMPER_BUTTON);
+		
 		
 		driverAButton.whenPressed(new ResetDriveEncoderPIDsIndividually());
 		driverYButton.whenPressed(new ResetDriveEncoderPIDsTogether());
-	//	operatorXButton.whenPressed(new ContainerClawOpen());
-	//	operatorXButton.whenReleased(new ContainerClawClose());
+		//operatorXButton.whenPressed(new ContainerClawOpen());
+		//operatorXButton.whenReleased(new ContainerClawClose());
 		operatorYButton.whenPressed(new GoUpOneTote());
 		operatorBButton.whenPressed(new DropTote());
 		operatorAButton.whenPressed(new GoDownOneTote());
 		operatorXButton.whenPressed(new ResetToteStacker());
 		operatorRightBumperButton.whenPressed(new ResetTotevatorPID());
+		operatorLeftBumperButton.whenPressed(new ToggleTotevatorPID());
+
 	}	
 	
 	public double getDriverLeftXAxis() {

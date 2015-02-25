@@ -27,7 +27,7 @@ public class ResetToteStacker extends Command {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
         //goes until the motors have reached the bottom area. need encoder to code it
     }
 

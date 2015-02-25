@@ -102,6 +102,9 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
+    	this.toteStacker.getPIDController().reset();
+    	this.toteStacker.getPIDController().enable();
+    	this.toteStacker.resetEncoder();
         if (autonomousCommand != null) autonomousCommand.cancel();
 //    	drivetrain.backLeftMotor.setPIDF(SmartDashboard.getNumber("BackLeftP", RobotMap.DriveEncoders.BackRightPIDDefaults.P),
 //				SmartDashboard.getNumber("BackLeftI", RobotMap.DriveEncoders.BackRightPIDDefaults.I),
@@ -129,6 +132,8 @@ public class Robot extends IterativeRobot {
     public void disabledInit(){
 
     }
+    
+
 
     /**
      * This function is called periodically during operator control

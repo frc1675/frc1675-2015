@@ -26,7 +26,7 @@ public class PolarMecanum extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.drivetrain.ezDrive(getMagnitude(), getDirection(), getRotation());
-    	System.out.println("Mag: \t" + getMagnitude() + " Dir: \t" + getDirection() + " Rot: " + getRotation());
+    	//System.out.println("Mag: \t" + getMagnitude() + " Dir: \t" + getDirection() + " Rot: " + getRotation());
     }
 
     // Make this return true when this Command no longer needs to run execute()
