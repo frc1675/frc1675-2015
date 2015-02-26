@@ -104,7 +104,7 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
     	this.toteStacker.getPIDController().reset();
     	this.toteStacker.getPIDController().enable();
-    	this.toteStacker.resetEncoder();
+		SmartDashboard.putBoolean("TotePIDEnabled", true);
         if (autonomousCommand != null) autonomousCommand.cancel();
 //    	drivetrain.backLeftMotor.setPIDF(SmartDashboard.getNumber("BackLeftP", RobotMap.DriveEncoders.BackRightPIDDefaults.P),
 //				SmartDashboard.getNumber("BackLeftI", RobotMap.DriveEncoders.BackRightPIDDefaults.I),

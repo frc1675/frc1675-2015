@@ -2,7 +2,7 @@ package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsIndividually;
 import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsTogether;
-import org.usfirst.frc.team1675.robot.commands.totestacker.DropTote;
+import org.usfirst.frc.team1675.robot.commands.totestacker.DriveBackBeforeDroppingTotes;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoDownOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoUpOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ResetToteStacker;
@@ -86,7 +86,7 @@ public class OI {
 		//operatorXButton.whenPressed(new ContainerClawOpen());
 		//operatorXButton.whenReleased(new ContainerClawClose());
 		operatorYButton.whenPressed(new GoUpOneTote());
-		operatorBButton.whenPressed(new DropTote());
+		operatorBButton.whenPressed(new DriveBackBeforeDroppingTotes());
 		operatorAButton.whenPressed(new GoDownOneTote());
 		operatorXButton.whenPressed(new ResetToteStacker());
 		operatorRightBumperButton.whenPressed(new ResetTotevatorPID());
