@@ -4,17 +4,15 @@ import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerManual;
 
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
 public class ToteStacker extends PIDSubsystem {
-	VictorSP toteMotor;
-	
+	public static final int TICKS_PER_TOTEHOOK = 100;
+	SpeedController toteMotor;
    
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

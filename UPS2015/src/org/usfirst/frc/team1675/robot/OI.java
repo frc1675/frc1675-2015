@@ -81,20 +81,40 @@ public class OI {
 		double leftXControllerValue = driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
 		return checkForDeadzone(leftXControllerValue);
 	}
+	
+	public double getDriverLeftXAxisWODeadzone(){
+		double leftXControllerValue = driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
+		return leftXControllerValue;
+	}
 
 	public double getDriverLeftYAxis() {
 		double leftYControllerValue = driverController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
 		return checkForDeadzone(leftYControllerValue);
 	}
-
+	
+	public double getDriverLeftYAxisWODeadzone() {
+		double leftYControllerValue = driverController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
+		return leftYControllerValue;
+	}
+	
 	public double getDriverRightXAxis() {
 		double rightXControllerValue = driverController.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
 		return checkForDeadzone(rightXControllerValue);
 	}
-
+	
+	public double getDriverRightXAxisWODeadzone() {
+		double rightXControllerValue = driverController.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
+		return rightXControllerValue;
+	}
+	
 	public double getDriverRightYAxis() {
 		double rightYControllerValue = driverController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
 		return checkForDeadzone(rightYControllerValue);
+	}
+	
+	public double getDriverRightYAxisWODeadzone() {
+		double rightYControllerValue = driverController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
+		return rightYControllerValue;
 	}
 	
 	public double getDriverLeftTrigger(double scaleValue){
