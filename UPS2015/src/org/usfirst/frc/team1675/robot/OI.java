@@ -1,13 +1,17 @@
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsIndividually;
-import org.usfirst.frc.team1675.robot.commands.ResetDriveEncoderPIDsTogether;
+import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionOnDashboard;
+import org.usfirst.frc.team1675.robot.commands.containerarm.ResetArmPID;
+import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
+import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
+import org.usfirst.frc.team1675.robot.commands.containerwrist.WristDown;
+import org.usfirst.frc.team1675.robot.commands.containerwrist.WristUp;
 import org.usfirst.frc.team1675.robot.commands.totestacker.DriveBackBeforeDroppingTotes;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoDownOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoUpOneTote;
-import org.usfirst.frc.team1675.robot.commands.totestacker.ResetToteStacker;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ResetTotevatorPID;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ToggleTotevatorPID;
+import org.usfirst.frc.team1675.robot.utils.DPadButton;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -35,6 +39,12 @@ public class OI {
 	JoystickButton operatorYButton;
 	JoystickButton operatorBButton;
 	JoystickButton operatorAButton;
+	
+	DPadButton operatorDPadUp;
+	DPadButton operatorDPadDown;
+	DPadButton operatorDPadLeft;
+	DPadButton operatorDPadRight;
+	
 	JoystickButton operatorRightBumperButton;
 	JoystickButton operatorLeftBumperButton;
 	
@@ -79,18 +89,25 @@ public class OI {
 		operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
 		operatorRightBumperButton = new JoystickButton(operatorController,XBoxControllerMap.RIGHT_BUMPER_BUTTON);
 		operatorLeftBumperButton = new JoystickButton(operatorController,XBoxControllerMap.LEFT_BUMPER_BUTTON);
+		operatorDPadUp = new DPadButton(operatorController, DPadButton.Direction.UP);
+		operatorDPadDown = new DPadButton(operatorController, DPadButton.Direction.DOWN);
 		
+		driverAButton.whenPressed(new GoDownOneTote());
+		driverYButton.whenPressed(new GoUpOneTote());
 		
-		driverAButton.whenPressed(new ResetDriveEncoderPIDsIndividually());
-		driverYButton.whenPressed(new ResetDriveEncoderPIDsTogether());
-		//operatorXButton.whenPressed(new ContainerClawOpen());
-		//operatorXButton.whenReleased(new ContainerClawClose());
-		operatorYButton.whenPressed(new GoUpOneTote());
-		operatorBButton.whenPressed(new DriveBackBeforeDroppingTotes());
-		operatorAButton.whenPressed(new GoDownOneTote());
-		operatorXButton.whenPressed(new ResetToteStacker());
+		operatorXButton.whenPressed(new ContainerClawOpen());
+		operatorXButton.whenReleased(new ContainerClawClose());
+		operatorBButton.whenPressed(new MoveContainerArmToPositionOnDashboard());//193
+		operatorYButton.whenPressed(new WristUp());
+		operatorAButton.whenPressed(new WristDown());
+		//operatorYButton.whenPressed(new GoUpOneTote());
+		//operatorAButton.whenPressed(new GoDownOneTote());
+		//operatorBButton.whenPressed(new DriveBackBeforeDroppingTotes());
+		//operatorXButton.whenPressed(new ResetToteStacker());
 		operatorRightBumperButton.whenPressed(new ResetTotevatorPID());
 		operatorLeftBumperButton.whenPressed(new ToggleTotevatorPID());
+		operatorDPadUp.whenPressed(new ResetArmPID());
+		operatorDPadDown.whenPressed(new DriveBackBeforeDroppingTotes());
 
 	}	
 	

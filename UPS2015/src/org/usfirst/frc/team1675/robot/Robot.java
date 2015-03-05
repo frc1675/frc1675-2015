@@ -57,6 +57,9 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putNumber("TotevatorP", RobotMap.ToteStackerConstants.P);
     	SmartDashboard.putNumber("TotevatorI", RobotMap.ToteStackerConstants.I);
     	SmartDashboard.putNumber("TotevatorD", RobotMap.ToteStackerConstants.D);
+		SmartDashboard.putNumber("ContainerArmP",RobotMap.ContainerArmConstants.P);
+		SmartDashboard.putNumber("ContainerArmI",RobotMap.ContainerArmConstants.I);
+		SmartDashboard.putNumber("ContainerArmD",RobotMap.ContainerArmConstants.D);
     	
         if (autonomousCommand != null) autonomousCommand.cancel();
 //    			SmartDashboard.putNumber("BackLeftP", RobotMap.DriveEncoders.BackRightPIDDefaults.P);

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
+import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPosition;
 import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArm;
@@ -44,6 +45,9 @@ public class ContainerArm extends PIDSubsystem {
     	this.disable();
     	motor.set(0);	
     }
+    public double getPotValue(){
+    	return pot.get();
+    }
     public double getP(){
     	return this.getPIDController().getP();
     }
@@ -69,6 +73,7 @@ public class ContainerArm extends PIDSubsystem {
     }
     
     protected void usePIDOutput(double output) {
+    	SmartDashboard.putNumber("arm Output", output);
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
     	motor.set(output);

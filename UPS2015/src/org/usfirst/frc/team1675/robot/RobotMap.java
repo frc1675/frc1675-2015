@@ -92,9 +92,9 @@ public class RobotMap {
 	
 	public static class ContainerArmConstants{
 		public static final double MANUAL_SCALE_FACTOR = 1;
-		public static final double P = .05;
-		public static final double I = 0;
-		public static final double D = 0;		
+		public static final double P = .02;  //.013
+		public static final double I = 0;//.11
+		public static final double D = 0;	//.000039	
 	}
 	
 	public static class ContainerWristConstants{

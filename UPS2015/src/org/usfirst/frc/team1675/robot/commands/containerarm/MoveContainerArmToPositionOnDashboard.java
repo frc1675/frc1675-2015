@@ -8,18 +8,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class MoveContainerArmToPosition extends Command {
-	double angle;
-    public MoveContainerArmToPosition(double angle) {
+public class MoveContainerArmToPositionOnDashboard extends Command {
+    public MoveContainerArmToPositionOnDashboard() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.containerArm);
-    	this.angle = angle;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {   	
-    	Robot.containerArm.setArmPosition(angle);
+    	Robot.containerArm.setArmPosition(SmartDashboard.getNumber("ContainerArmSetpoint"));
     	
     }
 
