@@ -3,6 +3,7 @@ package org.usfirst.frc.team1675.robot;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPosition;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionIncrementingSetpoint;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionOnDashboard;
+import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArm;
 import org.usfirst.frc.team1675.robot.commands.containerarm.ResetArmPID;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
@@ -108,12 +109,13 @@ public class OI {
 		//operatorAButton.whenPressed(new GoDownOneTote());
 		//operatorBButton.whenPressed(new DriveBackBeforeDroppingTotes());
 		//operatorXButton.whenPressed(new ResetToteStacker());
-		operatorRightBumperButton.whenPressed(new ResetTotevatorPID());
+		//operatorRightBumperButton.whenPressed(new ResetTotevatorPID());
+		operatorRightBumperButton.whenPressed(new RawMoveContainerArm());
 		operatorLeftBumperButton.whenPressed(new ToggleTotevatorPID());
 		operatorDPadUp.whenPressed(new ResetArmPID());
 		operatorDPadDown.whenPressed(new DriveBackBeforeDroppingTotes());
-		operatorDPadLeft.whenPressed(new MoveContainerArmToPosition(180.0));
-		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(150.0));
+		operatorDPadLeft.whenPressed(new MoveContainerArmToPosition(75.0));
+		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(192.0));
 
 	}	
 	

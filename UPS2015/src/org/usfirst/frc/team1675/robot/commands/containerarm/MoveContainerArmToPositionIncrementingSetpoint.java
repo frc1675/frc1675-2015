@@ -23,9 +23,11 @@ public class MoveContainerArmToPositionIncrementingSetpoint extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	ultimateSetpoint = SmartDashboard.getNumber("ContainerArmSetpoint");  //comment this out to make go to value passed in instead of the one on dashboard.  
-    	currentSetpoint = Robot.containerArm.getPIDController().getSetpoint();
-    	setpointIncrement =(ultimateSetpoint-currentSetpoint)/(50*RAMP_TIME) ;
+    	ultimateSetpoint = SmartDashboard.getNumber("ContainerArmSetpoint");  //comment this out to make go to value passed in instead of the one on dashboard.  	
+    	currentSetpoint = Robot.containerArm.getPotValue();
+    	Robot.containerArm.getPIDController().setSetpoint(currentSetpoint);
+    	setpointIncrement =(ultimateSetpoint-currentSetpoint)/(50*RAMP_TIME);
+    	Robot.containerArm.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -33,10 +35,12 @@ public class MoveContainerArmToPositionIncrementingSetpoint extends Command {
     	currentSetpoint = Robot.containerArm.getPIDController().getSetpoint();
     	SmartDashboard.putNumber("containerPot", Robot.containerArm.getPotValue());
     	SmartDashboard.putNumber("Current Setpoint", currentSetpoint);
-    	if(currentSetpoint<ultimateSetpoint){
+    	if (Math.abs(currentSetpoint-ultimateSetpoint )< .0001){//rounding error
+    	}else if(Math.abs(currentSetpoint-ultimateSetpoint)> Math.abs(setpointIncrement)){
     		Robot.containerArm.setSetpoint(currentSetpoint += setpointIncrement);
-    	}else if(currentSetpoint != ultimateSetpoint){
+    	}else{  //currentSetpoint != ultimateSetpoint
     		currentSetpoint = ultimateSetpoint;
+    		Robot.containerArm.setSetpoint(currentSetpoint);    		
     	}
     }
 
@@ -48,10 +52,12 @@ public class MoveContainerArmToPositionIncrementingSetpoint extends Command {
     // Called once after isFinished returns true
     protected void end() {    	
     	Robot.containerArm.stopAndDisable();
+    	System.out.println("ended");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

@@ -28,6 +28,8 @@ public class ContainerArm extends PIDSubsystem {
         //                  to
         // enable() - Enables the PID controller.
     	super(p,i,d);
+    	this.setOutputRange(-.5, .5);
+    	//this.setInputRange(70, 205);
     	pot = new AnalogPotentiometer(RobotMap.AIOChannels.POT_CHANNEL, POT_SCALE);
     	motor = new VictorSP(RobotMap.PWMChannels.ARM_MOTOR);    	
     }    

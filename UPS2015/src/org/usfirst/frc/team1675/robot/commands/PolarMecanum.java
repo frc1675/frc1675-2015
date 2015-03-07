@@ -5,6 +5,7 @@ import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.XBoxControllerMap;
 import org.usfirst.frc.team1675.robot.subsystems.Drivetrain;
 
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**

@@ -1,17 +1,11 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
-import org.usfirst.frc.team1675.robot.commands.MecanumDriveWithJoysticks;
-import org.usfirst.frc.team1675.robot.commands.PolarMecanum;
-import org.usfirst.frc.team1675.robot.commands.TankDriveWithJoysticks;
-import org.usfirst.frc.team1675.robot.utils.AccelerationSpeedController;
-import org.usfirst.frc.team1675.robot.utils.PIDSpeedControllerForVelocity;
+import org.usfirst.frc.team1675.robot.commands.CheezyDrive;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -118,7 +112,7 @@ public class Drivetrain extends Subsystem {
 	}
 
     public void initDefaultCommand() {    	
-    	setDefaultCommand(new PolarMecanum());
+    	setDefaultCommand(new CheezyDrive());
     }
     
     
