@@ -106,12 +106,12 @@ public class RobotMap {
 	}	
 	
 	public static class SolenoidChannels{
-		public static final int WRIST_DOWN = 0;		
+		public static final int WRIST_DOWN = 6;		
 		public static final int WRIST_UP = 1;		
-		public static final int LEFT_CLAW_EXTEND = 0;		
+		public static final int LEFT_CLAW_EXTEND = 2;		
 		public static final int LEFT_CLAW_RETRACT = 5;
-		public static final int RIGHT_CLAW_EXTEND = 6;		
-		public static final int RIGHT_CLAW_RETRACT = 7;
+		public static final int RIGHT_CLAW_EXTEND = 3;		
+		public static final int RIGHT_CLAW_RETRACT = 4;
 	}
 	
 	public static class DrivePolarities {

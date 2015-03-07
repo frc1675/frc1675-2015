@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPosition;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionOnDashboard;
 import org.usfirst.frc.team1675.robot.commands.containerarm.ResetArmPID;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
@@ -91,6 +92,8 @@ public class OI {
 		operatorLeftBumperButton = new JoystickButton(operatorController,XBoxControllerMap.LEFT_BUMPER_BUTTON);
 		operatorDPadUp = new DPadButton(operatorController, DPadButton.Direction.UP);
 		operatorDPadDown = new DPadButton(operatorController, DPadButton.Direction.DOWN);
+		operatorDPadLeft = new DPadButton(operatorController, DPadButton.Direction.LEFT);
+		operatorDPadRight = new DPadButton(operatorController, DPadButton.Direction.RIGHT);
 		
 		driverAButton.whenPressed(new GoDownOneTote());
 		driverYButton.whenPressed(new GoUpOneTote());
@@ -108,6 +111,7 @@ public class OI {
 		operatorLeftBumperButton.whenPressed(new ToggleTotevatorPID());
 		operatorDPadUp.whenPressed(new ResetArmPID());
 		operatorDPadDown.whenPressed(new DriveBackBeforeDroppingTotes());
+		operatorDPadLeft.whenPressed(new MoveContainerArmToPosition(180.0));
 
 	}	
 	

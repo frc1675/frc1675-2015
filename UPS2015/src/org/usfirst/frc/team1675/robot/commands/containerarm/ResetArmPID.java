@@ -22,9 +22,9 @@ public class ResetArmPID extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		Robot.toteStacker.getPIDController().setPID(
-				SmartDashboard.getNumber("ContainerArmP",RobotMap.ContainerArmConstants.P),
-				SmartDashboard.getNumber("ContainerArmI",RobotMap.ContainerArmConstants.I),
-				SmartDashboard.getNumber("ContainerArmD",RobotMap.ContainerArmConstants.D));
+				SmartDashboard.getNumber("ContainerArmP"),
+				SmartDashboard.getNumber("ContainerArmI"),
+				SmartDashboard.getNumber("ContainerArmD"));
 	}
 
 	// Called repeatedly when this Command is scheduled to run
