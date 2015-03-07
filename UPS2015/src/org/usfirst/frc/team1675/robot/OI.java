@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPosition;
+import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionIncrementingSetpoint;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionOnDashboard;
 import org.usfirst.frc.team1675.robot.commands.containerarm.ResetArmPID;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
@@ -112,6 +113,7 @@ public class OI {
 		operatorDPadUp.whenPressed(new ResetArmPID());
 		operatorDPadDown.whenPressed(new DriveBackBeforeDroppingTotes());
 		operatorDPadLeft.whenPressed(new MoveContainerArmToPosition(180.0));
+		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(150.0));
 
 	}	
 	
