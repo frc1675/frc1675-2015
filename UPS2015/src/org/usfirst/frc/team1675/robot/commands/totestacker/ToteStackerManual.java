@@ -22,7 +22,7 @@ public class ToteStackerManual extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double toteStackerMovement = -Robot.oi.getOperatorLeftYAxis(RobotMap.ToteStackerConstants.MANUAL_SCALE_FACTOR);
+    	double toteStackerMovement = -Robot.oi.getOperatorLeftYAxis() * RobotMap.ToteStackerConstants.MANUAL_SCALE_FACTOR;
     	Robot.toteStacker.setManualMovement(toteStackerMovement);
     }
 

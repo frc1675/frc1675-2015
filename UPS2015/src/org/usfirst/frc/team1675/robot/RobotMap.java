@@ -37,6 +37,13 @@ public class RobotMap {
 		public static final int TOTEVATOR_ENCODER_B = 5;
 	}
 	
+	public static class ControllerPorts {
+
+		static final int DRIVER = 0;
+		static final int OPERATOR = 1;
+		
+	}
+	
 	public static class AIOChannels {
 		public static final int POT_CHANNEL = 2;
 	}

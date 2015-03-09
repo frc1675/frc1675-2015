@@ -25,7 +25,7 @@ public class RawMoveContainerArm extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double value = Robot.oi.getOperatorRightYAxis(RobotMap.ContainerArmConstants.MANUAL_SCALE_FACTOR);
+    	double value = Robot.oi.getOperatorRightYAxis() * RobotMap.ContainerArmConstants.MANUAL_SCALE_FACTOR;
     	Robot.containerArm.rawSetArm(value);
     	SmartDashboard.putNumber("containerPot", Robot.containerArm.getPotValue());
     	
