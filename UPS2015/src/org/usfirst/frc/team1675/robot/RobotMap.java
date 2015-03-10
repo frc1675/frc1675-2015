@@ -38,10 +38,8 @@ public class RobotMap {
 	}
 	
 	public static class ControllerPorts {
-
 		static final int DRIVER = 0;
 		static final int OPERATOR = 1;
-		
 	}
 	
 	public static class AIOChannels {
@@ -84,7 +82,7 @@ public class RobotMap {
 	}
 
 	public static class DriverConstants {
-		public static final double DEAD_ZONE_TOLERANCE = .1675;
+		public static final double DEAD_ZONE_TOLERANCE = .1675; //i'm glad we arent FRC 5543
 		public static final double MOTOR_DEADZONE_TOLERANCE = .2;
 		public static final double ACCELERATION_RAMP = 120;
 		public static final double ACCELERATION_THRESHOLD = .07;
