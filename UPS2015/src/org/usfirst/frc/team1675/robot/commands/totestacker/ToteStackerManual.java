@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ToteStackerManual extends Command {
 
     public ToteStackerManual() {
-    	requires(Robot.toteStacker);
+    	requires(Robot.totevator);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -23,7 +23,7 @@ public class ToteStackerManual extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double toteStackerMovement = -Robot.oi.getOperatorLeftYAxis() * RobotMap.ToteStackerConstants.MANUAL_SCALE_FACTOR;
-    	Robot.toteStacker.setManualMovement(toteStackerMovement);
+    	Robot.totevator.setManualMovement(toteStackerMovement);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -11,14 +11,14 @@ public class ResetToteStacker extends Command {
 
 	
     public ResetToteStacker() {
-    	requires(Robot.toteStacker);
+    	requires(Robot.totevator);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.toteStacker.goToPoint(0);
+    	Robot.totevator.goToPoint(0);
     }
 
     // Called repeatedly when this Command is scheduled to run

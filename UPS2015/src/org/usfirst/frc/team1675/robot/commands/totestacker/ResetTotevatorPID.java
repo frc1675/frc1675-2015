@@ -19,7 +19,7 @@ public class ResetTotevatorPID extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.toteStacker.getPIDController().setPID(
+    	Robot.totevator.getPIDController().setPID(
     			SmartDashboard.getNumber("TotevatorP", RobotMap.ToteStackerConstants.P), 
 				SmartDashboard.getNumber("TotevatorI", RobotMap.ToteStackerConstants.I), 
 				SmartDashboard.getNumber("TotevatorD", RobotMap.ToteStackerConstants.D));
