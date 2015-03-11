@@ -23,13 +23,9 @@ public class ContainerArm extends PIDSubsystem {
 	private static final double POT_SCALE = 250.0;
 	
     public ContainerArm(double p, double i, double d) {
-    	// Use these to get going:
-        // setSetpoint() -  Sets where the PID controller should move the system
-        //                  to
-        // enable() - Enables the PID controller.
     	super(p,i,d);
     	this.setOutputRange(-.5, .5);
-    	//this.setInputRange(70, 205);
+
     	pot = new AnalogPotentiometer(RobotMap.AIOChannels.POT_CHANNEL, POT_SCALE);
     	motor = new VictorSP(RobotMap.PWMChannels.ARM_MOTOR);    	
     }    
@@ -63,22 +59,15 @@ public class ContainerArm extends PIDSubsystem {
     	this.getPIDController().setPID(p, i, d);
     }
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
         setDefaultCommand(new RawMoveContainerArm());
     }
     
     protected double returnPIDInput() {
-        // Return your input value for the PID loop
-        // e.g. a sensor, like a potentiometer:
-        // yourPot.getAverageVoltage() / kYourMaxVoltage;
     	return pot.get();
     }
     
     protected void usePIDOutput(double output) {
     	SmartDashboard.putNumber("arm Output", output);
-        // Use output to drive your system, like a motor
-        // e.g. yourMotor.set(output);
     	motor.set(output);
-    	//SmartDashboard.putNumber("Angle", pot.get());
     }
 }

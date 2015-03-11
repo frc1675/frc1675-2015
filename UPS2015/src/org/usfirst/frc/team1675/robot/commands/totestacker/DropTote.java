@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1675.robot.commands.totestacker;
 
 import org.usfirst.frc.team1675.robot.Robot;
-import org.usfirst.frc.team1675.robot.subsystems.ToteStacker;
+import org.usfirst.frc.team1675.robot.subsystems.Totevator;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -18,7 +18,7 @@ public class DropTote extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.totevator.moveRelative(-(ToteStacker.TICKS_PER_TOTEHOOK/2));
+    	Robot.totevator.moveRelative(-(Totevator.TICKS_PER_TOTEHOOK/2));
     }
 
     // Called repeatedly when this Command is scheduled to run

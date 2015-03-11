@@ -59,7 +59,6 @@ public class ContainerClaw extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		//setDefaultCommand(new ContainerClawClose());
 	}
 
 }

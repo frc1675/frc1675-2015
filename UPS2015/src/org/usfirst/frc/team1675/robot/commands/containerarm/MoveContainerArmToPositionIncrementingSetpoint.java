@@ -11,17 +11,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class MoveContainerArmToPositionIncrementingSetpoint extends Command {
 	private static final double RAMP_TIME = .5;
-	double currentSetpoint;
-	double ultimateSetpoint;
-	double setpointIncrement;
+	private double currentSetpoint;
+	private double ultimateSetpoint;
+	private double setpointIncrement;
     public MoveContainerArmToPositionIncrementingSetpoint(double setpoint) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.containerArm);
     	ultimateSetpoint = setpoint;
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
     	ultimateSetpoint = SmartDashboard.getNumber("ContainerArmSetpoint");  //comment this out to make go to value passed in instead of the one on dashboard.  	
     	currentSetpoint = Robot.containerArm.getPotValue();
@@ -30,7 +27,6 @@ public class MoveContainerArmToPositionIncrementingSetpoint extends Command {
     	Robot.containerArm.enable();
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	currentSetpoint = Robot.containerArm.getPIDController().getSetpoint();
     	SmartDashboard.putNumber("containerPot", Robot.containerArm.getPotValue());
@@ -44,19 +40,15 @@ public class MoveContainerArmToPositionIncrementingSetpoint extends Command {
     	}
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	return false;
     }
 
-    // Called once after isFinished returns true
     protected void end() {    	
     	Robot.containerArm.stopAndDisable();
     	System.out.println("ended");
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
     protected void interrupted() {
     	end();
     }

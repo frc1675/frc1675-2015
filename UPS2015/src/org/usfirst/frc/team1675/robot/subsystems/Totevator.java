@@ -1,7 +1,6 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
-import org.usfirst.frc.team1675.robot.commands.PolarMecanum;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerManual;
 
 import edu.wpi.first.wpilibj.Encoder;
@@ -13,17 +12,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class ToteStacker extends PIDSubsystem {
+public class Totevator extends PIDSubsystem {
 	public static final int TICKS_PER_TOTEHOOK = 270;
 	public static final int TICKS_TO_DROP = 75; //maybe?
 	
 	SpeedController toteMotor;
 	Encoder totevatorEncoder;
 	
-	
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-	public ToteStacker(double p, double i, double d){
+	public Totevator(double p, double i, double d){
 		super(p, i, d);
 		toteMotor = new VictorSP(RobotMap.PWMChannels.TOTE_ELEVATOR);
 		totevatorEncoder = new Encoder(RobotMap.DIOChannels.TOTEVATOR_ENCODER_A, RobotMap.DIOChannels.TOTEVATOR_ENCODER_B);

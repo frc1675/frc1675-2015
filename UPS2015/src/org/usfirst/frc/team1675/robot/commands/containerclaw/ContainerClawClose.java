@@ -8,29 +8,23 @@ import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Closes both sides of the container claw
- *
  */
 public class ContainerClawClose extends Command {
-	Timer timer;
 
 	public ContainerClawClose() {
 		requires(Robot.containerClaw);
-		timer = new Timer();
+		this.setTimeout(RobotMap.ContainerClawConstants.CLAW_CYLINDER_FIRE_TIME);
 	}
 
-	@Override
 	protected void initialize() {
-		timer.start();
 	}
 
-	@Override
 	protected void execute() {
 		Robot.containerClaw.closeBoth();
 	}
 
-	@Override
 	protected boolean isFinished() {
-		return (timer.get() > RobotMap.ContainerClawConstants.CLAW_CYLINDER_FIRE_TIME);
+		return this.isTimedOut();
 	}
 
 	protected void end() {
@@ -40,5 +34,4 @@ public class ContainerClawClose extends Command {
 	protected void interrupted() {
 		end();
 	}
-
 }

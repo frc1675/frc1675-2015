@@ -11,27 +11,20 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class LeftContainerClawOpen extends Command {
 
-	Timer timer;
-
 	public LeftContainerClawOpen() {
-
 		requires(Robot.containerClaw);
-		timer = new Timer();
+		setTimeout(RobotMap.ContainerClawConstants.CLAW_CYLINDER_FIRE_TIME);
 	}
 
 	protected void initialize() {
-
-		timer.start();
 	}
 
 	protected void execute() {
-
 		Robot.containerClaw.openLeft();
 	}
 
 	protected boolean isFinished() {
-
-		return (timer.get() > RobotMap.ContainerClawConstants.CLAW_CYLINDER_FIRE_TIME);
+		return isTimedOut();
 	}
 
 	protected void end() {

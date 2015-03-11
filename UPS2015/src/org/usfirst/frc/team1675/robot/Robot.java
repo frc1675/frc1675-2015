@@ -7,14 +7,14 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team1675.robot.commands.PolarMecanumForTime;
 import org.usfirst.frc.team1675.robot.commands.TestAuto;
+import org.usfirst.frc.team1675.robot.commands.drivetrain.PolarMecanumForTime;
 import org.usfirst.frc.team1675.robot.commands.totestacker.TotevateForTime;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerArm;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerWrist;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerClaw;
 import org.usfirst.frc.team1675.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team1675.robot.subsystems.ToteStacker;
+import org.usfirst.frc.team1675.robot.subsystems.Totevator;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,7 +26,7 @@ import org.usfirst.frc.team1675.robot.subsystems.ToteStacker;
 public class Robot extends IterativeRobot {
 	
 	public static Drivetrain drivetrain;
-	public static ToteStacker totevator;
+	public static Totevator totevator;
 	public static ContainerArm containerArm;
 	public static ContainerWrist containerWrist;
 	public static ContainerClaw containerClaw;
@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 		// which was before causing the NetworkTable to throw exceptions
 		try{
 			drivetrain = new Drivetrain();
-			totevator = new ToteStacker(RobotMap.ToteStackerConstants.P, RobotMap.ToteStackerConstants.I,	RobotMap.ToteStackerConstants.D);
+			totevator = new Totevator(RobotMap.ToteStackerConstants.P, RobotMap.ToteStackerConstants.I,	RobotMap.ToteStackerConstants.D);
 			containerArm = new ContainerArm(RobotMap.ContainerArmConstants.P, RobotMap.ContainerArmConstants.I, RobotMap.ContainerArmConstants.D);
 			containerWrist = new ContainerWrist();
 			containerClaw = new ContainerClaw();
