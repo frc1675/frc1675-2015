@@ -23,7 +23,7 @@ public class MoveContainerArmToPositionIncrementingSetpoint extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	ultimateSetpoint = SmartDashboard.getNumber("ContainerArmSetpoint");  //comment this out to make go to value passed in instead of the one on dashboard.  	
+    	//ultimateSetpoint = SmartDashboard.getNumber("ContainerArmSetpoint");  //comment this out to make go to value passed in instead of the one on dashboard.  	
     	currentSetpoint = Robot.containerArm.getPotValue();
     	Robot.containerArm.getPIDController().setSetpoint(currentSetpoint);
     	setpointIncrement =(ultimateSetpoint-currentSetpoint)/(50*RAMP_TIME);

@@ -1,10 +1,10 @@
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.commands.containerarm.ThatStupidFreakinAutoCanPickupRoutine;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPosition;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionIncrementingSetpoint;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionOnDashboard;
 import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArm;
-import org.usfirst.frc.team1675.robot.commands.containerarm.ResetArmPID;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
 import org.usfirst.frc.team1675.robot.commands.containerwrist.WristDown;
@@ -12,8 +12,9 @@ import org.usfirst.frc.team1675.robot.commands.containerwrist.WristUp;
 import org.usfirst.frc.team1675.robot.commands.totestacker.DriveBackBeforeDroppingTotes;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoDownOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoUpOneTote;
-import org.usfirst.frc.team1675.robot.commands.totestacker.ResetTotevatorPID;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ToggleTotevatorPID;
+import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerBumpDown;
+import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerBumpUp;
 import org.usfirst.frc.team1675.robot.utils.DPadButton;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -85,6 +86,9 @@ public class OI {
 		operatorController = new Joystick(OPERATOR_CONTROLLER_PORT);
 		driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
 		driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
+		driverBButton = new JoystickButton(driverController, XBoxControllerMap.B_BUTTON);
+		driverXButton = new JoystickButton(driverController, XBoxControllerMap.X_BUTTON);
+
 		
 		operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
 		operatorYButton = new JoystickButton(operatorController, XBoxControllerMap.Y_BUTTON);
@@ -99,6 +103,8 @@ public class OI {
 		
 		driverAButton.whenPressed(new GoDownOneTote());
 		driverYButton.whenPressed(new GoUpOneTote());
+		driverBButton.whenPressed(new ToteStackerBumpUp());
+		driverXButton.whenPressed(new ToteStackerBumpDown());
 		
 		operatorXButton.whenPressed(new ContainerClawOpen());
 		operatorXButton.whenReleased(new ContainerClawClose());
@@ -112,10 +118,10 @@ public class OI {
 		//operatorRightBumperButton.whenPressed(new ResetTotevatorPID());
 		operatorRightBumperButton.whenPressed(new RawMoveContainerArm());
 		operatorLeftBumperButton.whenPressed(new ToggleTotevatorPID());
-		operatorDPadUp.whenPressed(new ResetArmPID());
+		operatorDPadUp.whenPressed(new ThatStupidFreakinAutoCanPickupRoutine(1.0));
 		operatorDPadDown.whenPressed(new DriveBackBeforeDroppingTotes());
 		operatorDPadLeft.whenPressed(new MoveContainerArmToPosition(75.0));
-		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(192.0));
+		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.ContainerArmConstants.PICK_UP_POSITION));
 
 	}	
 	

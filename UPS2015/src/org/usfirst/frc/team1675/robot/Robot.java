@@ -1,20 +1,24 @@
 
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.commands.AcquireOneCanAuto;
+import org.usfirst.frc.team1675.robot.commands.OneToteAutoFromPlatform;
+import org.usfirst.frc.team1675.robot.commands.OpenFieldGrabOneCanAuto;
+import org.usfirst.frc.team1675.robot.commands.OpenFieldOneToteAuto;
+import org.usfirst.frc.team1675.robot.commands.PolarMecanumForTime;
+import org.usfirst.frc.team1675.robot.commands.ScoringPlatformGrabOneCanAuto;
+import org.usfirst.frc.team1675.robot.subsystems.ContainerArm;
+import org.usfirst.frc.team1675.robot.subsystems.ContainerClaw;
+import org.usfirst.frc.team1675.robot.subsystems.ContainerWrist;
+import org.usfirst.frc.team1675.robot.subsystems.Drivetrain;
+import org.usfirst.frc.team1675.robot.subsystems.ToteStacker;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import org.usfirst.frc.team1675.robot.commands.PolarMecanumForTime;
-import org.usfirst.frc.team1675.robot.commands.TestAuto;
-import org.usfirst.frc.team1675.robot.commands.totestacker.TotevateForTime;
-import org.usfirst.frc.team1675.robot.subsystems.ContainerArm;
-import org.usfirst.frc.team1675.robot.subsystems.ContainerWrist;
-import org.usfirst.frc.team1675.robot.subsystems.ContainerClaw;
-import org.usfirst.frc.team1675.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team1675.robot.subsystems.ToteStacker;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,8 +35,10 @@ public class Robot extends IterativeRobot {
 	public static ContainerWrist containerWrist;
 	public static ContainerClaw containerClaw;
 	public static OI oi;
+	SendableChooser chooser;
 	
 	public Robot(){
+
 		// Instantiating subsystems in a explicit Robot constructor to ensure they are constructed after RobotBase
 		// which was before causing the NetworkTable to throw exceptions
 		try{
@@ -44,6 +50,7 @@ public class Robot extends IterativeRobot {
 		}catch(Exception e){
 			e.printStackTrace();			
 		}		
+
 	}
 	
 
@@ -53,14 +60,25 @@ public class Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-    public void robotInit() {    	
+    public void robotInit() {   
+    	chooser = new SendableChooser();
+    	chooser.addDefault("Drive Forward", new PolarMecanumForTime(.5, Math.PI, 0, 1.3));
+    	chooser.addObject("Grab Can By Scoring Platform", new ScoringPlatformGrabOneCanAuto());
+    	chooser.addObject("Acquire Can", new AcquireOneCanAuto());
+    	chooser.addObject("Do Nothing", null);
+    	chooser.addObject("One Tote Scoring Platform", new OneToteAutoFromPlatform());
+    	chooser.addObject("Open Field One Tote Auto", new OpenFieldOneToteAuto());
+    	chooser.addObject("Open Field Grab Can Auto", new OpenFieldGrabOneCanAuto());
+    	SmartDashboard.putData("chooser", chooser);
+    	
+    	
     	SmartDashboard.putNumber("TotevatorP", RobotMap.ToteStackerConstants.P);
     	SmartDashboard.putNumber("TotevatorI", RobotMap.ToteStackerConstants.I);
     	SmartDashboard.putNumber("TotevatorD", RobotMap.ToteStackerConstants.D);
 		SmartDashboard.putNumber("ContainerArmP",RobotMap.ContainerArmConstants.P);
 		SmartDashboard.putNumber("ContainerArmI",RobotMap.ContainerArmConstants.I);
 		SmartDashboard.putNumber("ContainerArmD",RobotMap.ContainerArmConstants.D);
-		SmartDashboard.putNumber("ContainerArmSetpoint", 150);
+		SmartDashboard.putNumber("ContainerArmSetpoint", 192);  //unused right now
     	
         if (autonomousCommand != null) autonomousCommand.cancel();
 //    			SmartDashboard.putNumber("BackLeftP", RobotMap.DriveEncoders.BackRightPIDDefaults.P);
@@ -94,7 +112,8 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-    	autonomousCommand = new TestAuto();
+    	autonomousCommand = (Command) chooser.getSelected();
+
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
