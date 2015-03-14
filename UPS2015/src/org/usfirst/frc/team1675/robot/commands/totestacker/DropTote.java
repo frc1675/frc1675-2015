@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DropTote extends Command {
 
     public DropTote() {
-    	requires(Robot.toteStacker);
+    	requires(Robot.totevator);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.toteStacker.moveRelative(-(ToteStacker.TICKS_PER_TOTEHOOK/2));
+    	Robot.totevator.moveRelative(-(ToteStacker.TICKS_PER_TOTEHOOK/2));
     }
 
     // Called repeatedly when this Command is scheduled to run

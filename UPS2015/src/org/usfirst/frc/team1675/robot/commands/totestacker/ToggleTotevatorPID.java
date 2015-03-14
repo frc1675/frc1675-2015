@@ -10,12 +10,12 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ToggleTotevatorPID extends Command {
 
     public ToggleTotevatorPID() {
-        requires(Robot.toteStacker);
+        requires(Robot.totevator);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.toteStacker.togglePID();
+    	Robot.totevator.togglePID();
     }
 
     // Called repeatedly when this Command is scheduled to run

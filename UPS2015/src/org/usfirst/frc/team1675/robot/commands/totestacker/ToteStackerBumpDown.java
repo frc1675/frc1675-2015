@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ToteStackerBumpDown extends Command {
 
     public ToteStackerBumpDown() {
-    	requires(Robot.toteStacker);
+    	requires(Robot.totevator);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.toteStacker.moveRelative(-ToteStacker.TICKS_PER_BUMP);
+    	Robot.totevator.moveRelative(-ToteStacker.TICKS_PER_BUMP);
     }
 
     // Called repeatedly when this Command is scheduled to run

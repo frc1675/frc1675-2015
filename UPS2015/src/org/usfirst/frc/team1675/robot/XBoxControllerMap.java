@@ -1,11 +1,6 @@
 package org.usfirst.frc.team1675.robot;
 
 public class XBoxControllerMap {
-	   
-    /* CURRENTLY NOT MAPPED:
-     * D-Pad vertical axis
-     */
-    
     //AXES
     
     //Left analog stick
@@ -16,16 +11,9 @@ public class XBoxControllerMap {
     public static final int RIGHT_X_AXIS = 4;
     public static final int RIGHT_Y_AXIS = 5;
     
-    //Trigger axis.
-    //Starts at 0. Left trigger increases value, right trigger decreases value.
-    //NOTE that this means you cannot "detect" both triggers being pulled at 
-    //  any degree.
+    //Trigger axes
     public static final int LEFT_TRIGGER_AXIS = 2;
     public static final int RIGHT_TRIGGER_AXIS = 3;
-    
-    //Directional Pad horizontal axis.
-    //Starts at 0, goes down when left is pressed, up when right is pressed.
-    public static final int DPAD_AXIS = 6;
     
     //BUTTONS
     
