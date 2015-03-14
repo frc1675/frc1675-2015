@@ -64,6 +64,7 @@ public class OI {
 		operatorYButton = new JoystickButton(operatorController, XBoxControllerMap.Y_BUTTON);
 		operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
 		operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
+		
 		operatorRightBumperButton = new JoystickButton(operatorController,XBoxControllerMap.RIGHT_BUMPER_BUTTON);
 		operatorLeftBumperButton = new JoystickButton(operatorController,XBoxControllerMap.LEFT_BUMPER_BUTTON);
 		

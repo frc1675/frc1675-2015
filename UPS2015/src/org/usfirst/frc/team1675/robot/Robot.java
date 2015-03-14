@@ -77,11 +77,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("ContainerArmP",RobotMap.ContainerArmConstants.P);
 		SmartDashboard.putNumber("ContainerArmI",RobotMap.ContainerArmConstants.I);
 		SmartDashboard.putNumber("ContainerArmD",RobotMap.ContainerArmConstants.D);
-		SmartDashboard.putNumber("ContainerArmSetpoint", 192);  //unused right now
-    	
-        if (autonomousCommand != null) {
-        	autonomousCommand.cancel();
-        }
+		SmartDashboard.putNumber("ContainerArmSetpoint", 192);  
 
 		oi = new OI();
 		    
