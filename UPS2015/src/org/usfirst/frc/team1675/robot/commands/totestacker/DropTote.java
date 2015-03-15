@@ -18,6 +18,7 @@ public class DropTote extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
     	Robot.totevator.moveRelative(-(ToteStacker.TICKS_PER_TOTEHOOK/2));
     }
 

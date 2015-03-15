@@ -18,7 +18,10 @@ public class GoUpOneTote extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.totevator.moveRelative(ToteStacker.TICKS_PER_TOTEHOOK);
+    	if(Robot.totevator.canIToteUpQuestionMark()){
+    		Robot.totevator.countToteUp();
+    		Robot.totevator.moveRelative(ToteStacker.TICKS_PER_TOTEHOOK);
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run

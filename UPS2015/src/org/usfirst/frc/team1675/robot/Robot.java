@@ -2,10 +2,10 @@
 package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.AcquireOneCanAuto;
+import org.usfirst.frc.team1675.robot.commands.DriveForwardIntoAutoZone;
 import org.usfirst.frc.team1675.robot.commands.OneToteAutoFromPlatform;
 import org.usfirst.frc.team1675.robot.commands.OpenFieldGrabOneCanAuto;
 import org.usfirst.frc.team1675.robot.commands.OpenFieldOneToteAuto;
-import org.usfirst.frc.team1675.robot.commands.PolarMecanumForTime;
 import org.usfirst.frc.team1675.robot.commands.ScoringPlatformGrabOneCanAuto;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerArm;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerClaw;
@@ -61,7 +61,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {   
     	chooser = new SendableChooser();
-    	chooser.addDefault("Drive Forward", new PolarMecanumForTime(.5, Math.PI, 0, 1.3));
+    	chooser.addDefault("Drive Forward", new DriveForwardIntoAutoZone());
     	chooser.addObject("Grab Can By Scoring Platform", new ScoringPlatformGrabOneCanAuto());
     	chooser.addObject("Acquire Can", new AcquireOneCanAuto());
     	chooser.addObject("Do Nothing", null);

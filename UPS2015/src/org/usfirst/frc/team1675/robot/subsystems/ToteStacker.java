@@ -20,6 +20,8 @@ public class ToteStacker extends PIDSubsystem {
 	
 	SpeedController toteMotor;
 	Encoder totevatorEncoder;
+	int totalToteLevel;
+	int totalBumps;
 	
 	
     // Put methods for controlling this subsystem
@@ -32,6 +34,8 @@ public class ToteStacker extends PIDSubsystem {
 		this.enable();
 		this.setSetpoint(0);
 		SmartDashboard.putBoolean("TotePIDEnabled", true);
+		totalToteLevel = 0;
+		totalBumps = 0;
 	}
 
     public void initDefaultCommand() {
@@ -89,6 +93,35 @@ public class ToteStacker extends PIDSubsystem {
 			this.getPIDController().enable();
 			SmartDashboard.putBoolean("TotePIDEnabled", true);
 		}
+	}
+	
+	public boolean canIToteUpQuestionMark(){
+		return this.totalToteLevel < 3;
+	}
+	
+	public void countToteUp(){
+		totalToteLevel++;
+	}
+	
+	public void countToteDown(){
+		totalToteLevel--;
+	}
+
+	public void resetToteLevel() {
+		totalToteLevel = 0;
+	}
+	
+	public int countAndReturnBumpUp(){
+		totalBumps++;
+		return totalBumps;
+	}	
+	public int countAndReturnBumpDown(){
+		totalBumps--;
+		return totalBumps;
+	}
+	public int resetAndReturnBumpLevel() {
+		totalBumps = 0;
+		return totalBumps;
 	}
 }
 

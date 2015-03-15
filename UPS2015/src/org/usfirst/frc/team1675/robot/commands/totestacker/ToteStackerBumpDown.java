@@ -4,6 +4,7 @@ import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.subsystems.ToteStacker;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -18,6 +19,7 @@ public class ToteStackerBumpDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	SmartDashboard.putNumber("Number Of Bumps", Robot.totevator.countAndReturnBumpDown());
     	Robot.totevator.moveRelative(-ToteStacker.TICKS_PER_BUMP);
     }
 

@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class ScoringPlatformGrabOneCanAuto extends CommandGroup {
 	private static final double DRIVE_POWER = .7;
-	private static final double DRIVE_TIME = 1.32;
+	private static final double DRIVE_TIME = 1.25;
     public  ScoringPlatformGrabOneCanAuto() {
     	addParallel(new MoveContainerArmToPosition(RobotMap.ContainerArmConstants.HOME_POSITION));
     	addSequential(new Wait(1));
@@ -19,6 +19,8 @@ public class ScoringPlatformGrabOneCanAuto extends CommandGroup {
     	addSequential(new PolarMecanumForTime(DRIVE_POWER, Math.PI, 0, DRIVE_TIME));
     	addParallel(new MoveContainerArmToPosition(RobotMap.ContainerArmConstants.HOME_POSITION-12));
     	addSequential(new PolarMecanumForTime(DRIVE_POWER, 0, 0, .255));
+    	addSequential(new PolarMecanumForTime(0, 0, 1, RobotMap.AutoConstants.TURN_NINETY_DEGREES_TIME));
+    	addSequential(new PolarMecanumForTime(.35, Math.PI, 0, .5));
     	        // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

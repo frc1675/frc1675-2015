@@ -11,15 +11,17 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class OpenFieldGrabOneCanAuto extends CommandGroup {
     
-    	private static final double DRIVE_POWER = .4;
-    	private static final double DRIVE_TIME = 1.32;
+    	private static final double DRIVE_POWER = .59;
+    	private static final double DRIVE_TIME = 1.26;
         public  OpenFieldGrabOneCanAuto() {
         	addParallel(new MoveContainerArmToPosition(RobotMap.ContainerArmConstants.HOME_POSITION));
         	addSequential(new Wait(1));
         	addSequential(new ContainerClawClose());
         	addSequential(new PolarMecanumForTime(DRIVE_POWER, Math.PI, 0, DRIVE_TIME));
-        	addParallel(new MoveContainerArmToPosition(RobotMap.ContainerArmConstants.HOME_POSITION-12));
+        	addParallel(new MoveContainerArmToPosition(RobotMap.ContainerArmConstants.HOME_POSITION-15));
         	addSequential(new PolarMecanumForTime(DRIVE_POWER, 0, 0, .255));
+        	addSequential(new PolarMecanumForTime(0, 0, -1, RobotMap.AutoConstants.TURN_NINETY_DEGREES_TIME));
+        	addSequential(new PolarMecanumForTime(.47, Math.PI, 0, .6));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

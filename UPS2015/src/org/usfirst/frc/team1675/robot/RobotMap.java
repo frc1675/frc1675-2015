@@ -80,6 +80,9 @@ public class RobotMap {
 			public static final double F = 0;
 		}
 	}
+	public static class AutoConstants{
+		public static final double TURN_NINETY_DEGREES_TIME = .8;
+	}
 
 	public static class DriverConstants {
 		public static final double DEAD_ZONE_TOLERANCE = .1675; //i'm glad we arent FRC 5543

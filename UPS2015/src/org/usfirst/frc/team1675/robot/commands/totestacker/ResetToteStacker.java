@@ -3,6 +3,7 @@ package org.usfirst.frc.team1675.robot.commands.totestacker;
 import org.usfirst.frc.team1675.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -18,6 +19,8 @@ public class ResetToteStacker extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.totevator.resetToteLevel();
+    	SmartDashboard.putNumber("Number Of Bumps", Robot.totevator.resetAndReturnBumpLevel());
     	Robot.totevator.goToPoint(0);
     }
 
