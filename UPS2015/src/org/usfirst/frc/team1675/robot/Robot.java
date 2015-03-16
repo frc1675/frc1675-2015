@@ -6,6 +6,7 @@ import org.usfirst.frc.team1675.robot.commands.DriveForwardIntoAutoZone;
 import org.usfirst.frc.team1675.robot.commands.OneToteAutoFromPlatform;
 import org.usfirst.frc.team1675.robot.commands.OpenFieldGrabOneCanAuto;
 import org.usfirst.frc.team1675.robot.commands.OpenFieldOneToteAuto;
+import org.usfirst.frc.team1675.robot.commands.PIDDriveForDistance;
 import org.usfirst.frc.team1675.robot.commands.ScoringPlatformGrabOneCanAuto;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerArm;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerClaw;
@@ -68,9 +69,10 @@ public class Robot extends IterativeRobot {
     	chooser.addObject("One Tote Scoring Platform", new OneToteAutoFromPlatform());
     	chooser.addObject("Open Field One Tote Auto", new OpenFieldOneToteAuto());
     	chooser.addObject("Open Field Grab Can Auto", new OpenFieldGrabOneCanAuto());
+    	chooser.addObject("Drive Forward 4 feet", new PIDDriveForDistance(RobotMap.DriveEncoders.PositionPIDDefaults.P ,RobotMap.DriveEncoders.PositionPIDDefaults.I ,RobotMap.DriveEncoders.PositionPIDDefaults.D , 48));
     	SmartDashboard.putData("chooser", chooser);
     	
-    	
+
     	SmartDashboard.putNumber("TotevatorP", RobotMap.ToteStackerConstants.P);
     	SmartDashboard.putNumber("TotevatorI", RobotMap.ToteStackerConstants.I);
     	SmartDashboard.putNumber("TotevatorD", RobotMap.ToteStackerConstants.D);
