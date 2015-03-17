@@ -4,6 +4,7 @@ import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.drivetrain.CheezyDrive;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -21,6 +22,8 @@ public class Drivetrain extends Subsystem {
 	private Encoder frontRightEncoder;
 	private Encoder backLeftEncoder;
 	private Encoder backRightEncoder;
+	
+	private Gyro gyro;
 		
 	public Drivetrain(){	
 		frontLeftMotor = new VictorSP(RobotMap.PWMChannels.FRONT_LEFT_DRIVE);
@@ -32,6 +35,9 @@ public class Drivetrain extends Subsystem {
 		frontRightEncoder = new Encoder(RobotMap.DIOChannels.FRONT_RIGHT_ENCODER_A, RobotMap.DIOChannels.FRONT_RIGHT_ENCODER_B);
 		backLeftEncoder = new Encoder(RobotMap.DIOChannels.BACK_LEFT_ENCODER_A, RobotMap.DIOChannels.BACK_LEFT_ENCODER_B);
 		backRightEncoder = new Encoder(RobotMap.DIOChannels.BACK_RIGHT_ENCODER_A, RobotMap.DIOChannels.BACK_RIGHT_ENCODER_B);
+	
+		gyro = new Gyro(RobotMap.AIOChannels.GYRO_CHANNEL);
+		gyro.setSensitivity(.007);
 	}	
 	
 	public void setFrontLeftSpeed(double speed) {	
@@ -117,5 +123,15 @@ public class Drivetrain extends Subsystem {
     		return 1.0;
     	}
     }
+
+	public void resetGyro() {
+		gyro.reset();
+		
+	}
+
+	public double getGyroAngle() {
+		// TODO Auto-generated method stub
+		return gyro.getAngle();
+	}
 }
 

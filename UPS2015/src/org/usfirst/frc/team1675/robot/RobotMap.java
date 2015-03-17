@@ -44,6 +44,7 @@ public class RobotMap {
 	
 	public static class AIOChannels {
 		public static final int POT_CHANNEL = 2;
+		public static final int GYRO_CHANNEL = 42;
 	}
 	
 	public static class DriveEncoders {
