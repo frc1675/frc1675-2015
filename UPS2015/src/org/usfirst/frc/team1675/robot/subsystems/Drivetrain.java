@@ -3,6 +3,7 @@ package org.usfirst.frc.team1675.robot.subsystems;
 import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.drivetrain.CheezyDrive;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -15,12 +16,22 @@ public class Drivetrain extends Subsystem {
 	private SpeedController frontRightMotor;
 	private SpeedController backLeftMotor;
 	private SpeedController backRightMotor;
+	
+	private Encoder frontLeftEncoder;
+	private Encoder frontRightEncoder;
+	private Encoder backLeftEncoder;
+	private Encoder backRightEncoder;
 		
 	public Drivetrain(){	
 		frontLeftMotor = new VictorSP(RobotMap.PWMChannels.FRONT_LEFT_DRIVE);
 		frontRightMotor = new VictorSP(RobotMap.PWMChannels.FRONT_RIGHT_DRIVE);
 		backLeftMotor = new VictorSP(RobotMap.PWMChannels.BACK_LEFT_DRIVE);
 		backRightMotor = new VictorSP(RobotMap.PWMChannels.BACK_RIGHT_DRIVE);		
+	
+		frontLeftEncoder = new Encoder(RobotMap.DIOChannels.FRONT_LEFT_ENCODER_A, RobotMap.DIOChannels.FRONT_LEFT_ENCODER_B);
+		frontRightEncoder = new Encoder(RobotMap.DIOChannels.FRONT_RIGHT_ENCODER_A, RobotMap.DIOChannels.FRONT_RIGHT_ENCODER_B);
+		backLeftEncoder = new Encoder(RobotMap.DIOChannels.BACK_LEFT_ENCODER_A, RobotMap.DIOChannels.BACK_LEFT_ENCODER_B);
+		backRightEncoder = new Encoder(RobotMap.DIOChannels.BACK_RIGHT_ENCODER_A, RobotMap.DIOChannels.BACK_RIGHT_ENCODER_B);
 	}	
 	
 	public void setFrontLeftSpeed(double speed) {	
@@ -41,6 +52,25 @@ public class Drivetrain extends Subsystem {
     public void initDefaultCommand() {    	
     	setDefaultCommand(new CheezyDrive());
     }
+    
+    public void resetDriveEncoders(){
+    	frontLeftEncoder.reset();
+    	frontRightEncoder.reset();
+    	backLeftEncoder.reset();
+    	backRightEncoder.reset();
+    }
+    public double getFrontLeftEncoder(){
+    	return frontLeftEncoder.get();
+    }
+    public double getFrontRightEncoder(){
+    	return frontRightEncoder.get();
+    }
+    public double getBackLeftEncoder(){
+    	return backRightEncoder.get();    	
+    }
+    public double getBackRightEncoder(){
+    	return backRightEncoder.get();
+    }          
        
     public void ezDrive(double magnitude, double direction, double rotation) {
     	double upscaledMagnitude = magnitude * Math.sqrt(2.0);

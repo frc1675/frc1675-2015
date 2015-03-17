@@ -15,10 +15,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Totevator extends PIDSubsystem {
 	public static final int TICKS_PER_TOTEHOOK = 270;
 	public static final int TICKS_TO_DROP = 75; //maybe?
+	public static final int TICKS_PER_BUMP = 20;
 	
 	SpeedController toteMotor;
 	Encoder totevatorEncoder;
+	int totalToteLevel;
+	int totalBumps;
 	
+	
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
 	public Totevator(double p, double i, double d){
 		super(p, i, d);
 		toteMotor = new VictorSP(RobotMap.PWMChannels.TOTE_ELEVATOR);
@@ -27,6 +33,8 @@ public class Totevator extends PIDSubsystem {
 		this.enable();
 		this.setSetpoint(0);
 		SmartDashboard.putBoolean("TotePIDEnabled", true);
+		totalToteLevel = 0;
+		totalBumps = 0;
 	}
 
     public void initDefaultCommand() {
@@ -84,6 +92,35 @@ public class Totevator extends PIDSubsystem {
 			this.getPIDController().enable();
 			SmartDashboard.putBoolean("TotePIDEnabled", true);
 		}
+	}
+	
+	public boolean canIToteUpQuestionMark(){
+		return this.totalToteLevel < 3;
+	}
+	
+	public void countToteUp(){
+		totalToteLevel++;
+	}
+	
+	public void countToteDown(){
+		totalToteLevel--;
+	}
+
+	public void resetToteLevel() {
+		totalToteLevel = 0;
+	}
+	
+	public int countAndReturnBumpUp(){
+		totalBumps++;
+		return totalBumps;
+	}	
+	public int countAndReturnBumpDown(){
+		totalBumps--;
+		return totalBumps;
+	}
+	public int resetAndReturnBumpLevel() {
+		totalBumps = 0;
+		return totalBumps;
 	}
 }
 

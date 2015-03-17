@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
-import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
+import org.usfirst.frc.team1675.robot.commands.containerclaw.OpenAtMatchEnd;
 
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;

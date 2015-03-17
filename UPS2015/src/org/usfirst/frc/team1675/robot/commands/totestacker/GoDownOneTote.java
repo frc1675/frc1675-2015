@@ -18,7 +18,8 @@ public class GoDownOneTote extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.totevator.moveRelative(-Totevator.TICKS_PER_TOTEHOOK);
+    	Robot.totevator.countToteDown();
+    	Robot.totevator.moveRelative(-Totevator.TICKS_PER_TOTEHOOK);    	
     }
 
     // Called repeatedly when this Command is scheduled to run

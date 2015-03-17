@@ -49,6 +49,11 @@ public class RobotMap {
 	public static class DriveEncoders {
 		public static final double DRIVE_MAX_SPEED = 7;  // feet per second of slowest wheel	
 		public static final double DRIVE_WHEEL_DIAMETER = 6;
+		public static class PositionPIDDefaults{
+			public static final double P = .01;
+			public static final double I = 0;
+			public static final double D = 0;
+		}
 		public static class BackRightPIDDefaults{
 			public static final double P = .07;
 			public static final double I = .03;
@@ -80,6 +85,9 @@ public class RobotMap {
 			public static final double F = 0;
 		}
 	}
+	public static class AutoConstants{
+		public static final double TURN_NINETY_DEGREES_TIME = .8;
+	}
 
 	public static class DriverConstants {
 		public static final double DEAD_ZONE_TOLERANCE = .1675; //i'm glad we arent FRC 5543
@@ -96,10 +104,12 @@ public class RobotMap {
 	}
 	
 	public static class ContainerArmConstants{
+		public static final double HOME_POSITION = 215;
+		public static final double PICK_UP_POSITION = 192;
 		public static final double MANUAL_SCALE_FACTOR = 1;
-		public static final double P = .02;  //.013
-		public static final double I = 0;//.11
-		public static final double D = 0;	//.000039	
+		public static final double P = .03;  
+		public static final double I = 0;
+		public static final double D = .2;		
 	}
 	
 	public static class ContainerWristConstants{
@@ -120,10 +130,10 @@ public class RobotMap {
 	}
 	
 	public static class DrivePolarities {
-		public static final double FRONT_LEFT_DRIVE_POLARITY = 1.0;
-		public static final double FRONT_RIGHT_DRIVE_POLARITY = -1.0;
-		public static final double BACK_LEFT_DRIVE_POLARITY = 1.0;
-		public static final double BACK_RIGHT_DRIVE_POLARITY = -1.0;
+		public static final double FRONT_LEFT_DRIVE_POLARITY = -1.0;
+		public static final double FRONT_RIGHT_DRIVE_POLARITY = 1.0;
+		public static final double BACK_LEFT_DRIVE_POLARITY = -1.0;
+		public static final double BACK_RIGHT_DRIVE_POLARITY = 1.0;
 	}
 	
 }

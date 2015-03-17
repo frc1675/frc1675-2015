@@ -1,22 +1,21 @@
-package org.usfirst.frc.team1675.robot.commands.totestacker;
+package org.usfirst.frc.team1675.robot.commands;
 
+import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPosition;
 import org.usfirst.frc.team1675.robot.commands.drivetrain.PolarMecanumForTime;
-import org.usfirst.frc.team1675.robot.commands.Wait;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class DriveBackBeforeDroppingTotes extends CommandGroup {
-    private static final double BUMP_DOWN_TIME = .5;
-    public  DriveBackBeforeDroppingTotes() {
-//    	addParallel(new ToteStackerBumpDown());
-//    	addSequential(new Wait(BUMP_DOWN_TIME));
-//    	addParallel(new ToteStackerBumpDown());
-//    	addSequential(new Wait(BUMP_DOWN_TIME));
-    	addSequential(new PolarMecanumForTime(.4, 0.0, 0.0, .1));
-    	addSequential(new ResetToteStacker());
+public class DriveForwardIntoAutoZone extends CommandGroup {
+    private static final double DRIVE_POWER = .6;
+    public  DriveForwardIntoAutoZone() {
+     	addParallel(new MoveContainerArmToPosition(RobotMap.ContainerArmConstants.HOME_POSITION));
+    	addSequential(new PolarMecanumForTime(DRIVE_POWER, Math.PI, 0, .85));
+    	addSequential(new PolarMecanumForTime(.4, 0, 0, .3));
+
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
