@@ -2,11 +2,12 @@
 package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.AcquireOneCanAuto;
+import org.usfirst.frc.team1675.robot.commands.AntiCanAuto;
 import org.usfirst.frc.team1675.robot.commands.DriveForwardIntoAutoZone;
 import org.usfirst.frc.team1675.robot.commands.OneToteAutoFromPlatform;
 import org.usfirst.frc.team1675.robot.commands.OpenFieldGrabOneCanAuto;
 import org.usfirst.frc.team1675.robot.commands.OpenFieldOneToteAuto;
-import org.usfirst.frc.team1675.robot.commands.PIDDriveForDistance;
+import org.usfirst.frc.team1675.robot.commands.PickUpTwoGreyTotes;
 import org.usfirst.frc.team1675.robot.commands.ScoringPlatformGrabOneCanAuto;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerArm;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerClaw;
@@ -63,16 +64,19 @@ public class Robot extends IterativeRobot {
     public void robotInit() {   
     	chooser = new SendableChooser();
     	chooser.addDefault("Drive Forward", new DriveForwardIntoAutoZone());
-    	chooser.addObject("Grab Can By Scoring Platform", new ScoringPlatformGrabOneCanAuto());
-    	chooser.addObject("Acquire Can", new AcquireOneCanAuto());
     	chooser.addObject("Do Nothing", null);
-    	chooser.addObject("One Tote Scoring Platform", new OneToteAutoFromPlatform());
+    	chooser.addObject("Scoring Platform One Tote Auto", new OneToteAutoFromPlatform());
     	chooser.addObject("Open Field One Tote Auto", new OpenFieldOneToteAuto());
+    	chooser.addObject("Scoring Platform Grab Can Auto", new ScoringPlatformGrabOneCanAuto());
     	chooser.addObject("Open Field Grab Can Auto", new OpenFieldGrabOneCanAuto());
-    	chooser.addObject("Drive Forward 4 feet", new PIDDriveForDistance(RobotMap.DriveEncoders.PositionPIDDefaults.P ,RobotMap.DriveEncoders.PositionPIDDefaults.I ,RobotMap.DriveEncoders.PositionPIDDefaults.D , 48));
+    	chooser.addObject("Anti Can", new AntiCanAuto());
+    	chooser.addObject("Pick Up Two Grey Totes", new PickUpTwoGreyTotes());
+    	chooser.addObject("Acquire Can", new AcquireOneCanAuto());
     	SmartDashboard.putData("chooser", chooser);
     	
-
+    	SmartDashboard.putNumber("Position Encoder P",  RobotMap.DriveEncoders.PositionPIDDefaults.P);
+		SmartDashboard.putNumber("Position Encoder I",  RobotMap.DriveEncoders.PositionPIDDefaults.I);
+		SmartDashboard.putNumber("Position Encoder D",  RobotMap.DriveEncoders.PositionPIDDefaults.D);
     	SmartDashboard.putNumber("TotevatorP", RobotMap.ToteStackerConstants.P);
     	SmartDashboard.putNumber("TotevatorI", RobotMap.ToteStackerConstants.I);
     	SmartDashboard.putNumber("TotevatorD", RobotMap.ToteStackerConstants.D);
@@ -131,6 +135,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	SmartDashboard.putNumber("Drive Encoder",Robot.drivetrain.getFrontLeftEncoder());
         Scheduler.getInstance().run();
     }
     

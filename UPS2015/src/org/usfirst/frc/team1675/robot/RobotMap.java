@@ -50,9 +50,9 @@ public class RobotMap {
 		public static final double DRIVE_MAX_SPEED = 7;  // feet per second of slowest wheel	
 		public static final double DRIVE_WHEEL_DIAMETER = 6;
 		public static class PositionPIDDefaults{
-			public static final double P = .01;
-			public static final double I = 0;
-			public static final double D = 0;
+			public static final double P = .0035;
+			public static final double I = .00;
+			public static final double D = .065;
 		}
 		public static class BackRightPIDDefaults{
 			public static final double P = .07;
@@ -104,8 +104,19 @@ public class RobotMap {
 	}
 	
 	public static class ContainerArmConstants{
-		public static final double HOME_POSITION = 215;
+		public static final double MAX_HEIGHT = 85;
+		public static final double FIVE_STACK_HEIGHT = 92;
+		public static final double FOUR_STACK_HEIGHT = 111;
+		public static final double THREE_STACK_HEIGHT = 120;
+		public static final double STEP_BLOCK_HEIGHT = 202;
+		public static final double STEP_PICKUP_HEIGHT = 150;
 		public static final double PICK_UP_POSITION = 192;
+		public static final double HOME_POSITION = 215;
+
+
+
+
+
 		public static final double MANUAL_SCALE_FACTOR = 1;
 		public static final double P = .03;  
 		public static final double I = 0;

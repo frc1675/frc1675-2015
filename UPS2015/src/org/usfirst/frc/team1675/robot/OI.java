@@ -1,13 +1,14 @@
 package org.usfirst.frc.team1675.robot;
 
 
-import org.usfirst.frc.team1675.robot.commands.containerarm.ThatStupidFreakinAutoCanPickupRoutine;
-
 import org.usfirst.frc.team1675.robot.RobotMap.ControllerPorts;
+import org.usfirst.frc.team1675.robot.commands.PIDDriveForDistance;
+import org.usfirst.frc.team1675.robot.commands.ResetPositionDrivePID;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPosition;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionIncrementingSetpoint;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionOnDashboard;
 import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArm;
+import org.usfirst.frc.team1675.robot.commands.containerarm.ThatStupidFreakinAutoCanPickupRoutine;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
 import org.usfirst.frc.team1675.robot.commands.containerwrist.WristDown;
@@ -22,7 +23,6 @@ import org.usfirst.frc.team1675.robot.utils.DPadButton;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -37,6 +37,9 @@ public class OI {
 	private JoystickButton driverYButton;	
 	private JoystickButton driverBButton;
 	private JoystickButton driverAButton;
+	
+	private JoystickButton driverRightBumperButton;
+	private JoystickButton driverLeftBumperButton;
 	
 	private JoystickButton operatorXButton;
 	private JoystickButton operatorYButton;
@@ -60,6 +63,9 @@ public class OI {
 		driverBButton = new JoystickButton(driverController, XBoxControllerMap.B_BUTTON);
 		driverXButton = new JoystickButton(driverController, XBoxControllerMap.X_BUTTON);
 		
+		driverLeftBumperButton = new JoystickButton(driverController, XBoxControllerMap.LEFT_BUMPER_BUTTON);
+		driverRightBumperButton = new JoystickButton(driverController, XBoxControllerMap.RIGHT_BUMPER_BUTTON);
+		
 		operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
 		operatorYButton = new JoystickButton(operatorController, XBoxControllerMap.Y_BUTTON);
 		operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
@@ -77,7 +83,8 @@ public class OI {
 		driverYButton.whenPressed(new GoUpOneTote());
 		driverBButton.whenPressed(new ToteStackerBumpUp());
 		driverXButton.whenPressed(new ToteStackerBumpDown());
-		
+
+	
 		operatorXButton.whenPressed(new ContainerClawOpen());
 		operatorXButton.whenReleased(new ContainerClawClose());
 		operatorBButton.whenPressed(new MoveContainerArmToPositionOnDashboard());//193
@@ -94,7 +101,10 @@ public class OI {
 		operatorDPadDown.whenPressed(new DriveBackBeforeDroppingTotes());
 		operatorDPadLeft.whenPressed(new MoveContainerArmToPosition(75.0));
 		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.ContainerArmConstants.PICK_UP_POSITION));
-
+		/*PIDDriveForDistance driveTwoFeet = new PIDDriveForDistance(RobotMap.DriveEncoders.PositionPIDDefaults.P
+				, RobotMap.DriveEncoders.PositionPIDDefaults.I, RobotMap.DriveEncoders.PositionPIDDefaults.D, -47);
+		driverRightBumperButton.whenPressed(driveTwoFeet);
+		driverLeftBumperButton.whenPressed(new ResetPositionDrivePID(driveTwoFeet));*/
 	}	
 	
 	public double getDriverLeftXAxis() {
