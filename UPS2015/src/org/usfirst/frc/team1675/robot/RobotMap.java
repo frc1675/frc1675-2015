@@ -109,7 +109,7 @@ public class RobotMap {
 		public static final double FOUR_STACK_HEIGHT = 111;
 		public static final double THREE_STACK_HEIGHT = 120;
 		public static final double STEP_BLOCK_HEIGHT = 202;
-		public static final double STEP_PICKUP_HEIGHT = 150;
+		public static final double STEP_PICKUP_HEIGHT = 175;
 		public static final double PICK_UP_POSITION = 192;
 		public static final double HOME_POSITION = 215;
 

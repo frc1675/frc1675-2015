@@ -7,6 +7,7 @@ import org.usfirst.frc.team1675.robot.commands.DriveForwardIntoAutoZone;
 import org.usfirst.frc.team1675.robot.commands.OneToteAutoFromPlatform;
 import org.usfirst.frc.team1675.robot.commands.OpenFieldGrabOneCanAuto;
 import org.usfirst.frc.team1675.robot.commands.OpenFieldOneToteAuto;
+import org.usfirst.frc.team1675.robot.commands.PickUpCanFromStep;
 import org.usfirst.frc.team1675.robot.commands.PickUpTwoGreyTotes;
 import org.usfirst.frc.team1675.robot.commands.ScoringPlatformGrabOneCanAuto;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerArm;
@@ -72,6 +73,7 @@ public class Robot extends IterativeRobot {
     	chooser.addObject("Anti Can", new AntiCanAuto());
     	chooser.addObject("Pick Up Two Grey Totes", new PickUpTwoGreyTotes());
     	chooser.addObject("Acquire Can", new AcquireOneCanAuto());
+    	chooser.addObject("PickUpCanFromStep", new PickUpCanFromStep());
     	SmartDashboard.putData("chooser", chooser);
     	
     	SmartDashboard.putNumber("Position Encoder P",  RobotMap.DriveEncoders.PositionPIDDefaults.P);
