@@ -8,19 +8,20 @@ import edu.wpi.first.wpilibj.buttons.Button;
 public class TriggerButton extends Button{
 	Joystick stick;
 	boolean isLeft;
-	private static final double DEADZONE = .6;
-	public TriggerButton(Joystick joystick, boolean isLeft){
+	double deadzone;
+	public TriggerButton(Joystick joystick, boolean isLeft, double deadzone){
 		this.isLeft = isLeft;
 		stick = joystick;
+		this.deadzone = deadzone;
 	}
 
 	public boolean get() {
 		if(isLeft){
-			System.out.println(Math.abs(stick.getRawAxis(XBoxControllerMap.LEFT_TRIGGER_AXIS))>DEADZONE);
-			return Math.abs(stick.getRawAxis(XBoxControllerMap.LEFT_TRIGGER_AXIS))>DEADZONE;
+			System.out.println(Math.abs(stick.getRawAxis(XBoxControllerMap.LEFT_TRIGGER_AXIS))>deadzone);
+			return Math.abs(stick.getRawAxis(XBoxControllerMap.LEFT_TRIGGER_AXIS))>deadzone;
 		}else{
-			System.out.println(Math.abs(stick.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS))>DEADZONE);
-			return Math.abs(stick.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS))>DEADZONE;
+			System.out.println(Math.abs(stick.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS))>deadzone);
+			return Math.abs(stick.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS))>deadzone;
 		}
 	}
 	

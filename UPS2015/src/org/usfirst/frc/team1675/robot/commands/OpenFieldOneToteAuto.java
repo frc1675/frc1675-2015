@@ -18,7 +18,7 @@ public class OpenFieldOneToteAuto extends CommandGroup {
     	addSequential(new PolarMecanumForTime(DRIVE_POWER, 0, 0, 1.53));
     	addSequential(new PolarMecanumForTime(DRIVE_POWER, Math.PI, 0, .31));
     	addSequential(new PolarMecanumForTime(0, 0, 1, RobotMap.AutoConstants.TURN_NINETY_DEGREES_TIME));
-    	addSequential(new PolarMecanumForTime(.47, Math.PI, 0, .6));
+    	addSequential(new PolarMecanumForTime(.47, Math.PI, 0, .4));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

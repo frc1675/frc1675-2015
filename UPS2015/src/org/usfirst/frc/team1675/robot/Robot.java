@@ -64,14 +64,14 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {   
     	chooser = new SendableChooser();
-    	chooser.addDefault("Drive Forward", new DriveForwardIntoAutoZone());
+    	chooser.addDefault("Pick Up Two Grey Totes", new PickUpTwoGreyTotes());
+    	chooser.addObject("Drive Forward", new DriveForwardIntoAutoZone());
     	chooser.addObject("Do Nothing", null);
     	chooser.addObject("Scoring Platform One Tote Auto", new OneToteAutoFromPlatform());
     	chooser.addObject("Open Field One Tote Auto", new OpenFieldOneToteAuto());
     	chooser.addObject("Scoring Platform Grab Can Auto", new ScoringPlatformGrabOneCanAuto());
     	chooser.addObject("Open Field Grab Can Auto", new OpenFieldGrabOneCanAuto());
     	chooser.addObject("Anti Can", new AntiCanAuto());
-    	chooser.addObject("Pick Up Two Grey Totes", new PickUpTwoGreyTotes());
     	chooser.addObject("Acquire Can", new AcquireOneCanAuto());
     	chooser.addObject("PickUpCanFromStep", new PickUpCanFromStep());
     	SmartDashboard.putData("chooser", chooser);

@@ -3,9 +3,9 @@ package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.RobotMap.ControllerPorts;
 import org.usfirst.frc.team1675.robot.commands.PickUpCanFromStep;
-import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPosition;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionIncrementingSetpoint;
 import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArm;
+import org.usfirst.frc.team1675.robot.commands.containerarm.ResetArmPID;
 import org.usfirst.frc.team1675.robot.commands.containerarm.ThatStupidFreakinAutoCanPickupRoutine;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
@@ -75,8 +75,8 @@ public class OI {
 		operatorRightBumperButton = new JoystickButton(operatorController,XBoxControllerMap.RIGHT_BUMPER_BUTTON);
 		operatorLeftBumperButton = new JoystickButton(operatorController,XBoxControllerMap.LEFT_BUMPER_BUTTON);
 		
-		operatorRightTriggerButton = new TriggerButton(operatorController,false);
-		operatorLeftTriggerButton = new TriggerButton(operatorController,true);
+		operatorRightTriggerButton = new TriggerButton(operatorController,false, .4);
+		operatorLeftTriggerButton = new TriggerButton(operatorController,true, .7);
 		
 		operatorDPadUp = new DPadButton(operatorController, DPadButton.Direction.UP);
 		operatorDPadDown = new DPadButton(operatorController, DPadButton.Direction.DOWN);
@@ -87,16 +87,19 @@ public class OI {
 		driverYButton.whenPressed(new GoUpOneTote());
 		driverBButton.whenPressed(new ToteStackerBumpUp());
 		driverXButton.whenPressed(new ToteStackerBumpDown());
-
+		driverRightBumperButton.whenPressed(new DriveBackBeforeDroppingTotes());
 	
 		operatorXButton.whenPressed(new ContainerClawOpen());
 		operatorXButton.whenReleased(new ContainerClawClose());
-		operatorBButton.whenPressed(new PickUpCanFromStep());
+		operatorBButton.whenPressed(new ResetArmPID());
 		operatorYButton.whenPressed(new WristUp());
 		operatorAButton.whenPressed(new WristDown());
 		operatorRightBumperButton.whenPressed(new RawMoveContainerArm());
 		operatorLeftBumperButton.whenPressed(new PickUpCanFromStep());
+		
 		operatorLeftTriggerButton.whenPressed(new ToggleTotevatorPID());
+		operatorRightTriggerButton.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.ContainerArmConstants.HOME_POSITION));
+		
 		
 		operatorDPadUp.whenPressed(new ThatStupidFreakinAutoCanPickupRoutine(1.0));
 		operatorDPadDown.whenPressed(new DriveBackBeforeDroppingTotes());

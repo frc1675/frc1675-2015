@@ -13,7 +13,7 @@ public class RobotMap {
 		public static final int FRONT_RIGHT_DRIVE = 4;
 		public static final int BACK_LEFT_DRIVE = 2;
 		public static final int BACK_RIGHT_DRIVE = 3;
-		public static final int TOTE_ELEVATOR = 0;
+		public static final int TOTE_ELEVATOR = 7;
 		public static final int ARM_MOTOR = 1;
 	}
 	
@@ -86,7 +86,7 @@ public class RobotMap {
 		}
 	}
 	public static class AutoConstants{
-		public static final double TURN_NINETY_DEGREES_TIME = .8;
+		public static final double TURN_NINETY_DEGREES_TIME = .6;
 	}
 
 	public static class DriverConstants {
@@ -110,8 +110,8 @@ public class RobotMap {
 		public static final double THREE_STACK_HEIGHT = 120;
 		public static final double STEP_BLOCK_HEIGHT = 202;
 		public static final double STEP_PICKUP_HEIGHT = 175;
-		public static final double PICK_UP_POSITION = 192;
-		public static final double HOME_POSITION = 215;
+		public static final double PICK_UP_POSITION = 118;
+		public static final double HOME_POSITION = 145;
 
 
 
@@ -119,7 +119,7 @@ public class RobotMap {
 
 		public static final double MANUAL_SCALE_FACTOR = 1;
 		public static final double P = .03;  
-		public static final double I = 0;
+		public static final double I = .00015;
 		public static final double D = .2;		
 	}
 	

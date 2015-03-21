@@ -15,7 +15,7 @@ public class PickUpTwoGreyTotes extends CommandGroup {
     private static final double WAIT_AFTER_PICKUP = 1.5;
     public  PickUpTwoGreyTotes() {
     	addParallel(new MoveContainerArmToPosition(RobotMap.ContainerArmConstants.HOME_POSITION));
-    	addSequential(new PolarMecanumForTime(PICKUP_DRIVE_POWER, Math.PI, 0, .2));
+    	addSequential(new PolarMecanumForTime(PICKUP_DRIVE_POWER, Math.PI, 0, .32));
     	addSequential(new Wait(.2));
     	addParallel(new GoUpOneTote());
     	addSequential(new Wait(WAIT_AFTER_PICKUP));

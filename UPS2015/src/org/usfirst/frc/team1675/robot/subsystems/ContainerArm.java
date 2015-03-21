@@ -20,7 +20,7 @@ public class ContainerArm extends PIDSubsystem {
 	
 	SpeedController motor;
 	AnalogPotentiometer pot;
-	private static final double POT_SCALE = 250.0;
+	private static final double POT_SCALE = 360;
 	
     public ContainerArm(double p, double i, double d) {
     	// Use these to get going:

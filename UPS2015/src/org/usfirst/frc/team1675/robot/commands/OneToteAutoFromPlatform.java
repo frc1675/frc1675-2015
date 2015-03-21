@@ -13,7 +13,7 @@ public class OneToteAutoFromPlatform extends CommandGroup {
     private static final double DRIVE_POWER = .65;
     public  OneToteAutoFromPlatform() {
     	addParallel(new MoveContainerArmToPosition(RobotMap.ContainerArmConstants.HOME_POSITION));
-    	addSequential(new PolarMecanumForTime(.3, Math.PI, 0, .6));
+    	addSequential(new PolarMecanumForTime(.23, Math.PI, 0, .6));
     	addSequential(new Wait(.9));
     	addParallel(new GoUpOneTote());
     	addSequential(new Wait(.7));

@@ -18,7 +18,8 @@ public class MoveContainerArmToPosition extends Command {
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {   	
+    protected void initialize() {   
+    	Robot.containerArm.enable();
     	Robot.containerArm.setArmPosition(angle);
     	
     }
