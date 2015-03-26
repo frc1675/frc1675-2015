@@ -13,7 +13,7 @@ public class AntiCanAuto extends CommandGroup {
     
     public  AntiCanAuto() {
     	addParallel(new ContainerClawClose());
-    	addParallel(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.ContainerArmConstants.STEP_BLOCK_HEIGHT));
+    	addParallel(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getStepBlockHeight()));
     	addSequential(new PolarMecanumForTime(.9, 0, 0, .62));	
     	addSequential(new PolarMecanumForTime(.3, Math.PI, 0, .12));	
         // Add Commands here:

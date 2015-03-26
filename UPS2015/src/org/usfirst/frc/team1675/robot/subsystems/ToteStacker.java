@@ -4,6 +4,7 @@ import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.PolarMecanum;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerManual;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -14,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class ToteStacker extends PIDSubsystem {
-	public static final int TICKS_PER_TOTEHOOK = 240;
+	public static int TICKS_PER_TOTEHOOK = RobotMap.getTicksPerTote();
 	public static final int TICKS_TO_DROP = 75; //maybe?
 	public static final int TICKS_PER_BUMP = 20;
 	
@@ -22,6 +23,9 @@ public class ToteStacker extends PIDSubsystem {
 	Encoder totevatorEncoder;
 	int totalToteLevel;
 	int totalBumps;
+	DigitalInput hallEffect;
+	boolean lastHallEffectValue = false;
+	boolean lastLastHallEffectValue = false;
 	
 	
     // Put methods for controlling this subsystem
@@ -31,6 +35,7 @@ public class ToteStacker extends PIDSubsystem {
 		toteMotor = new VictorSP(RobotMap.PWMChannels.TOTE_ELEVATOR);
 		totevatorEncoder = new Encoder(RobotMap.DIOChannels.TOTEVATOR_ENCODER_A, RobotMap.DIOChannels.TOTEVATOR_ENCODER_B);
 		totevatorEncoder.setDistancePerPulse(1.0);
+    	hallEffect = new DigitalInput(RobotMap.DIOChannels.HALL_EFFECT);
 		this.enable();
 		this.setSetpoint(0);
 		SmartDashboard.putBoolean("TotePIDEnabled", true);
@@ -41,6 +46,15 @@ public class ToteStacker extends PIDSubsystem {
     public void initDefaultCommand() {
     	setDefaultCommand(new ToteStackerManual());
     }
+
+    public void resetEncoderUponRisingEdge(){
+    	boolean currentHallEffectValue = hallEffect.get();
+    	if (!lastLastHallEffectValue && lastHallEffectValue && currentHallEffectValue){
+    		totevatorEncoder.reset();
+    	}
+    	lastLastHallEffectValue = lastHallEffectValue;
+    	lastHallEffectValue = currentHallEffectValue;
+    }
     
     /**
      * 
@@ -49,7 +63,6 @@ public class ToteStacker extends PIDSubsystem {
     public void goToPoint(int point){
     	this.setSetpoint(point);
     	System.out.println("goToPoint new setpoint: " + this.getSetpoint());
-
     }
     
     /**
@@ -65,6 +78,7 @@ public class ToteStacker extends PIDSubsystem {
     	if (!this.getPIDController().isEnable()){
     		toteMotor.set(MotorValue);
     	}
+    	SmartDashboard.putNumber("Encoder", totevatorEncoder.getDistance());
     }
 
 	@Override
@@ -77,8 +91,8 @@ public class ToteStacker extends PIDSubsystem {
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		toteMotor.set(output);
-		
+		toteMotor.set(output*.75);
+		//resetEncoderUponRisingEdge();
 	}
 
 	public void resetEncoder() {

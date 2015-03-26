@@ -1,20 +1,17 @@
-package org.usfirst.frc.team1675.robot.commands;
+package org.usfirst.frc.team1675.robot.commands.totestacker;
 
-import org.usfirst.frc.team1675.robot.RobotMap;
-import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPosition;
+import org.usfirst.frc.team1675.robot.commands.PolarMecanumForTime;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class DriveForwardIntoAutoZone extends CommandGroup {
-    private static final double DRIVE_POWER = .6;
-    public  DriveForwardIntoAutoZone() {
-     	addParallel(new MoveContainerArmToPosition(RobotMap.getHomePosition()));
-    	addSequential(new PolarMecanumForTime(DRIVE_POWER, Math.PI, 0, .85));
-    	addSequential(new PolarMecanumForTime(.4, 0, 0, .3));
-
+public class Score extends CommandGroup {
+    
+    public  Score() {
+    	addSequential(new PolarMecanumForTime(.4, 0.0, 0.0, .1));
+    	addParallel(new DropTote());
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

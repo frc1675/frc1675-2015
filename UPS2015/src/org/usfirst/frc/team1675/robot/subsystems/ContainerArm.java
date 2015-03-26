@@ -1,11 +1,10 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
-import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
-import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPosition;
 import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArm;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -20,7 +19,7 @@ public class ContainerArm extends PIDSubsystem {
 	
 	SpeedController motor;
 	AnalogPotentiometer pot;
-	private static final double POT_SCALE = 360;
+	private static final double POT_SCALE = RobotMap.getPotScale();
 	
     public ContainerArm(double p, double i, double d) {
     	// Use these to get going:
@@ -29,7 +28,6 @@ public class ContainerArm extends PIDSubsystem {
         // enable() - Enables the PID controller.
     	super(p,i,d);
     	this.setOutputRange(-.5, .5);
-    	//this.setInputRange(70, 205);
     	pot = new AnalogPotentiometer(RobotMap.AIOChannels.POT_CHANNEL, POT_SCALE);
     	motor = new VictorSP(RobotMap.PWMChannels.ARM_MOTOR);    	
     }    

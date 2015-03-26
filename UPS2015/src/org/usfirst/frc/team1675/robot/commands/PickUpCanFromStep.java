@@ -20,7 +20,7 @@ public class PickUpCanFromStep extends CommandGroup {
     	addParallel(new ContainerClawOpen());
     	addSequential(new Wait(.15));
     	addParallel(new WristDown());
-    	addSequential(new Wait(.4));
+    	addSequential(new Wait(RobotMap.getStepCanExtendTime()));
     	addParallel(new ContainerClawClose());
     	addSequential(new Wait(.1));
     	addParallel(new WristUp());

@@ -12,14 +12,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class OneToteAutoFromPlatform extends CommandGroup {
     private static final double DRIVE_POWER = .65;
     public  OneToteAutoFromPlatform() {
-    	addParallel(new MoveContainerArmToPosition(RobotMap.ContainerArmConstants.HOME_POSITION));
+    	addParallel(new MoveContainerArmToPosition(RobotMap.getHomePosition()));
     	addSequential(new PolarMecanumForTime(.23, Math.PI, 0, .6));
     	addSequential(new Wait(.9));
     	addParallel(new GoUpOneTote());
     	addSequential(new Wait(.7));
     	addSequential(new PolarMecanumForTime(DRIVE_POWER, 0, 0, 1.53));
     	addSequential(new PolarMecanumForTime(DRIVE_POWER, Math.PI, 0, .31));
-    	addSequential(new PolarMecanumForTime(0, 0, -1, RobotMap.AutoConstants.TURN_NINETY_DEGREES_TIME));
+    	addSequential(new PolarMecanumForTime(0, 0, -1, RobotMap.getTurnNinetyDegreesTime()));
       	addSequential(new PolarMecanumForTime(.37, Math.PI, 0, .5));
         // Add Commands here:
         // e.g. addSequential(new Command1());

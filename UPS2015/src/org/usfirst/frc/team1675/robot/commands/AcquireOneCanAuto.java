@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AcquireOneCanAuto extends CommandGroup {
     private static final double TIME_FOR_ARM_TO_GET_TO_HOME = .7;
     public  AcquireOneCanAuto() {
-    	addParallel(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.ContainerArmConstants.HOME_POSITION));
+    	addParallel(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getHomePosition()));
     	//addParallel(new ContainerClawClose());
     	addSequential(new Wait(TIME_FOR_ARM_TO_GET_TO_HOME));
     	addSequential(new PolarMecanumForTime(.4, 0, 0, 1));
-    	addParallel(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.ContainerArmConstants.PICK_UP_POSITION));
+    	addParallel(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getPickupPosition()));
     	addSequential(new Wait(1.5));
     	addSequential(new PolarMecanumForTime(.4, 0, 0, .33));
     	addParallel(new ThatStupidFreakinAutoCanPickupRoutine(1.5));

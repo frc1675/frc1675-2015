@@ -7,6 +7,86 @@ package org.usfirst.frc.team1675.robot;
  * floating around.
  */
 public class RobotMap {
+	private static final boolean IS_COMPETITION = false;
+	
+	public static int getTicksPerTote(){
+		if(IS_COMPETITION){
+			return CompConstants.TICKS_PER_TOTE;
+		}else{
+			return PracticeConstants.TICKS_PER_TOTE;
+		}
+	}
+	public static double getTurnNinetyDegreesTime(){
+		if(IS_COMPETITION){
+			return CompConstants.TURN_NINETY_DEGREES_TIME;
+		}else{
+			return PracticeConstants.TURN_NINETY_DEGREES_TIME;
+		}
+	}
+	public static double getPotScale(){
+		if(IS_COMPETITION){
+			return CompConstants.POT_COUNTS;
+		}else{
+			return PracticeConstants.POT_COUNTS;
+		}
+	}
+	public static double getStepCanExtendTime(){
+		if(IS_COMPETITION){
+			return CompConstants.STEP_CAN_EXTEND_TIME;
+		}else{
+			return PracticeConstants.STEP_CAN_EXTEND_TIME;
+		}
+	}
+	public static double getHomePosition(){
+		if(IS_COMPETITION){
+			return CompConstants.HOME_POSITION;
+		}else{
+			return PracticeConstants.HOME_POSITION;
+		}
+	}
+	public static double getPickupPosition(){
+		if(IS_COMPETITION){
+			return CompConstants.PICK_UP_POSITION;
+		}else{
+			return PracticeConstants.PICK_UP_POSITION;
+		}
+	}
+	public static double getStepCanPosition(){
+		if(IS_COMPETITION){
+			return CompConstants.STEP_CAN_POSITION ;
+		}else{
+			return PracticeConstants.STEP_CAN_POSITION ;
+		}
+	}
+	public static double getStepBlockHeight(){
+		if(IS_COMPETITION){
+			return CompConstants.STEP_BLOCK_HEIGHT ;
+		}else{
+			return PracticeConstants.STEP_BLOCK_HEIGHT ;
+		}
+	}
+	
+	private static class CompConstants {
+		private static final int TICKS_PER_TOTE = 245;
+		private static final double TURN_NINETY_DEGREES_TIME = .7;
+		private static final double POT_COUNTS = 360;
+		private static final double STEP_CAN_EXTEND_TIME = .4;
+		private static final double STEP_BLOCK_HEIGHT = 202;
+		private static final double STEP_CAN_POSITION = 175;
+		private static final double PICK_UP_POSITION = 118;
+		private static final double HOME_POSITION = 145;
+	}
+	private static class PracticeConstants {
+		private static final int TICKS_PER_TOTE = 275;
+		private static final double TURN_NINETY_DEGREES_TIME = .9;
+		private static final int POT_COUNTS = 250;
+		private static final double STEP_CAN_EXTEND_TIME = .6;
+		private static final double STEP_BLOCK_HEIGHT = 202;
+		private static final double HOME_POSITION = 230;
+		private static final double STEP_CAN_POSITION = 175;
+		private static final double PICK_UP_POSITION = 210;
+		
+	}
 
 	public static class PWMChannels {
 		public static final int FRONT_LEFT_DRIVE = 5;
@@ -35,6 +115,7 @@ public class RobotMap {
 		public static final int FRONT_LEFT_ENCODER_B = 7;
 		public static final int TOTEVATOR_ENCODER_A = 4;
 		public static final int TOTEVATOR_ENCODER_B = 5;
+		public static final int HALL_EFFECT = 11;
 	}
 	
 	public static class ControllerPorts {
@@ -43,7 +124,7 @@ public class RobotMap {
 	}
 	
 	public static class AIOChannels {
-		public static final int POT_CHANNEL = 2;
+		public static final int POT_CHANNEL = 3;
 	}
 	
 	public static class DriveEncoders {
@@ -86,7 +167,7 @@ public class RobotMap {
 		}
 	}
 	public static class AutoConstants{
-		public static final double TURN_NINETY_DEGREES_TIME = .6;
+		public static final double TURN_NINETY_DEGREES_TIME = .7;
 	}
 
 	public static class DriverConstants {
@@ -104,18 +185,18 @@ public class RobotMap {
 	}
 	
 	public static class ContainerArmConstants{
-		public static final double MAX_HEIGHT = 85;
-		public static final double FIVE_STACK_HEIGHT = 92;
-		public static final double FOUR_STACK_HEIGHT = 111;
-		public static final double THREE_STACK_HEIGHT = 120;
-		public static final double STEP_BLOCK_HEIGHT = 202;
-		public static final double STEP_PICKUP_HEIGHT = 175;
-		public static final double PICK_UP_POSITION = 118;
-		public static final double HOME_POSITION = 145;
-
-
-
-
+//		public static final double MAX_HEIGHT = 85;
+//		public static final double FIVE_STACK_HEIGHT = 92;
+//		public static final double FOUR_STACK_HEIGHT = 111;
+//		public static final double THREE_STACK_HEIGHT = 120;
+//		public static final double STEP_BLOCK_HEIGHT = 202;
+//		public static final double STEP_PICKUP_HEIGHT = 175;
+//		public static final double PICK_UP_POSITION = 118;
+//		public static final double HOME_POSITION = 145;
+//
+//
+//
+//
 
 		public static final double MANUAL_SCALE_FACTOR = 1;
 		public static final double P = .03;  

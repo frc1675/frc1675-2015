@@ -11,9 +11,10 @@ import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
 import org.usfirst.frc.team1675.robot.commands.containerwrist.WristDown;
 import org.usfirst.frc.team1675.robot.commands.containerwrist.WristUp;
-import org.usfirst.frc.team1675.robot.commands.totestacker.DriveBackBeforeDroppingTotes;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoDownOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoUpOneTote;
+import org.usfirst.frc.team1675.robot.commands.totestacker.ResetToteStacker;
+import org.usfirst.frc.team1675.robot.commands.totestacker.Score;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ToggleTotevatorPID;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerBumpDown;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerBumpUp;
@@ -87,7 +88,7 @@ public class OI {
 		driverYButton.whenPressed(new GoUpOneTote());
 		driverBButton.whenPressed(new ToteStackerBumpUp());
 		driverXButton.whenPressed(new ToteStackerBumpDown());
-		driverRightBumperButton.whenPressed(new DriveBackBeforeDroppingTotes());
+		driverRightBumperButton.whenPressed(new Score());
 	
 		operatorXButton.whenPressed(new ContainerClawOpen());
 		operatorXButton.whenReleased(new ContainerClawClose());
@@ -98,12 +99,12 @@ public class OI {
 		operatorLeftBumperButton.whenPressed(new PickUpCanFromStep());
 		
 		operatorLeftTriggerButton.whenPressed(new ToggleTotevatorPID());
-		operatorRightTriggerButton.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.ContainerArmConstants.HOME_POSITION));
+		operatorRightTriggerButton.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getHomePosition()));
 		
 		
 		operatorDPadUp.whenPressed(new ThatStupidFreakinAutoCanPickupRoutine(1.0));
-		operatorDPadDown.whenPressed(new DriveBackBeforeDroppingTotes());
-		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.ContainerArmConstants.PICK_UP_POSITION));
+		operatorDPadDown.whenPressed(new ResetToteStacker());
+		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getPickupPosition()));
 	}	
 	
 	public double getDriverLeftXAxis() {
