@@ -9,6 +9,10 @@ import org.usfirst.frc.team1675.robot.commands.containerarm.ResetArmPID;
 import org.usfirst.frc.team1675.robot.commands.containerarm.ThatStupidFreakinAutoCanPickupRoutine;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
+import org.usfirst.frc.team1675.robot.commands.containerclaw.LeftContainerClawClose;
+import org.usfirst.frc.team1675.robot.commands.containerclaw.LeftContainerClawOpen;
+import org.usfirst.frc.team1675.robot.commands.containerclaw.RightContainerClawClose;
+import org.usfirst.frc.team1675.robot.commands.containerclaw.RightContainerClawOpen;
 import org.usfirst.frc.team1675.robot.commands.containerwrist.WristDown;
 import org.usfirst.frc.team1675.robot.commands.containerwrist.WristUp;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoDownOneTote;
@@ -41,20 +45,39 @@ public class OI {
 	private JoystickButton driverRightBumperButton;
 	private JoystickButton driverLeftBumperButton;
 	
-	private JoystickButton operatorXButton;
-	private JoystickButton operatorYButton;
-	private JoystickButton operatorBButton;
-	private JoystickButton operatorAButton;
 	
-	private DPadButton operatorDPadUp;
-	private DPadButton operatorDPadDown;
-	private DPadButton operatorDPadLeft;
-	private DPadButton operatorDPadRight;
+	private JoystickButton armButtonFive = new JoystickButton(operatorController, ButtonBoxMap.tenButton);
+	private JoystickButton armButtonFour = new JoystickButton(operatorController, ButtonBoxMap.elevenButton);
+	private JoystickButton armButtonThree = new JoystickButton(operatorController, ButtonBoxMap.thirteenButton);
+	private JoystickButton armButtonTwo = new JoystickButton(operatorController, ButtonBoxMap.fourteenButton);
+	private JoystickButton armButtonOne = new JoystickButton(operatorController, ButtonBoxMap.fifteenButton);
 	
-	private JoystickButton operatorRightBumperButton;
-	private JoystickButton operatorLeftBumperButton;
-	private TriggerButton operatorRightTriggerButton;
-	private TriggerButton operatorLeftTriggerButton;
+	private JoystickButton flipSwitchOne = new JoystickButton(operatorController, ButtonBoxMap.nineteeenButton);
+	
+	private JoystickButton clawButtonLeft = new JoystickButton(operatorController, ButtonBoxMap.sixteenButton);
+	private JoystickButton clawButtonMiddle = new JoystickButton(operatorController, ButtonBoxMap.seventeenButton);
+	private JoystickButton clawButtonRight = new JoystickButton(operatorController, ButtonBoxMap.eighteenButton);
+	
+	private JoystickButton armButtonSeven = new JoystickButton(operatorController, ButtonBoxMap.threeButton);
+	private JoystickButton armButtonSix = new JoystickButton(operatorController, ButtonBoxMap.fiveButton);
+	
+	private JoystickButton totevatorOne = new JoystickButton(operatorController, ButtonBoxMap.fourButton);
+	
+	
+//	private JoystickButton operatorXButton;
+//	private JoystickButton operatorYButton;
+//	private JoystickButton operatorBButton;
+//	private JoystickButton operatorAButton;
+//	
+//	private DPadButton operatorDPadUp;
+//	private DPadButton operatorDPadDown;
+//	private DPadButton operatorDPadLeft;
+//	private DPadButton operatorDPadRight;
+//	
+//	private JoystickButton operatorRightBumperButton;
+//	private JoystickButton operatorLeftBumperButton;
+//	private TriggerButton operatorRightTriggerButton;
+//	private TriggerButton operatorLeftTriggerButton;
 	
 	public OI(){
 		driverController = new Joystick(ControllerPorts.DRIVER);
@@ -68,21 +91,24 @@ public class OI {
 		driverLeftBumperButton = new JoystickButton(driverController, XBoxControllerMap.LEFT_BUMPER_BUTTON);
 		driverRightBumperButton = new JoystickButton(driverController, XBoxControllerMap.RIGHT_BUMPER_BUTTON);
 		
-		operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
-		operatorYButton = new JoystickButton(operatorController, XBoxControllerMap.Y_BUTTON);
-		operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
-		operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
 		
-		operatorRightBumperButton = new JoystickButton(operatorController,XBoxControllerMap.RIGHT_BUMPER_BUTTON);
-		operatorLeftBumperButton = new JoystickButton(operatorController,XBoxControllerMap.LEFT_BUMPER_BUTTON);
 		
-		operatorRightTriggerButton = new TriggerButton(operatorController,false, .4);
-		operatorLeftTriggerButton = new TriggerButton(operatorController,true, .7);
 		
-		operatorDPadUp = new DPadButton(operatorController, DPadButton.Direction.UP);
-		operatorDPadDown = new DPadButton(operatorController, DPadButton.Direction.DOWN);
-		operatorDPadLeft = new DPadButton(operatorController, DPadButton.Direction.LEFT);
-		operatorDPadRight = new DPadButton(operatorController, DPadButton.Direction.RIGHT);
+//		operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
+//		operatorYButton = new JoystickButton(operatorController, XBoxControllerMap.Y_BUTTON);
+//		operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
+//		operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
+//		
+//		operatorRightBumperButton = new JoystickButton(operatorController,XBoxControllerMap.RIGHT_BUMPER_BUTTON);
+//		operatorLeftBumperButton = new JoystickButton(operatorController,XBoxControllerMap.LEFT_BUMPER_BUTTON);
+//		
+//		operatorRightTriggerButton = new TriggerButton(operatorController,false, .4);
+//		operatorLeftTriggerButton = new TriggerButton(operatorController,true, .7);
+//		
+//		operatorDPadUp = new DPadButton(operatorController, DPadButton.Direction.UP);
+//		operatorDPadDown = new DPadButton(operatorController, DPadButton.Direction.DOWN);
+//		operatorDPadLeft = new DPadButton(operatorController, DPadButton.Direction.LEFT);
+//		operatorDPadRight = new DPadButton(operatorController, DPadButton.Direction.RIGHT);
 		
 		driverAButton.whenPressed(new GoDownOneTote());
 		driverYButton.whenPressed(new GoUpOneTote());
@@ -90,21 +116,37 @@ public class OI {
 		driverXButton.whenPressed(new ToteStackerBumpDown());
 		driverRightBumperButton.whenPressed(new Score());
 	
-		operatorXButton.whenPressed(new ContainerClawOpen());
-		operatorXButton.whenReleased(new ContainerClawClose());
-		operatorBButton.whenPressed(new ResetArmPID());
-		operatorYButton.whenPressed(new WristUp());
-		operatorAButton.whenPressed(new WristDown());
-		operatorRightBumperButton.whenPressed(new RawMoveContainerArm());
-		operatorLeftBumperButton.whenPressed(new PickUpCanFromStep());
+			
 		
-		operatorLeftTriggerButton.whenPressed(new ToggleTotevatorPID());
-		operatorRightTriggerButton.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getHomePosition()));
+		armButtonThree.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getStepCanPosition()));
+		armButtonTwo.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getPickupPosition()));
+		armButtonOne.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getHomePosition()));
+		
+		flipSwitchOne.whenPressed(new ContainerClawOpen());
+		flipSwitchOne.whenReleased(new ContainerClawClose());
+		
+		clawButtonLeft.whenPressed(new LeftContainerClawOpen());
+		clawButtonLeft.whenReleased(new LeftContainerClawClose());
+		clawButtonMiddle.whenPressed(new ContainerClawOpen());
+		clawButtonMiddle.whenReleased(new ContainerClawClose());
+		clawButtonRight.whenPressed(new RightContainerClawOpen());
+		clawButtonRight.whenReleased(new RightContainerClawClose());
+		
+		armButtonSeven.whenPressed(new PickUpCanFromStep());
+		armButtonSix.whenPressed(new ThatStupidFreakinAutoCanPickupRoutine(1.0));
+		
+		totevatorOne.whenPressed(new ResetToteStacker());
+		
+				
 		
 		
-		operatorDPadUp.whenPressed(new ThatStupidFreakinAutoCanPickupRoutine(1.0));
-		operatorDPadDown.whenPressed(new ResetToteStacker());
-		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getPickupPosition()));
+//		operatorBButton.whenPressed(new ResetArmPID());
+
+//		operatorRightBumperButton.whenPressed(new RawMoveContainerArm());
+//				
+//		operatorLeftTriggerButton.whenPressed(new ToggleTotevatorPID());
+//		operatorDPadDown.whenPressed(new ResetToteStacker());
+		
 	}	
 	
 	public double getDriverLeftXAxis() {

@@ -43,12 +43,26 @@ public class ContainerClaw extends Subsystem {
 		rightextend.set(false);
 		rightretract.set(false);
 	}
+	
+	public void closeLeft(){
+		leftextend.set(false);
+		leftretract.set(true);
+		rightextend.set(false);
+		rightretract.set(false);
+	}
 
 	public void openRight() {
 		leftextend.set(false);
 		leftretract.set(false);
 		rightextend.set(true);
 		rightretract.set(false);
+	}
+	
+	public void closeRight(){
+		leftextend.set(false);
+		leftretract.set(false);
+		rightextend.set(false);
+		rightretract.set(true);
 	}
 	
 	public void turnOff() {
