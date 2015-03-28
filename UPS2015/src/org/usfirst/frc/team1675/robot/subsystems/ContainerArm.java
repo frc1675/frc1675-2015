@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
-import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArm;
+import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArmXbox;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -62,7 +62,7 @@ public class ContainerArm extends PIDSubsystem {
     }
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        setDefaultCommand(new RawMoveContainerArm());
+        setDefaultCommand(new RawMoveContainerArmXbox());
     }
     
     protected double returnPIDInput() {

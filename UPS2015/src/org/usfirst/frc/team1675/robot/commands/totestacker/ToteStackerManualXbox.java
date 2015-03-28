@@ -3,14 +3,15 @@ package org.usfirst.frc.team1675.robot.commands.totestacker;
 import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ToteStackerManual extends Command {
+public class ToteStackerManualXbox extends Command {
 
-    public ToteStackerManual() {
+    public ToteStackerManualXbox() {
     	requires(Robot.totevator);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -22,8 +23,10 @@ public class ToteStackerManual extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double toteStackerMovement = -Robot.oi.getOperatorLeftYAxis() * RobotMap.ToteStackerConstants.MANUAL_SCALE_FACTOR;
-    	Robot.totevator.setManualMovement(toteStackerMovement);
+    	if(Robot.oi.isOperatorXboxPluggedIn()){    	
+	    	double toteStackerMovement = -Robot.oi.getOperatorLeftYAxis() * RobotMap.ToteStackerConstants.MANUAL_SCALE_FACTOR;
+	    	Robot.totevator.setManualMovement(toteStackerMovement);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

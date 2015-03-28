@@ -18,4 +18,7 @@ public class ButtonBoxMap {
 	public static final int eighteenButton=18;
 	public static final int nineteeenButton=19;
 	public static final int twentyButton=20;
+	
+	public static final int LEFT_Y_AXIS = 4;
+	public static final int RIGHT_Y_AXIS = 2;
 }

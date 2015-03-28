@@ -121,6 +121,7 @@ public class RobotMap {
 	public static class ControllerPorts {
 		static final int DRIVER = 0;
 		static final int OPERATOR = 1;
+		static final int BUTTON_BOX=2;
 	}
 	
 	public static class AIOChannels {
@@ -191,7 +192,7 @@ public class RobotMap {
 //		public static final double THREE_STACK_HEIGHT = 120;
 //		public static final double STEP_BLOCK_HEIGHT = 202;
 //		public static final double STEP_PICKUP_HEIGHT = 175;
-//		public static final double PICK_UP_POSITION = 118;
+		public static final double PICK_UP_POSITION = 118;
 //		public static final double HOME_POSITION = 145;
 //
 //

@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class RawMoveContainerArm extends Command {
+public class RawMoveContainerArmButtonBox extends Command {
 
-    public RawMoveContainerArm() {
+    public RawMoveContainerArmButtonBox() {
     	requires(Robot.containerArm);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -25,11 +25,11 @@ public class RawMoveContainerArm extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double value = Robot.oi.getOperatorRightYAxis() * RobotMap.ContainerArmConstants.MANUAL_SCALE_FACTOR;
-    	Robot.containerArm.rawSetArm(value);
-    	SmartDashboard.putNumber("containerPot", Robot.containerArm.getPotValue());
-    	
-    	
+    	if(Robot.oi.isOperatorButtonBoxPluggedIn()){
+	    	double value = Robot.oi.getButtonBoxRightYAxis() * RobotMap.ContainerArmConstants.MANUAL_SCALE_FACTOR;
+	    	Robot.containerArm.rawSetArm(value);
+	    	SmartDashboard.putNumber("containerPot", Robot.containerArm.getPotValue());
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

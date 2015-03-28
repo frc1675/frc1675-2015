@@ -2,7 +2,8 @@ package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.PolarMecanum;
-import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerManual;
+import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerManualButtonBox;
+import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerManualXbox;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -44,7 +45,7 @@ public class ToteStacker extends PIDSubsystem {
 	}
 
     public void initDefaultCommand() {
-    	setDefaultCommand(new ToteStackerManual());
+    	setDefaultCommand(new ToteStackerManualXbox());
     }
 
     public void resetEncoderUponRisingEdge(){
