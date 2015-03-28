@@ -114,8 +114,8 @@ public class OI {
 		upperLeftSquareButton.whenPressed(new PickUpCanFromStep());
 		bottomLeftSquareButton.whenPressed(new ThatStupidFreakinAutoCanPickupRoutine(1.0));		
 		bottomRightSquareButton.whenPressed(new ResetToteStacker());
-		upperRightSquareButton.whenPressed(new ToteStackerManualButtonBox());
-		upperRightFlipSwitch.whenPressed(new RawMoveContainerArmButtonBox());	
+		upperRightSquareButton.whenPressed(new RawMoveContainerArmButtonBox());
+		upperRightFlipSwitch.whenPressed(new ToteStackerManualButtonBox());
 	}	
 	
 	public double getDriverLeftXAxis() {
