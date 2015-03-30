@@ -4,13 +4,11 @@ package org.usfirst.frc.team1675.robot;
 import org.usfirst.frc.team1675.robot.RobotMap.ControllerPorts;
 import org.usfirst.frc.team1675.robot.commands.PickUpCanFromStep;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionIncrementingSetpoint;
+import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionOnDashboard;
 import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArm;
-import org.usfirst.frc.team1675.robot.commands.containerarm.ResetArmPID;
 import org.usfirst.frc.team1675.robot.commands.containerarm.ThatStupidFreakinAutoCanPickupRoutine;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
-import org.usfirst.frc.team1675.robot.commands.containerwrist.WristDown;
-import org.usfirst.frc.team1675.robot.commands.containerwrist.WristUp;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoDownOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoUpOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ResetToteStacker;
@@ -89,12 +87,13 @@ public class OI {
 		driverBButton.whenPressed(new ToteStackerBumpUp());
 		driverXButton.whenPressed(new ToteStackerBumpDown());
 		driverRightBumperButton.whenPressed(new Score());
+		driverLeftBumperButton.whenPressed(new ResetToteStacker());
 	
 		operatorXButton.whenPressed(new ContainerClawOpen());
 		operatorXButton.whenReleased(new ContainerClawClose());
-		operatorBButton.whenPressed(new ResetArmPID());
-		operatorYButton.whenPressed(new WristUp());
-		operatorAButton.whenPressed(new WristDown());
+		operatorBButton.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getPickupPosition()));
+		operatorYButton.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getStepCanPosition()));
+		operatorAButton.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getHomePosition()));
 		operatorRightBumperButton.whenPressed(new RawMoveContainerArm());
 		operatorLeftBumperButton.whenPressed(new PickUpCanFromStep());
 		
@@ -105,6 +104,7 @@ public class OI {
 		operatorDPadUp.whenPressed(new ThatStupidFreakinAutoCanPickupRoutine(1.0));
 		operatorDPadDown.whenPressed(new ResetToteStacker());
 		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getPickupPosition()));
+		operatorDPadLeft.whenPressed(new MoveContainerArmToPositionOnDashboard());
 	}	
 	
 	public double getDriverLeftXAxis() {

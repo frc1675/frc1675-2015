@@ -9,7 +9,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class MoveContainerArmToPositionOnDashboard extends Command {
-    public MoveContainerArmToPositionOnDashboard() {
+	private static final double RAMP_TIME = .5;
+	double currentSetpoint;
+	double ultimateSetpoint;
+	double setpointIncrement;
+
+	public MoveContainerArmToPositionOnDashboard() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.containerArm);
@@ -17,13 +22,26 @@ public class MoveContainerArmToPositionOnDashboard extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {   	
-    	Robot.containerArm.setArmPosition(SmartDashboard.getNumber("ContainerArmSetpoint"));
+    	ultimateSetpoint = SmartDashboard.getNumber("ContainerArmSetpoint");  //comment this out to make go to value passed in instead of the one on dashboard.  	
+    	currentSetpoint = Robot.containerArm.getPotValue();
+    	Robot.containerArm.getPIDController().setSetpoint(currentSetpoint);
+    	setpointIncrement =(ultimateSetpoint-currentSetpoint)/(50*RAMP_TIME);
+    	Robot.containerArm.enable();
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	currentSetpoint = Robot.containerArm.getPIDController().getSetpoint();
     	SmartDashboard.putNumber("containerPot", Robot.containerArm.getPotValue());
+    	SmartDashboard.putNumber("Current Setpoint", currentSetpoint);
+    	if (Math.abs(currentSetpoint-ultimateSetpoint )< .0001){//rounding error
+    	}else if(Math.abs(currentSetpoint-ultimateSetpoint)> Math.abs(setpointIncrement)){
+    		Robot.containerArm.setSetpoint(currentSetpoint += setpointIncrement);
+    	}else{  //currentSetpoint != ultimateSetpoint
+    		currentSetpoint = ultimateSetpoint;
+    		Robot.containerArm.setSetpoint(currentSetpoint);    		
+    	}
     	
     	
     }
@@ -36,10 +54,12 @@ public class MoveContainerArmToPositionOnDashboard extends Command {
     // Called once after isFinished returns true
     protected void end() {    	
     	Robot.containerArm.stopAndDisable();
+    	System.out.println("ended");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

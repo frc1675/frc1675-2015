@@ -77,14 +77,14 @@ public class RobotMap {
 		private static final double HOME_POSITION = 145;
 	}
 	private static class PracticeConstants {
-		private static final int TICKS_PER_TOTE = 275;
+		private static final int TICKS_PER_TOTE = 272;
 		private static final double TURN_NINETY_DEGREES_TIME = .9;
 		private static final int POT_COUNTS = 250;
 		private static final double STEP_CAN_EXTEND_TIME = .6;
-		private static final double STEP_BLOCK_HEIGHT = 202;
-		private static final double HOME_POSITION = 230;
-		private static final double STEP_CAN_POSITION = 175;
-		private static final double PICK_UP_POSITION = 210;
+		private static final double STEP_BLOCK_HEIGHT = 209;
+		private static final double HOME_POSITION = 207;
+		private static final double STEP_CAN_POSITION = 177;
+		private static final double PICK_UP_POSITION = 192;
 		
 	}
 

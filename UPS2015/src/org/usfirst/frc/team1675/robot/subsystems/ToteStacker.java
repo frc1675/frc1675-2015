@@ -69,7 +69,7 @@ public class ToteStacker extends PIDSubsystem {
      * 
      * @param distance tells how far the tote stacker moves from it's current point
      */
-    public void moveRelative(int distance){
+    public void moveRelative(double distance){
     	this.setSetpoint(this.getSetpoint() + distance);
     	System.out.println("moveRelative new setpoint: " + this.getSetpoint());
     }
