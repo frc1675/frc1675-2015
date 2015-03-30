@@ -6,12 +6,16 @@ import org.usfirst.frc.team1675.robot.commands.PickUpCanFromStep;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPosition;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionIncrementingSetpoint;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionOnDashboard;
+
 import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArmButtonBox;
 import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArmXbox;
 import org.usfirst.frc.team1675.robot.commands.containerarm.ResetArmPID;
+
+
 import org.usfirst.frc.team1675.robot.commands.containerarm.ThatStupidFreakinAutoCanPickupRoutine;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
+
 import org.usfirst.frc.team1675.robot.commands.containerclaw.LeftContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.LeftContainerClawOpen;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.RightContainerClawClose;
@@ -19,6 +23,7 @@ import org.usfirst.frc.team1675.robot.commands.containerclaw.RightContainerClawO
 import org.usfirst.frc.team1675.robot.commands.containerwrist.WristDown;
 import org.usfirst.frc.team1675.robot.commands.containerwrist.WristUp;
 import org.usfirst.frc.team1675.robot.commands.totestacker.DriveBackBeforeDroppingTotes;
+
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoDownOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoUpOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ResetToteStacker;
@@ -59,6 +64,9 @@ public class OI {
 	private DPadButton operatorDPadRight = new DPadButton(operatorController, DPadButton.Direction.RIGHT);	
 	private JoystickButton operatorRightBumperButton = new JoystickButton(operatorController,XBoxControllerMap.RIGHT_BUMPER_BUTTON);
 	private JoystickButton operatorLeftBumperButton = new JoystickButton(operatorController,XBoxControllerMap.LEFT_BUMPER_BUTTON);
+	private TriggerButton operatorLeftTriggerButton = new TriggerButton(operatorController, true, .7);
+	private TriggerButton operatorRightTriggerButton = new TriggerButton(operatorController, false, .4);
+	
 		
 	private Joystick buttonBox = new Joystick(ControllerPorts.BUTTON_BOX);	
 	private JoystickButton leftSideButtonFive = new JoystickButton(buttonBox, ButtonBoxMap.tenButton);
@@ -82,24 +90,27 @@ public class OI {
 		driverBButton.whenPressed(new ToteStackerBumpUp());
 		driverAButton.whenPressed(new GoDownOneTote());
 		driverRightBumperButton.whenPressed(new Score());
+		driverLeftBumperButton.whenPressed(new ResetToteStacker());
 
+		operatorRightBumperButton.whenPressed(new RawMoveContainerArmXbox());
+		operatorLeftBumperButton.whenPressed(new PickUpCanFromStep());
+		
+		operatorRightTriggerButton.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getHomePosition()));
+		operatorLeftTriggerButton.whenPressed(new ToggleTotevatorPID());
+		
 		operatorXButton.whenPressed(new ContainerClawOpen());
 		operatorXButton.whenReleased(new ContainerClawClose());
-		operatorBButton.whenPressed(new MoveContainerArmToPositionOnDashboard());//193
-		operatorYButton.whenPressed(new WristUp());
-		operatorAButton.whenPressed(new WristDown());
-		//operatorYButton.whenPressed(new GoUpOneTote());
-		//operatorAButton.whenPressed(new GoDownOneTote());
-		//operatorBButton.whenPressed(new DriveBackBeforeDroppingTotes());
-		//operatorXButton.whenPressed(new ResetToteStacker());
-		//operatorRightBumperButton.whenPressed(new ResetTotevatorPID());
-		operatorRightBumperButton.whenPressed(new RawMoveContainerArmXbox());
-		operatorLeftBumperButton.whenPressed(new ToggleTotevatorPID());
+		operatorBButton.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getPickupPosition()));
+		operatorYButton.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getStepCanPosition()));
+		operatorAButton.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getHomePosition()));
+		
 		operatorDPadUp.whenPressed(new ThatStupidFreakinAutoCanPickupRoutine(1.0));
 		operatorDPadDown.whenPressed(new DriveBackBeforeDroppingTotes());
-		operatorDPadLeft.whenPressed(new MoveContainerArmToPosition(75.0));
-		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.ContainerArmConstants.PICK_UP_POSITION));
+		operatorDPadLeft.whenPressed(new MoveContainerArmToPositionOnDashboard());
+		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getPickupPosition()));
 	
+		
+		
 		leftSideButtonThree.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getStepCanPosition()));
 		leftSideButtonTwo.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getPickupPosition()));
 		leftSideButtonOne.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getHomePosition()));		
@@ -116,6 +127,9 @@ public class OI {
 		bottomRightSquareButton.whenPressed(new ResetToteStacker());
 		upperRightSquareButton.whenPressed(new RawMoveContainerArmButtonBox());
 		upperRightFlipSwitch.whenPressed(new ToteStackerManualButtonBox());
+
+
+
 	}	
 	
 	public double getDriverLeftXAxis() {
