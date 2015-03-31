@@ -3,27 +3,17 @@ package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.RobotMap.ControllerPorts;
 import org.usfirst.frc.team1675.robot.commands.PickUpCanFromStep;
-import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPosition;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionIncrementingSetpoint;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionOnDashboard;
-
 import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArmButtonBox;
 import org.usfirst.frc.team1675.robot.commands.containerarm.RawMoveContainerArmXbox;
-import org.usfirst.frc.team1675.robot.commands.containerarm.ResetArmPID;
-
-
 import org.usfirst.frc.team1675.robot.commands.containerarm.ThatStupidFreakinAutoCanPickupRoutine;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
-
 import org.usfirst.frc.team1675.robot.commands.containerclaw.LeftContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.LeftContainerClawOpen;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.RightContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.RightContainerClawOpen;
-import org.usfirst.frc.team1675.robot.commands.containerwrist.WristDown;
-import org.usfirst.frc.team1675.robot.commands.containerwrist.WristUp;
-import org.usfirst.frc.team1675.robot.commands.totestacker.DriveBackBeforeDroppingTotes;
-
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoDownOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.GoUpOneTote;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ResetToteStacker;
@@ -32,7 +22,6 @@ import org.usfirst.frc.team1675.robot.commands.totestacker.ToggleTotevatorPID;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerBumpDown;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerBumpUp;
 import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerManualButtonBox;
-import org.usfirst.frc.team1675.robot.commands.totestacker.ToteStackerManualXbox;
 import org.usfirst.frc.team1675.robot.utils.DPadButton;
 import org.usfirst.frc.team1675.robot.utils.TriggerButton;
 
@@ -105,7 +94,7 @@ public class OI {
 		operatorAButton.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getHomePosition()));
 		
 		operatorDPadUp.whenPressed(new ThatStupidFreakinAutoCanPickupRoutine(1.0));
-		operatorDPadDown.whenPressed(new DriveBackBeforeDroppingTotes());
+		operatorDPadDown.whenPressed(new ResetToteStacker());
 		operatorDPadLeft.whenPressed(new MoveContainerArmToPositionOnDashboard());
 		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getPickupPosition()));
 	

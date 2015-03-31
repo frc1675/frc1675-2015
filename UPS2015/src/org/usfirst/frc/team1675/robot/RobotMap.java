@@ -82,7 +82,7 @@ public class RobotMap {
 		private static final int POT_COUNTS = 250;
 		private static final double STEP_CAN_EXTEND_TIME = .6;
 		private static final double STEP_BLOCK_HEIGHT = 208;
-		private static final double HOME_POSITION = 236;
+		private static final double HOME_POSITION = 226;
 		private static final double STEP_CAN_POSITION = 181;
 		private static final double PICK_UP_POSITION = 216;
 

@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class OpenAtMatchEnd extends Command {
 	DriverStation currentInstance;
-	private static final double TIME_TO_FIRE = .5;
+	private static final double TIME_TO_FIRE = .75;
     public OpenAtMatchEnd() {
     	requires(Robot.containerClaw);
         // Use requires() here to declare subsystem dependencies

@@ -26,7 +26,7 @@ public class LeftContainerClawClose extends Command {
 
 	protected void execute() {
 
-		Robot.containerClaw.closeLeft();;
+		Robot.containerClaw.closeLeft();
 	}
 
 	protected boolean isFinished() {
