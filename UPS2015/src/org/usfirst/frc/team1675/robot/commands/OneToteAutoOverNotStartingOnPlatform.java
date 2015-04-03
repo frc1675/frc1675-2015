@@ -9,21 +9,16 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class PickUpTwoGreyTotes extends CommandGroup {
-
-    public  PickUpTwoGreyTotes() {
+public class OneToteAutoOverNotStartingOnPlatform extends CommandGroup {
+    private static final double DRIVE_POWER = .65;
+    public  OneToteAutoOverNotStartingOnPlatform() {
     	addParallel(new MoveContainerArmToPosition(RobotMap.getHomePosition()));
-    	addSequential(new PolarMecanumForTime(RobotMap.TwoGreyToteAutoConstants.PICKUP_DRIVE_POWER, Math.PI, 0, .32));
-    	addSequential(new Wait(.2));
     	addParallel(new GoUpOneTote());
-    	addSequential(new Wait(RobotMap.TwoGreyToteAutoConstants.WAIT_AFTER_PICKUP));
-    	addSequential(new PolarMecanumForTime(RobotMap.TwoGreyToteAutoConstants.PICKUP_DRIVE_POWER, Math.PI, 0, .65));
-    	addSequential(new Wait(1));
-    	addParallel(new GoUpOneTote());
-    	addSequential(new Wait(RobotMap.TwoGreyToteAutoConstants.WAIT_AFTER_PICKUP));
-    	addSequential(new PolarMecanumForTime(RobotMap.TwoGreyToteAutoConstants.DRIVE_POWER, 0, 0, 1.6));
-    	addSequential(new PolarMecanumForTime(RobotMap.TwoGreyToteAutoConstants.DRIVE_POWER, Math.PI, 0, .24));
-
+    	addSequential(new Wait(1.1));
+    	addSequential(new PolarMecanumForTime(DRIVE_POWER, 0, 0, 1.3));
+    	addSequential(new PolarMecanumForTime(DRIVE_POWER, Math.PI, 0, .31));
+    	addSequential(new PolarMecanumForTime(0, 0, -1, RobotMap.getTurnNinetyDegreesTime()));
+      	addSequential(new PolarMecanumForTime(.37, Math.PI, 0, .5));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

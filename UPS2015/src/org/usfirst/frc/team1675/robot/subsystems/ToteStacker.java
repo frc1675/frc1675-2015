@@ -92,7 +92,7 @@ public class ToteStacker extends PIDSubsystem {
 	@Override
 	protected void usePIDOutput(double output) {
 		// TODO Auto-generated method stub
-		toteMotor.set(output*.75);
+		toteMotor.set(output);
 		//resetEncoderUponRisingEdge();
 	}
 

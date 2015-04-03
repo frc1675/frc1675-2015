@@ -23,7 +23,7 @@ public class ResetArmPID extends Command {
 	protected void initialize() {
 		Robot.containerArm.getPIDController().setPID(
 				SmartDashboard.getNumber("ContainerArmP"),
-				SmartDashboard.getNumber("ContainerArmI"),
+				SmartDashboard.getNumber("ContainerArmI")/1000,
 				SmartDashboard.getNumber("ContainerArmD"));
 	}
 

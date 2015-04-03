@@ -7,7 +7,7 @@ package org.usfirst.frc.team1675.robot;
  * floating around.
  */
 public class RobotMap {
-	private static final boolean IS_COMPETITION = false;
+	private static final boolean IS_COMPETITION = true;
 	
 	public static int getTicksPerTote(){
 		if(IS_COMPETITION){
@@ -67,12 +67,12 @@ public class RobotMap {
 	}
 	
 	private static class CompConstants {
-		private static final int TICKS_PER_TOTE = 245;
+		private static final int TICKS_PER_TOTE = 268;
 		private static final double TURN_NINETY_DEGREES_TIME = .7;
 		private static final double POT_COUNTS = 360;
-		private static final double STEP_CAN_EXTEND_TIME = .4;
+		private static final double STEP_CAN_EXTEND_TIME = .45;
 		private static final double STEP_BLOCK_HEIGHT = 202;
-		private static final double STEP_CAN_POSITION = 175;
+		private static final double STEP_CAN_POSITION = 100;
 		private static final double PICK_UP_POSITION = 118;
 		private static final double HOME_POSITION = 145;
 	}
@@ -86,6 +86,11 @@ public class RobotMap {
 		private static final double STEP_CAN_POSITION = 181;
 		private static final double PICK_UP_POSITION = 216;
 
+	}
+	public static class TwoGreyToteAutoConstants {
+		public static final double DRIVE_POWER = .47;
+	    public static final double  PICKUP_DRIVE_POWER = .32;
+	    public static final double WAIT_AFTER_PICKUP = 2;
 	}
 
 	public static class PWMChannels {
@@ -202,7 +207,7 @@ public class RobotMap {
 		public static final double MANUAL_SCALE_FACTOR = 1;
 		public static final double P = .03;  
 		public static final double I = .00015;
-		public static final double D = .2;		
+		public static final double D = .1;		
 	}
 	
 	public static class ContainerWristConstants{

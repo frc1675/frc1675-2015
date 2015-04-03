@@ -5,11 +5,13 @@ import org.usfirst.frc.team1675.robot.commands.AcquireOneCanAuto;
 import org.usfirst.frc.team1675.robot.commands.AntiCanAuto;
 import org.usfirst.frc.team1675.robot.commands.DriveForwardIntoAutoZone;
 import org.usfirst.frc.team1675.robot.commands.OneToteAutoFromPlatform;
+import org.usfirst.frc.team1675.robot.commands.OneToteAutoOverNotStartingOnPlatform;
 import org.usfirst.frc.team1675.robot.commands.OpenFieldGrabOneCanAuto;
 import org.usfirst.frc.team1675.robot.commands.OpenFieldOneToteAuto;
 import org.usfirst.frc.team1675.robot.commands.PickUpCanFromStep;
 import org.usfirst.frc.team1675.robot.commands.PickUpTwoGreyTotes;
 import org.usfirst.frc.team1675.robot.commands.ScoringPlatformGrabOneCanAuto;
+import org.usfirst.frc.team1675.robot.commands.TwoGreyToteAutoWithoutDrivingBack;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerArm;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerClaw;
 import org.usfirst.frc.team1675.robot.subsystems.ContainerWrist;
@@ -65,6 +67,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {   
     	chooser = new SendableChooser();
     	chooser.addDefault("Pick Up Two Grey Totes", new PickUpTwoGreyTotes());
+    	chooser.addObject("Pick Up Two Grey Totes and Don't Drive Back", new TwoGreyToteAutoWithoutDrivingBack());
     	chooser.addObject("Drive Forward", new DriveForwardIntoAutoZone());
     	chooser.addObject("Do Nothing", null);
     	chooser.addObject("Scoring Platform One Tote Auto", new OneToteAutoFromPlatform());
@@ -74,6 +77,7 @@ public class Robot extends IterativeRobot {
     	chooser.addObject("Anti Can", new AntiCanAuto());
     	chooser.addObject("Acquire Can", new AcquireOneCanAuto());
     	chooser.addObject("PickUpCanFromStep", new PickUpCanFromStep());
+    	chooser.addObject("Scoring zone 1 tote auto, starting off it", new OneToteAutoOverNotStartingOnPlatform());
     	SmartDashboard.putData("chooser", chooser);
     	
     	SmartDashboard.putNumber("Position Encoder P",  RobotMap.DriveEncoders.PositionPIDDefaults.P);
@@ -83,7 +87,7 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putNumber("TotevatorI", RobotMap.ToteStackerConstants.I);
     	SmartDashboard.putNumber("TotevatorD", RobotMap.ToteStackerConstants.D);
 		SmartDashboard.putNumber("ContainerArmP",RobotMap.ContainerArmConstants.P);
-		SmartDashboard.putNumber("ContainerArmI",RobotMap.ContainerArmConstants.I);
+		SmartDashboard.putNumber("ContainerArmI",RobotMap.ContainerArmConstants.I*1000);
 		SmartDashboard.putNumber("ContainerArmD",RobotMap.ContainerArmConstants.D);
 		SmartDashboard.putNumber("ContainerArmSetpoint", 192);  
 
