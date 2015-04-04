@@ -17,7 +17,7 @@ public class PickUpTwoGreyTotes extends CommandGroup {
     	addSequential(new Wait(.2));
     	addParallel(new GoUpOneTote());
     	addSequential(new Wait(RobotMap.TwoGreyToteAutoConstants.WAIT_AFTER_PICKUP));
-    	addSequential(new PolarMecanumForTime(RobotMap.TwoGreyToteAutoConstants.PICKUP_DRIVE_POWER, Math.PI, 0, .65));
+    	addSequential(new PolarMecanumForTime(RobotMap.getTwoTotePickupPower(), Math.PI, 0, .65));
     	addSequential(new Wait(1));
     	addParallel(new GoUpOneTote());
     	addSequential(new Wait(RobotMap.TwoGreyToteAutoConstants.WAIT_AFTER_PICKUP));

@@ -65,6 +65,20 @@ public class RobotMap {
 			return PracticeConstants.STEP_BLOCK_HEIGHT ;
 		}
 	}
+	public static double getMaxHeight(){
+		if(IS_COMPETITION){
+			return CompConstants.MAX_HEIGHT ;
+		}else{
+			return PracticeConstants.MAX_HEIGHT ;
+		}
+	}
+	public static double getTwoTotePickupPower(){
+		if(IS_COMPETITION){
+			return CompConstants.TWO_TOTE_AUTO_PICKUP_POWER ;
+		}else{
+			return PracticeConstants.TWO_TOTE_AUTO_PICKUP_POWER ;
+		}
+	}
 	
 	private static class CompConstants {
 		private static final int TICKS_PER_TOTE = 268;
@@ -75,6 +89,8 @@ public class RobotMap {
 		private static final double STEP_CAN_POSITION = 100;
 		private static final double PICK_UP_POSITION = 118;
 		private static final double HOME_POSITION = 145;
+		private static final double MAX_HEIGHT = 38;
+		private static final double TWO_TOTE_AUTO_PICKUP_POWER = .3;
 	}
 	private static class PracticeConstants {
 		private static final int TICKS_PER_TOTE = 272;
@@ -85,6 +101,8 @@ public class RobotMap {
 		private static final double HOME_POSITION = 226;
 		private static final double STEP_CAN_POSITION = 181;
 		private static final double PICK_UP_POSITION = 216;
+		private static final double MAX_HEIGHT = 150;
+		private static final double TWO_TOTE_AUTO_PICKUP_POWER = .4;
 
 	}
 	public static class TwoGreyToteAutoConstants {

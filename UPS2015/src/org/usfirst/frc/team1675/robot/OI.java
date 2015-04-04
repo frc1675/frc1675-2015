@@ -105,7 +105,7 @@ public class OI {
 		operatorDPadRight.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getPickupPosition()));
 	
 		
-		
+		leftSideButtonFive.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getMaxHeight()));
 		leftSideButtonThree.whenPressed(new GoToStepCanPosition());
 		leftSideButtonTwo.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getPickupPosition()));
 		leftSideButtonOne.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getHomePosition()));		
