@@ -2,6 +2,7 @@
 package org.usfirst.frc.team1675.robot.commands.containerarm;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.commands.PolarMecanumForTime;
 import org.usfirst.frc.team1675.robot.commands.Wait;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawClose;
 import org.usfirst.frc.team1675.robot.commands.containerclaw.ContainerClawOpen;
@@ -17,6 +18,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class ThatStupidFreakinAutoCanPickupRoutine extends CommandGroup {
     public  ThatStupidFreakinAutoCanPickupRoutine(double waitBeforeRetract) {
     	//addParallel(new MoveContainerArmToPosition(RobotMap.ContainerArmConstants.PICK_UP_POSITION));
+    	//addSequential(new PolarMecanumForTime(.4, 0.0, 0.0, .3));
     	addSequential(new ContainerClawOpen());
     	addSequential(new WristDown());
     	addSequential(new Wait(waitBeforeRetract));
@@ -28,7 +30,7 @@ public class ThatStupidFreakinAutoCanPickupRoutine extends CommandGroup {
         // these will run in order.
 
         // To run multiple commands at the same time,
-        // use addParallel()
+        // use addParallel(
         // e.g. addParallel(new Command1());
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.

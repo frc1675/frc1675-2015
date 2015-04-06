@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class TwoGreyToteAutoWithoutDrivingBack extends CommandGroup {
 
     public  TwoGreyToteAutoWithoutDrivingBack() {
+    	
     	addParallel(new MoveContainerArmToPosition(RobotMap.getHomePosition()));
     	addSequential(new PolarMecanumForTime(RobotMap.TwoGreyToteAutoConstants.PICKUP_DRIVE_POWER, Math.PI, 0, .32));
     	addSequential(new Wait(.2));
