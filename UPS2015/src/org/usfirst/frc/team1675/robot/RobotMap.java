@@ -81,7 +81,7 @@ public class RobotMap {
 	}
 	
 	private static class CompConstants {
-		private static final int TICKS_PER_TOTE = 268;
+		private static final int TICKS_PER_TOTE = 85;
 		private static final double TURN_NINETY_DEGREES_TIME = .7;
 		private static final double POT_COUNTS = 360;
 		private static final double STEP_CAN_EXTEND_TIME = .45;
@@ -90,7 +90,7 @@ public class RobotMap {
 		private static final double PICK_UP_POSITION = 118;
 		private static final double HOME_POSITION = 145;
 		private static final double MAX_HEIGHT = 38;
-		private static final double TWO_TOTE_AUTO_PICKUP_POWER = .3;
+		private static final double TWO_TOTE_AUTO_PICKUP_POWER = .37;
 	}
 	private static class PracticeConstants {
 		private static final int TICKS_PER_TOTE = 272;

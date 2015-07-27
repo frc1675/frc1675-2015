@@ -69,6 +69,7 @@ public class ContainerArm extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
+    	SmartDashboard.putNumber("Container Arm Pot", pot.get());
     	return pot.get();
     }
     

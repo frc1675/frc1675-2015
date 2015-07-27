@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class ToteStacker extends PIDSubsystem {
 	public static int TICKS_PER_TOTEHOOK = RobotMap.getTicksPerTote();
 	public static final int TICKS_TO_DROP = 75; //maybe?
-	public static final int TICKS_PER_BUMP = 20;
+	public static final int TICKS_PER_BUMP = 14;
 	
 	SpeedController toteMotor;
 	Encoder totevatorEncoder;

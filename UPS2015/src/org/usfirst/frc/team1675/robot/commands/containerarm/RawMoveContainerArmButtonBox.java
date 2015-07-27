@@ -26,7 +26,7 @@ public class RawMoveContainerArmButtonBox extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(Robot.oi.isOperatorButtonBoxPluggedIn()){
-	    	double value = Robot.oi.getButtonBoxRightYAxis() * RobotMap.ContainerArmConstants.MANUAL_SCALE_FACTOR;
+	    	double value = Robot.oi.getButtonBoxLeftYAxis() * RobotMap.ContainerArmConstants.MANUAL_SCALE_FACTOR;
 	    	Robot.containerArm.rawSetArm(-value);
 	    	SmartDashboard.putNumber("containerPot", Robot.containerArm.getPotValue());
     	}

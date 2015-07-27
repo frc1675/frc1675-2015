@@ -65,7 +65,7 @@ public class ContainerClaw extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		setDefaultCommand(new OpenAtMatchEnd());
+		//setDefaultCommand(new OpenAtMatchEnd());
 	}
 
 }

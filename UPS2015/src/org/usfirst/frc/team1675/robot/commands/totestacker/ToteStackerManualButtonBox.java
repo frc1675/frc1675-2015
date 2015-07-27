@@ -25,7 +25,7 @@ public class ToteStackerManualButtonBox extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(Robot.oi.isOperatorButtonBoxPluggedIn()){
-    		double toteStackerMovement = Robot.oi.getButtonBoxLeftYAxis() * RobotMap.ToteStackerConstants.MANUAL_SCALE_FACTOR;
+    		double toteStackerMovement = Robot.oi.getButtonBoxRightYAxis() * RobotMap.ToteStackerConstants.MANUAL_SCALE_FACTOR;
     		Robot.totevator.setManualMovement(toteStackerMovement);    		
     	}
     }

@@ -3,6 +3,7 @@ package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.RobotMap.ControllerPorts;
 import org.usfirst.frc.team1675.robot.commands.PickUpCanFromStep;
+import org.usfirst.frc.team1675.robot.commands.TwoGreyToteAutoWithoutDrivingBack;
 import org.usfirst.frc.team1675.robot.commands.containerarm.GoToStepCanPosition;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionIncrementingSetpoint;
 import org.usfirst.frc.team1675.robot.commands.containerarm.MoveContainerArmToPositionOnDashboard;
@@ -106,6 +107,7 @@ public class OI {
 	
 		
 		leftSideButtonFive.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getMaxHeight()));
+		leftSideButtonFour.whenPressed(new TwoGreyToteAutoWithoutDrivingBack());
 		leftSideButtonThree.whenPressed(new GoToStepCanPosition());
 		leftSideButtonTwo.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getPickupPosition()));
 		leftSideButtonOne.whenPressed(new MoveContainerArmToPositionIncrementingSetpoint(RobotMap.getHomePosition()));		
